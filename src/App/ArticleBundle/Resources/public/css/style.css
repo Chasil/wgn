@@ -1,0 +1,607 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&subset=latin,latin-ext);
+@charset "utf-8";
+*{box-sizing: content-box;}
+html, body {
+	font-family: 'Roboto', Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 300;
+	color: #535353;
+	margin: 0;
+	padding: 0;
+	background-color: #e5e5e5;
+	background-image: url(../images/des/bgTop.gif);
+	background-repeat: repeat-x;
+	background-position: top;
+}
+div {
+	position: relative;
+}
+p, ul, ol {
+	font-family: 'Roboto', Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 300;
+	color: #4f4f4f;
+	line-height: 18px;
+	margin: 8px 0 8px 0;
+}
+h1, h2, h3, h4, h5 {
+	font-family: 'Roboto', Arial, Helvetica, sans-serif;
+}
+strong {
+	font-weight: 700;
+}
+h1 {
+	float: left;
+	width: 247px;
+	height: 69px;
+	padding: 0px;
+	overflow: hidden;
+	margin: 28px 0 0 30px;
+}
+a {
+	color: #00aeff;
+	text-decoration: underline;
+}
+a:hover {
+	text-decoration: none;
+}
+a img {
+	border: 0px;
+}
+form {
+	margin: 0;
+}
+input, textarea, select {
+	font-family: 'Roboto', Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-style: normal;
+	font-weight: 300;
+	color: #535353;
+	vertical-align: middle;
+}
+#googleMap {
+	float: left;
+	width: 898px;
+	height: 380px;
+}
+#googleMapContact {
+	float: left;
+	width: 550px;
+	height: 380px;
+}
+.imgL {
+	float: left;
+	margin: 5px 20px 10px 0;
+}
+.imgR {
+	float: right;
+	margin: 5px 0 10px 10px;
+}
+.imgC {
+	margin: 4px 0 14px 0;
+}
+.blue {
+	color: #00aeff;
+}
+#top {
+	width: 980px;
+	clear: both;
+	margin: 0 auto 0 auto;
+}
+#top h2 {
+	font-size: 18px;
+	font-weight: 300;
+	text-transform: uppercase;
+	color: #808080;
+	float: right;
+	height: 60px;
+	margin: 0px;
+	padding: 60px 30px 0 0;
+}
+#menuTop {
+	float: left;
+	height: 60px;
+	border-left: 1px solid #ffffff;
+	margin: 0 0 0 20px;
+}
+#menuTop ul {
+	float: left;
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+#menuTop li {
+	float: left;
+}
+#menuTop a {
+	float: left;
+	width: 148px;
+	height: 60px;
+	font-size: 16px;
+	color: #FFFFFF;
+	line-height: 60px;
+	text-decoration: none;
+	border-right: 1px solid #ffffff;
+	text-align: center;
+}
+#menuTop a:hover {
+	background-color: #00aeff;
+}
+#lang {
+	float: left;
+	width: 30px;
+	height: 30px;
+	margin: 15px 0 0 20px;
+}
+#lang a {
+	float: left;
+	display: block;
+	width: 30px;
+	height: 30px;
+	font-size: 12px;
+	line-height: 30px;
+	font-weight: 300;
+	color: #808080;
+	text-align: center;
+	text-decoration: none;
+	background-image: url(../images/des/butt/lang.png);
+	background-repeat: no-repeat;
+}
+#lang a:hover {
+	color: #ffffff;
+	background-position: 0px -30px;
+}
+#mainImg {
+	float: left;
+	height: 425px;
+	width: 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	margin: 11px 0 1px 0;
+}
+.carousel-1 {
+	background-image: url(../images/des/carousel/img1.jpg);
+}
+.carousel-2 {
+	background-image: url(../images/des/carousel/img2.jpg);
+}
+.carousel-3 {
+	background-image: url(../images/des/carousel/img3.jpg);
+}
+.carousel-4 {
+	background-image: url(../images/des/carousel/img4.jpg);
+}
+#blueZone {
+	background-color: #00aeff;
+	float: left;
+	width: 100%;
+	background-image: url(../images/des/bgBttmBlueZone.gif);
+	background-repeat: repeat-x;
+	background-position: bottom;
+	padding: 20px 0 0 0;
+}
+#specialOffersBox {
+	width: 971px;
+	clear: both;
+	margin: 0 auto 0 auto;
+	padding: 0 0 0 9px;
+}
+#specialOffersBox h2 {
+	text-transform: uppercase;
+	text-align: center;
+	float: left;
+	width: 920px;
+	border-bottom: 1px solid #66ceff;
+	font-size: 30px;
+	font-weight: 100;
+	color: #ffffff;
+	margin: 5px 0 20px 21px;
+	padding: 0 0 25px 0;
+}
+.specialOffer {
+	float: left;
+	width: 198px;
+	margin: 0 0 0 34px;
+}
+.specialOffer img {
+	float: left;
+}
+.specialOffer h3 {
+	font-size: 14px;
+	font-weight: 700;
+	color: #ffffff;
+	float: left;
+	width: 178px;
+	margin: 0;
+	height: 36px;
+	padding: 10px 10px 0 10px;
+	overflow: hidden;
+}
+.specialOffer p {
+	float: left;
+	font-size: 12px;
+	font-weight: 300;
+	color: #ffffff;
+	line-height: 16px;
+	width: 178px;
+	height: 130px;
+	padding: 0 10px 0 10px;
+	overflow: hidden;
+}
+.specialOfferPrice {
+	float: left;
+	width: 198px;
+	margin: 0 0 20px 0;
+}
+.specialOfferPrice h3 {
+	text-align: center;
+	font-size: 16px;
+	font-weight: 300;
+	margin: 0px;
+}
+.priceBig {
+	font-size: 32px;
+	font-weight: 700;
+}
+.more {
+	float: left;
+	width: 198px;
+	height: 49px;
+	margin: 10px 0 0 0;
+}
+.more a {
+	float: left;
+	display: block;
+	width: 49px;
+	height: 49px;
+	overflow: hidden;
+	text-indent: -9999px;
+	background-image: url(../images/des/butt/plus.png);
+	background-repeat: no-repeat;
+	margin: 0 0 0 75px;
+}
+.more a:hover {
+	background-position: 0px -49px;
+}
+#sloganMain {
+	width: 920px;
+	clear: both;
+	margin: 0 auto 0 auto;
+	padding: 30px 30px 50px 30px;
+}
+#sloganMain h2 {
+	font-size: 30px;
+	font-weight: 100;
+	color: #00aeff;
+	margin: 0 0 6px 0;
+	text-align: center;
+}
+#sloganMain h3 {
+	font-size: 16px;
+	line-height: 20px;
+	font-weight: 300;
+	color: #777777;
+	text-align: center;
+	margin: 0;
+}
+#footerZone {
+	float: left;
+	width: 100%;
+	background-color: #808080;
+	padding: 30px 0 30px 0;
+}
+#footer {
+	width: 920px;
+	clear: both;
+	margin: 0 auto 0 auto;
+	padding: 0 30px 0 30px;
+}
+#footer img {
+	float: left;
+}
+.fL {
+	float: left;
+	margin: 5px 0 0 20px;
+}
+.fL p {
+	font-size: 12px;
+	color: #bababa;
+	line-height: 16px;
+}
+.fL a {
+	color: #bababa;
+	text-decoration: none;
+}
+.fL a:hover {
+	color: #ffffff;
+	text-decoration: underline;
+}
+#blauge, #social {
+	float: right;
+	clear: right;
+	height: 32px;
+	margin: 0;
+}
+#social a {
+	float: left;
+	display: block;
+	overflow: hidden;
+	background-repeat: no-repeat;
+	text-indent: -9999px;
+	width: 32px;
+	height: 32px;
+	margin: 10px 0 0 10px;
+	text-decoration: none;
+}
+.fb {
+	background-image: url(../images/des/butt/facebook.png);
+}
+.gplus {
+	background-image: url(../images/des/butt/googleplus.png);
+}
+.tw {
+	background-image: url(../images/des/butt/twitter.png);
+}
+#social a:hover {
+	background-position: 0px -32px;
+}
+#blauge p {
+	color: #949494;
+	font-size: 12px;
+	margin: 23px 0 0 0;
+}
+#blauge a {
+	color: #949494;
+	text-decoration: none;
+}
+#blauge a:hover {
+	color: #ffffff;
+	text-decoration: none;
+}
+#title {
+	width: 920px;
+	clear: both;
+	margin: 0 auto 0 auto;
+	padding: 0 30px 0 30px;
+}
+#title h2 {
+	float: left;
+	font-size: 36px;
+	font-weight: 100;
+	color: #ffffff;
+	margin: 0 0 45px 0;
+}
+#title p {
+	float: right;
+	font-size: 18px;
+	color: #9bdfff;
+	font-weight: 300;
+	margin: 14px 0 0 0;
+	line-height: 25px;
+}
+#title a {
+	color: #9bdfff;
+	text-decoration: none;
+}
+#title a:hover {
+	color: #ffffff;
+}
+#content {
+	width: 940px;
+	clear: both;
+	margin: 0 auto 0 auto;
+	padding: 0 20px 0 20px;
+}
+.offerList {
+	background-color: #ffffff;
+	padding: 20px;
+	float: left;
+	width: 898px;
+	border: 1px solid #d7d7d7;
+	margin: 6px 0 14px 0;
+}
+.offerList img {
+	float: left;
+}
+.offerListTxt {
+	float: left;
+	width: 570px;
+	margin: 0 0 0 30px;
+	padding: 15px 0 0 0;
+}
+.offerListTxt h3 {
+	font-size: 20px;
+	font-weight: 300;
+	color: #00aeff;
+	margin: 0px;
+	line-height: 20px;
+}
+.offerListTxt h3 a {
+	text-decoration: none;
+}
+.offerListTxt h4 {
+	font-size: 12px;
+	font-weight: 300;
+	margin: 0;
+	color: #727272;
+}
+.offerListLink {
+	float: right;
+	width: 69px;
+	padding: 9px 0 0 0;
+}
+.offerListLink p {
+	font-size: 18px;
+	text-align: center;
+}
+.offerListLink a {
+	float: left;
+	display: block;
+	width: 49px;
+	height: 49px;
+	overflow: hidden;
+	text-indent: -9999px;
+	background-image: url(../images/des/butt/plusList.png);
+	background-repeat: no-repeat;
+	margin: 35px 0 0 10px;
+}
+.offerListLink a:hover {
+	background-position: 0px -49px;
+}
+#paginator {
+	float: left;
+	width: 940px;
+	margin: 6px 0 30px 0;
+}
+#paginator p {
+	text-align: center;
+	margin: 0;
+	color: #a5a5a5;
+}
+#paginator a {
+	color: #a5a5a5;
+	text-decoration: none;
+	padding: 7px;
+	margin: 0 10px 0 10px;
+}
+#paginator a:hover {
+	color: #00aeff;
+}
+.current {
+	color: #ffffff;
+	background-color: #00aaff;
+	padding: 5px 15px 5px 15px;
+	margin: 0 18px 0 18px;
+}
+#whBox {
+	background-color: #ffffff;
+	float: left;
+	width: 918px;
+	border: 1px solid #d7d7d7;
+	margin: 6px 0 30px 0;
+	padding: 20px 0 20px 20px;
+}
+#back a {
+	float: right;
+	display: block;
+	width: 25px;
+	height: 25px;
+	overflow: hidden;
+	background-image: url(../images/des/butt/arrow.png);
+	background-repeat: no-repeat;
+	margin: 0;
+	padding: 0 30px 0 30px;
+}
+#back a:hover {
+	background-position: 0px -25px;
+}
+#whBox h3 {
+	font-size: 30px;
+	font-weight: 300;
+	color: #00aeff;
+	float: left;
+	width: 818px;
+	margin: 0 0 20px 0;
+}
+#offerNr {
+	float: right;
+	width: 80px;
+	text-align: center;
+	font-size: 24px;
+	color: #808080;
+	padding: 13px 0 0 0;
+	margin: 0 20px 0 0;
+}
+#offerProp {
+	float: left;
+	width: 898px;
+}
+#offerProp img {
+	float: left;
+	margin: 0 30px 0 0;
+}
+#offerProp ul {
+	float: left;
+	margin: 0;
+	padding: 0;
+	list-style-type: none;
+}
+#offerProp li {
+	font-size: 18px;
+	margin: 10px 0 15px 0;
+}
+#offerProp ul a {
+	float: left;
+	background-color: #00aaff;
+	font-size: 18px;
+	color: #ffffff;
+	font-weight: 300;
+	margin: 20px 0 0 0;
+	padding: 10px 25px 10px 25px;
+	border-radius: 5px;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+#offerProp ul a:hover {
+	background-color: #808080;
+}
+#txt {
+	float: left;
+	width: 898px;
+}
+#txt h2 {
+	font-size: 18px;
+	font-weight: 300;
+	color: #00aeff;
+	margin: 10px 0 0 0;
+	clear: left;
+}
+#txt h4 {
+	font-size: 24px;
+	font-weight: 300;
+	color: #00aeff;
+	margin: 0;
+}
+#txt ul {
+	margin: 20px 0 20px 0;
+}
+#txt li {
+	margin: 6px 0 6px 0;
+}
+#txtGallery {
+	float: left;
+	width: 918px;
+}
+#txtGallery h2 {
+	font-size: 18px;
+	font-weight: 300;
+	color: #00aeff;
+	margin: 2px 0 13px 0;
+}
+#txtGallery img {
+	float: left;
+	margin: 0 20px 20px 0;
+}
+#location {
+	float: left;
+	width: 898px;
+}
+#location h2 {
+	font-size: 18px;
+	font-weight: 300;
+	color: #00aeff;
+	margin: 0px 0 13px 0;
+}
+#contactR {
+	float: right;
+	width: 340px;
+	text-align: center;
+	padding: 50px 0 0 0;
+}
+#contactR h2 {
+	text-transform: uppercase;
+	font-size: 12px;
+	margin: 4px 0 10px 0;
+}

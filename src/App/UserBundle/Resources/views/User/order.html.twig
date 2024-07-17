@@ -1,0 +1,58 @@
+{% extends "AppFrontPageBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <div class="">
+        <div class="col-md-12 account order">
+            {% include 'AppUserBundle:_Partials:accountButtons.html.twig' %}
+            <div class="clearfix"></div>
+                {% include 'AppFrontPageBundle:_Partials:flashMessage.html.twig' %}
+                <div class="row">
+                    <div class="col-md-10">
+                <form action="#" method="post" novalidate>
+                    <div class="col-xs-12">
+                        <h5>Zamówienie Pakietu ogłoszeniowego</h5>
+                        <p class="order-info">Prosimy o aktywację wybranego przez nas pakietu ogłoszeniowego</p>
+                    </div>
+                    <div class="form-group col-md-5 {% if form.login.vars.errors is not empty %} has-error{%endif%}">
+                       <label for="frontend_bundle_profilebundle_user_password">Twój Login(użyty podczas założenia konta na wgn.pl)</label>
+                         {{form_widget(form.login, { 'attr': {'class': 'form-control','data-validator':'required'} })}}
+                               {{ form_errors(form.login)}}
+                    </div>
+                    <div class="form-group col-md-5 col-md-offset-1 {% if form.contactPerson.vars.errors is not empty %} has-error{%endif%}">
+                        <label for="frontend_bundle_profilebundle_user_password">Imię i nazwisko osoby kontaktowej<br><br></label>
+                         {{form_widget(form.contactPerson, { 'attr': {'class': 'form-control','data-validator':'required'} })}}
+                    </div>
+                    <div class="form-group col-md-5 col-md-offset-6 {% if form.nip.vars.errors is not empty %} has-error{%endif%}">
+                       <label for="frontend_bundle_profilebundle_user_password">Nip zarejestrowany w panelu użytkownika</label>
+                         {{form_widget(form.nip, { 'attr': {'class': 'form-control','data-validator':'required'} })}}
+                    </div>
+                    <div class="col-xs-12"><h5>Zamawiam</h5></div>
+                     <div class="col-md-12{% if form.package.vars.errors is not empty %} has-error{%endif%}">
+                         {{form_widget(form.package)}}
+                    </div>
+                    <div class="col-xs-12"><h5>Akceptacja warunków zamówienia</h5></div>
+                    <div class="form-group col-xs-12 regulations">{{form_widget(form.agreeRegulations,{'attr':{'class':'pull-left','data-validator':'required'}})}}</div>
+                    <div class="form-group col-xs-12 regulations">{{form_widget(form.agreeProcessingData,{'attr':{'class':'pull-left','data-validator':'required'}})}}</div>
+                {{form_rest(form)}}
+                <div class="col-md-3 col-md-offset-9">
+                    <div class="form-group has-feedback">
+                        <button type="submit" class="btn btn-success btn-block btn-flat pull-right">Zatwierdź</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+                </div>
+            <div class="col-md-10">
+
+            </div>
+            <div class="col-md-10">
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{asset('front-layout/lib/validate/validate.min.js')}}"></script>
+    <script>
+        $('#password-form').validate();
+    </script>
+{% endblock %}

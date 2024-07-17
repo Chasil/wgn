@@ -1,0 +1,60 @@
+ <div class="modal fade" id="select-element-type" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                Wybierz typ elementu
+            </div>
+            <div class="modal-body" style="width:100%">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4>Oferty</h4>
+                        <ul>
+                            <li><a href="{{ path(app.request.attributes.get('_route'),
+                                    app.request.query.all|merge({'service':'offer_current_offers'})) }}" title="Blok Aktualnych Ofert">Aktualne Oferty</a></li>
+                            <li><a href="{{ path(app.request.attributes.get('_route'),
+                                    app.request.query.all|merge({'service':'offer_archived_offers'})) }}" title="Blok Archiwalnych Ofert">Archiwalne Oferty</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Reklamy</h4>
+                        <ul>
+                            <li><a href="{{ path(app.request.attributes.get('_route'),
+                                 app.request.query.all|merge({'service':'ad_ads_list'})) }}" title="Blok Reklam">Blok Reklam</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>WGN</h4>
+                        <ul>
+                            <li><a href="{{ path(app.request.attributes.get('_route'),
+                                 app.request.query.all|merge({'service':'office_office_list'})) }}" title="Blok Lista Biur">Blok Lista Biur</a></li>
+                            <li><a href="{{ path(app.request.attributes.get('_route'),
+                                 app.request.query.all|merge({'service':'office_creditoffice_list'})) }}" title="Blok Lista Biur kredytowych">Blok Lista Biur kredytowych</a></li>
+
+                            <li><a href="{{ path(app.request.attributes.get('_route'),
+                                 app.request.query.all|merge({'service':'office_developmentoffice_list'})) }}" title="Blok Lista Biur Developerskich">Blok Lista Biur Developerskich</a></li>
+                            <li><a href="{{ path(app.request.attributes.get('_route'),
+                                 app.request.query.all|merge({'service':'settings_company_data'})) }}" title="Dane Centrali">Dane Centrali</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Artykuły</h4>
+                        <ul>
+                            <li><a href="{{ path(app.request.attributes.get('_route'),
+                             app.request.query.all|merge({'service':'article_article_list'})) }}" title="Blok Lista Artykułów">Blok Lista Artykułów</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h4>Inne</h4>
+                        <ul>
+                            <li><a href="{{ path(app.request.attributes.get('_route'),
+                             app.request.query.all|merge({'service':'app_custom_link'})) }}" title="Blok Własny Link">Blok Własny Link</a></li>
+                            <li><a href="{{ path(app.request.attributes.get('_route'),
+                             app.request.query.all|merge({'service':'app_custom_html'})) }}"title="Blok Własny Html">Blok Własny Html</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

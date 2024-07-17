@@ -1,0 +1,188 @@
+{% extends "AppFrontPageBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <div class="article-box">
+        {% include 'AppArticleBundle:_Partials:leftColumn.html.twig' %}
+        <div class="col-md-8">
+            <div class="article">
+                <div class="col-md-12">
+                    <p id="article-category">{{article.category.name}}{% if article.source !='' %}<span class="pull-right source"> &nbsp;| <a href="{{article.source}}" target="blank" title="{{article.source|replace({'http://':''})}}">{{article.source|replace({'http://':''})}}</a></span>{% endif %}<span class="pull-right date">{{article.createDate | date('Y.m.d')}}</span></p>
+                    <h1 class="title">{{article.name}}</h1>
+                </div>
+                <div class="col-md-12">
+                    {% if article.mainPhoto !=''%}
+                    <div class="article-main-photo pull-right">
+                        <a href="{{ ('/uploads/articles/' ~article.id ~ '/' ~ article.mainPhoto) | imagine_filter('article_big') }}" class="gi" title="{{article.name}}"><img src="{{ ('/uploads/articles/' ~article.id ~ '/' ~ article.mainPhoto) | imagine_filter('article_main_thumbnail') }}" alt="{{article.name}}" class="img-responsive pull-right"></a>
+                    </div>
+                    {% endif %}
+                    {% if article.intro !='' %}
+                    <div class="article-intro {% if article.mainPhoto ==''%}no-main-photo{% endif %}">
+                        {{article.intro | raw}}
+                    </div>
+                    {% endif %}
+                    <div class="article-text">
+                        {{article.content | raw}}
+                    </div>
+                    {%if article.tags | length > 0 %}
+                        <ul class="article-tags">
+                            <li>Tagi: </li>
+                            {% for tag in article.tags %}
+                            <li><a href="{{domain}}{{path('frontend_articles_show_by_tag',{idTag:tag.id,tagName:tag.name|prepareUrl})}}" title="{{tag.name}}">{{tag.name}}</a>{% if loop | length > 1 and not loop.last%}, {% endif %}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+                {%if images | length > 0 %}
+                <div class="col-md-12">
+                    <h4>Galeria</h4>
+                    <div class="gallery-wrapper">
+                        <div class="gallery">
+                            {% for image in images %}
+                                <div class="item">
+                                    <a href="{{ ('/uploads/articles/' ~article.id ~ '/' ~ image.name) | imagine_filter('article_big_inset') }}" title="{{article.name}}" class="gi">
+                                        <img src="{{ ('/uploads/articles/' ~article.id ~ '/' ~ image.name) | imagine_filter('article_thumbnails') }}" alt="{{article.name}}" class="img-responsive">
+                                    </a>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+                <div class="col-md-12 hidden-print">
+                    <div class="buttons pull-right">
+                        <a href="#" title="wyślij" data-action="sendRecommend" class="pull-left"><img src="{{asset('front-layout/gfx/icons/send.jpg')}}" class="img-responsive" alt="wyślij" /></a>
+                        <a href="#" title="drukuj" class="pull-left"><img src="{{asset('front-layout/gfx/icons/print.jpg')}}" class="img-responsive" alt="drukuj" id="print-article" /></a></div>
+                </div>
+                {% if items | length > 0 %}
+                <div class="hidden-print others-articles">
+                    <h5>Inne artykuły z kategorii {{article.category.name}}</h5>
+                        {% for item in items %}
+                            {% include 'AppArticleBundle:_Partials:articleItem.html.twig' %}
+                        {% endfor %}
+
+                    <a href="{{domain}}{{path('frontend_article_category_show',{idCategory:category.id,categoryName:category.name | prepareUrl})}}" class="more pull-right" title="więcej">więcej</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="banner-bottom hidden-sm hidden-xs">
+            {{contentBloks('article_bottom')}}
+        </div>
+    </div>
+
+    {% include 'AppArticleBundle:_Partials:modalRecommend.html.twig' %}
+{% endblock %}
+{% block content_block_top %}{{contentBloks('article_top')}}{%endblock %}
+{% block stylesheet %}
+    <link href="{{asset('front-layout/lib/lightbox/magnific-popup.css')}}" rel="stylesheet">
+{% endblock %}
+{% block javascripts %}
+    <script src="{{asset('front-layout/lib/lightbox/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{asset('front-layout/lib/validate/validate.min.js')}}"></script>
+    <script src="{{asset('front-layout/lib/jquery.lazy/jquery.lazy.js')}}"></script>
+    <script>
+        $(function() {
+            $('.lazy').lazy();
+        });
+    </script>
+    <script type="text/javascript">
+        var recommendUrl = '{{domain}}{{path('frontend_article_recommend')}}';
+        var printUrl = '?print=1';
+      $(document).ready(function() {
+        $('.article').magnificPopup({
+          delegate: 'a.gi',
+          type: 'image',
+          tLoading: 'Ładuję #%curr%...',
+          mainClass: 'mfp-img-mobile',
+          gallery: {
+            enabled: true,
+            navigateByImgClick: true,
+            preload: [0,1] // Will preload 0 - before current, and 1 after the current image
+          },
+          image: {
+            tError: '<a href="%url%">The image #%curr%</a> could not be loaded.',
+            titleSrc: function(item) {
+              return item.el.attr('title');
+            }
+          }
+        });
+      });
+      $('#print-article').on('click', function (e) {
+            e.preventDefault();
+            popitup(printUrl, 600,850,'{{article.name}}');
+        });
+        $('a[data-action="sendRecommend"]').on('click',function(e){
+            e.preventDefault();
+            $('#modal-recommend').modal();
+        });
+        $('#modal-recommend form').validate({sendValid:false});
+        $('#modal-recommend form').on('form:valid',function(e){
+        var self = this;
+        var formdata = $(self).serialize();
+        $.ajax({
+            type: "POST",
+            url: recommendUrl,
+            data: formdata,
+            cache: false,
+            beforeSend:function(){
+                $('#modal-recommend').find('.btn-success').hide();
+                $('#modal-recommend').find('.btn-success').closest('div.col-xs-12').append('<i class="fa fa-spinner fa-spin fa-2x"></i>');
+            }
+        }).done(function(response){
+                if(response.success){
+                    $('#recommend-form').html('<h5 class="bg-green"><i class="fa fa-check-circle fa-2x"></i> Formularz został wysłany. Dziękujemy.</h5>');
+                }else {
+                    alert('Nie udało się wysłać formularza');
+                    $('#modal-recommend').find('.btn-success').show();
+                }
+            });
+        });
+    </script>
+    <script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"BlogPosting",
+  "headline":"{{article.name}}",
+  "description":"{{article.intro | striptags}}",
+  "articleBody":"{{article.content | striptags}}",
+  "image": {
+      "@context": "https://schema.org",
+      "@type": "ImageObject",
+      "url": "{{('/uploads/articles/'~article.id~'/'~article.mainPhoto) |imagine_filter('article_main_thumbnail') }}",
+      "height":"183",
+      "width":"114"
+      },
+  "datePublished" : "{{article.createDate | date('Y-m-d')}}",
+  "dateModified"  : "{{article.createDate | date('Y-m-d')}}",
+  "publisher" : {
+    "@type" : "Organization",
+    "name" : "WGN",
+    "logo" : {
+      "@context": "https://schema.org",
+      "@type": "ImageObject",
+      "url": "{{domain}}{{asset('front-layout/gfx/logo.png')}}",
+      "height":"162",
+      "width":"79"
+    }
+  },
+  "author" : {
+    "@type" : "Organization",
+    "name" : "WGN"
+  }
+}
+</script>
+{% endblock %}
+{% block additionalMeta %}
+    {% if article.disallowRobots and article.followAttribute =='' %}
+        <META NAME="robots" CONTENT="noindex,nofollow">
+    {% elseif article.disallowRobots and article.followAttribute !='' %}
+        <META NAME="robots" CONTENT="noindex,{{ article.followAttribute }}">
+    {% elseif article.followAttribute !='' %}
+        <META NAME="robots" CONTENT="{{ article.followAttribute }}">
+    {% endif %}
+{% endblock %}
+{%block metaDescription %}{{article.intro | raw  | slice(0,300)}}{% endblock %}
+{%block ogDescription %}{{article.intro | raw  | slice(0,300)}}{% endblock %}
+{%block twitterDescription %}{{article.intro | raw   | slice(0,140)}}{% endblock %}
+{%block pageTitle %}{% if article.metaTitle !='' %}{{ article.metaTitle | raw }} {%  else  %}{{article.name}}{% endif %} | WGN{%endblock%}
+{%block ogTitle %}{% if article.metaTitle !='' %}{{ article.metaTitle }} {%  else  %}{{article.name}}{% endif %} | WGN{% endblock %}
+{%block twitterTitle %}{% if article.metaTitle !='' %}{{ article.metaTitle }} {%  else  %}{{article.name}}{% endif %} | WGN{% endblock %}

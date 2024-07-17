@@ -1,0 +1,48 @@
+{% spaceless %}
+<div data-category="6" class="advanced-group no-bottom">
+    <div class="col-md-4 no-padding">
+        <div class="form-group">
+            <label>Rynek</label>
+            <div class="pretty-select">{{form_widget(form.market)}}</div>
+        </div>
+    </div>
+    <div class="col-md-4 padding-2x">
+        <div class="form-group">
+            <label>Szukaj po słowach kluczowych w opisie</label>
+            {{form_widget(form.descriptionLike)}}
+        </div>
+    </div>
+    <div class="col-md-4 no-padding">
+        <div class="form-group">
+            <label>Numer oferty</label>
+            {{form_widget(form.signatureLike)}}
+        </div>
+    </div>
+    <div class="col-md-4 no-padding">
+        <div class="col-md-12 no-padding-left"><label>Rok budowy</label></div>
+        <div class="col-md-6 no-padding-left">
+            <div class="form-group">
+                {{form_widget(form.yearOfBuildingFrom,{'attr':{'placeholder':'od','autocomplete':'off'}})}}
+            </div>
+        </div>
+        <div class="col-md-6 no-padding-right">
+            <div class="form-group">
+                {{form_widget(form.yearOfBuildingTo,{'attr':{'placeholder':'do','autocomplete':'off'}})}}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 padding-2x">
+        <div>
+            {{form_widget(form.mainPhotoHas)}}
+            {{form_widget(form.isDirect)}}
+            {{form_widget(form.isExclusive)}}
+        </div>
+    </div>
+    <div class="form-group garage-type" data-form-part="type">
+            <label>Rodzaj garażu</label>
+            <div class="pretty-select">{{form_widget(form.type)}}</div>
+    </div>
+</div>
+{% endspaceless %}
+
+

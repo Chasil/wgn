@@ -1,0 +1,75 @@
+{% extends "AppFrontPageBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <div class="new-offer payment">
+        <div class="col-md-12 no-padding">
+            <div class="progress-bar top bg-gray">
+                <div class="col-md-1 col-xs-3 no-padding bg-green arrow-right"><h2>Etap VI.</h2></div>
+                <div class="col-md-11 col-xs-9">
+                    <h3>Wybór sposobu płatności</h3>
+                </div>
+            </div>
+            <p class="required-info">Pola oznaczone * gwiazdką są obowiązkowe</p>
+            <ol class="breadcrumb">
+                <li><a href="#" title="Nieruchomości">Nieruchomości</a></li>
+                <li><a href="#" title="{{offer.category.name}}">{{offer.category.name}}</a></li>
+                <li class="active">{{offer.name}}</li>
+              </ol>
+            <div class="col-md-12">
+                <form action="" method="POST" id="payment-form" novalidate>
+
+                <div class="offer-options">
+                    <h1 style="margin-left: 40%;width: 465px;text-align:left;">I. Płatność za ogłoszenie</h1>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    {{form_widget(form.publication,{'attr':{'checked':'checked','disabled':'disabled'}})}}
+                                </td>
+                                <td>11,07 zł z VAT</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    {{form_widget(form.promo)}}
+                                </td>
+                                <td>19.68‬ zł z VAT</td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    Razem:
+                                </td>
+                                <td class="total"><span>11,07</span> zł z VAT</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div style="padding-left: 40%;    padding-right: 70px;margin-top:20px;margin-bottom: 20px;">
+                        <p>W dowolnym czasie aktywności ogłoszenia można wyróżnić na 14 dni (dodatkowo) ofertę.
+                            Takie wyróżnienie kosztuje 30,75 zł z VAT.</p>
+                    </div>
+                    <h1 style="margin-left: 40%;width: 465px;text-align:left;margin-top: 50px;">II. Sposób zapłaty</h1>
+                </div>
+                <div class="payment-methods col-md-10 col-md-offset-1">
+                    <div class="payment card {% if payment.paymentMethod =='card' %}selected{% endif %}"><div class="pull-left">{{form_widget(form.paymentMethod[0])}}</div> <div class="total pull-right"><span>11,07</span> zł z VAT</div></div>
+                    <div class="form-group">{{form_widget(form.agreeRegulations,{'attr':{'class':'pull-left','data-validator':'required'}})}}</div>
+                    <div class="form-group">{{form_widget(form.agreeProcessingData,{'attr':{'class':'pull-left','data-validator':'required'}})}}</div>
+                    {% include 'AppPaymentBundle:_Partials:paymentCardInfo.html.twig' %}
+                    <div class="col-md-12 no-padding"><button type="submit" class="btn btn-success pull-right">Zapłać</button></div>
+                    <div class="bottom-info">
+                    <p>Nieruchomość wprowadzona na WGN.pl będzie dostępna również na ponad 50 portalach partnerskich</p>
+                    </div>
+                </div>
+                    {{form_rest(form)}}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{asset('front-layout/lib/validate/validate.js')}}"></script>
+     <script>
+        var price = 11.07;
+        var promoPrice = 19.68;
+     </script>
+    <script src="{{asset('front-layout/js/payment.js')}}"></script>
+{% endblock %}

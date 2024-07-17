@@ -1,0 +1,21 @@
+<div class="col-md-12 item no-padding">
+    {% if item.isUrl %}
+        {% set url = item.url %}
+    {% else %}
+        {% set url = domain ~ path('frontend_article_show',{categoryName:item.category.name | prepareUrl,id:item.id,articleName:item.name | prepareUrl}) %}
+    {% endif %}
+    <a href="{{url}}" title="{% if item.name is not null %}{{item.name}}{% endif %}" {% if item.followAttribute is not null %}rel="{{ item.followAttribute }}"{% endif %}>
+        {% if item.mainPhoto is not null %}
+            <div class="img">
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-src="{{('/uploads/articles/'~item.id~'/'~item.mainPhoto) |imagine_filter('article_list_block') }}" alt="{{items[0].name}}" class="img-responsive lazy"/>
+            </div>
+        {% endif %}
+        <div class="desc {% if item.mainPhoto == "" %}full{% endif %}">
+            <h2>{{item.name}}</h2>
+            {{item.intro | raw }}
+            {% if not item.isUrl %}
+                Czytaj więcej
+            {% endif %}
+        </div>
+    </a>
+</div>

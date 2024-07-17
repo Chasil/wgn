@@ -1,0 +1,5 @@
+Login;Email;Biuro;Imię i nazwisko;Status;Ostatnie logowanie;Ostatnie IP
+{% for user in users %}
+{{user.username}};{{user.email}};{%if user.office.name is defined %}{{user.office.name}}{% endif %};{{user.firstName}} {{user.lastName}};{% if user.lastActivity is not null %}{% if isOnline(user.lastActivity) %}online{% else %}offline{% endif %}{% endif %};{% if user.lastLogin is not null %}{{user.lastLogin | date('d.m.Y G:i:s')}}{% endif %};{{user.lastLoginIp}}
+{% endfor %}
+

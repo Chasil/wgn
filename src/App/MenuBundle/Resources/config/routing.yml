@@ -1,0 +1,21 @@
+backoffice_menu_list:
+    path:     /backoffice/menu/list
+    defaults: { _controller: AppMenuBundle:Menu:list }
+backoffice_menu_items_list:
+    path:     /backoffice/menu/itemsList
+    defaults: { _controller: AppMenuBundle:MenuItem:list }
+backoffice_menu_item_change_position:
+    path:     /backoffice/menu/item/changePosition
+    defaults: { _controller: AppMenuBundle:MenuItem:changePosition }
+backoffice_menu_item_delete:
+    path:     /backoffice/menu/item/delete
+    defaults: { _controller: AppMenuBundle:MenuItem:delete }
+backoffice_menu_item_add:
+    path:     /backoffice/menu/item/add
+    defaults: { _controller: AppMenuBundle:MenuItem:add }
+backoffice_menu_item_edit:
+    path:     /backoffice/menu/item/edit
+    defaults: { _controller: AppMenuBundle:MenuItem:edit}
+backoffice_item_change_publish:
+    path:     /backoffice/menu/item/changePublish
+    defaults: { _controller: AppMenuBundle:MenuItem:changePublish}

@@ -1,0 +1,28 @@
+ <div class="modal fade" id="modal-recommend" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Wyślij artykuł znajomemu</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12" id="recommend-form">
+                        <form method="POST" novalidate>
+                            <div class="form-group col-md-12 col-xs-12">
+                                {{form_widget(form.email,{'attr':{'placeholder':'E-mail znajomego','data-validator':'required,email'}})}}
+                            </div>
+                            <div class="form-group col-md-12 col-xs-12">
+                                {{form_widget(form.message,{'attr':{'data-validator':'required'}})}}
+                            </div>
+                            <div class="form-group col-md-12 col-xs-12 button">
+                                <button type="submit" class="btn btn-success pull-right">Wyślij</button>
+                            </div>
+                            {{form_rest(form)}}
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

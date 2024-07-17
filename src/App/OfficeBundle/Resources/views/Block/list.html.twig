@@ -1,0 +1,17 @@
+<div class="col-md-12 offices-box" id="offices" {% if element.customStyle !=''%}style="{{element.customStyle}}"{%endif %}>
+    <h3>{{element.name}}</h3>
+    <h2><img src="{{asset('front-layout/gfx/logo-sm.png')}}" class="img-responsive" alt="{{config.blockTitle}}" /><span>{{config.blockTitle}}</span></h2>
+    {% if offices | length > 0 %}
+        <ul>
+        {% for office in offices %}
+            {% if office.subdomain !='' %}
+                {% set url = officeSubdomain(office.subdomain) %}
+            {% else %}
+                {% set url = path('frontpage_office_show',{'id':office.id,'name':office.name|prepareUrl()}) %}
+            {% endif %}
+            <li><a href="{{url}}" title="{{office.name}}, {{office.addresses[0].street}}"><strong>{{office.name}}</strong>, {{office.addresses[0].street}}</a></li>
+        {% endfor %}
+         </ul>
+    {% endif %}
+</div>
+

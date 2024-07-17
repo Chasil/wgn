@@ -1,0 +1,33 @@
+{% extends "AppFrontPageBundle:_Partials:layout.html.twig" %}
+{% block body %}
+        {% include 'AppArticleBundle:_Partials:leftColumn.html.twig' %}
+        <div class="col-md-8">
+            <div class="row category-list">
+                <div class="col-md-12">
+                    <h1 class="title">{{category.name|capitalize}}{% if app.request.get("page") %} - strona {{ app.request.get("page") }}{% endif %}</h1>
+                </div>
+                <div class="col-md-12">
+                    {% for article in items %}
+                         {% include 'AppArticleBundle:_Partials:newsItem.html.twig' %}
+                    {% endfor %}
+                </div>
+                {{ knp_pagination_render(items) }}
+            </div>
+        </div>
+{% endblock %}
+{% block canonical %}{{ articleCategoryUrl(category) }}{% endblock %}
+{%block pageTitle %}{{category.name}} - WGN {% if app.request.query.get('page') > 1 %} - strona {{ app.request.query.get('page') }}{% endif %}{%endblock%}
+{%block ogTitle %}{{category.name}} - WGN {% if app.request.query.get('page') > 1 %} - strona {{ app.request.query.get('page') }}{% endif %}{% endblock %}
+{%block twitterTitle %}{{category.name}} - WGN {% if app.request.query.get('page') > 1 %} - strona {{ app.request.query.get('page') }}{% endif %}{% endblock %}
+{% block content_block_top %}{{contentBloks('article_list_top')}}{%endblock %}
+{%block metaDescription %}{{category.name}}.Ogłoszenia Online i w Biurze Nieruchomości &#9989; Ponad 60 000 Ofert ze Zdjęciami w Serwisie &#9989; Wykwalifikowani Agenci Nieruchomości &#9989; 27 Lat Doświadczenia &#9989; Garaże z Rynku Pierwotnego i Wtórnego &#9989; Zróżnicowane Ceny. Sprawdź Teraz i Zadzwoń »{% endblock %}
+{%block ogDescription %}{{category.name}}.Ogłoszenia Online i w Biurze Nieruchomości &#9989; Ponad 60 000 Ofert ze Zdjęciami w Serwisie &#9989; Wykwalifikowani Agenci Nieruchomości &#9989; 27 Lat Doświadczenia &#9989; Garaże z Rynku Pierwotnego i Wtórnego &#9989; Zróżnicowane Ceny. Sprawdź Teraz i Zadzwoń »{% endblock %}
+{%block twitterDescription %}{{category.name}}.Ogłoszenia Online i w Biurze Nieruchomości &#9989; Ponad 60 000 Ofert ze Zdjęciami w Serwisie &#9989; Wykwalifikowani Agenci Nieruchomości &#9989; 27 Lat Doświadczenia &#9989; Garaże z Rynku Pierwotnego i Wtórnego &#9989; Zróżnicowane Ceny. Sprawdź Teraz i Zadzwoń »{% endblock %}
+{% block javascripts %}
+    <script src="{{asset('front-layout/lib/jquery.lazy/jquery.lazy.js')}}"></script>
+    <script>
+        $(function() {
+            $('.lazy').lazy();
+        });
+    </script>
+{% endblock %}

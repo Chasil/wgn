@@ -1,0 +1,195 @@
+{% extends "AppBackOfficeBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <section class="content-header">
+      <h1>
+        Nowy Klient
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#" title="Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Klienci</li>
+      </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="POST" action="" novalidate enctype="multipart/form-data">
+          <!-- general form elements -->
+                <div class="box box-primary">
+            <!-- /.box-header -->
+            <!-- form start -->
+              <div class="box-body">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Login</label>
+                            {{form_widget(form.username,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.username)}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>E-mail</label>
+                            {{form_widget(form.email)}}
+                            {{form_errors(form.email)}}
+                        </div>
+                    </div>
+                    {% if form.plainPassword is defined %}
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Hasło</label>
+                            {{form_widget(form.plainPassword.first,{'attr':{'data-validator':'required,length','data-validator-length':'8,'}})}}
+                            {{form_errors(form.plainPassword.first)}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Powtórz Hasło</label>
+                            {{form_widget(form.plainPassword.second,{'attr':{'data-validator':'required','data-validator-length':'8,'}})}}
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Imię</label>
+                            {{form_widget(form.firstName)}}
+                            {{form_errors(form.firstName)}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Nazwisko</label>
+                            {{form_widget(form.lastName)}}
+                            {{form_errors(form.lastName)}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Rola</label>
+                            {{form_widget(form.role)}}
+                            {{form_errors(form.role)}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Avatar</label>
+                            {{form_widget(form.file)}}
+                            {{form_errors(form.file)}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"><h4>Dane Adresowe</h4></div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Kraj</label>
+                            {{form_widget(form.addresses[0].country)}}
+                            {{form_errors(form.addresses[0].country)}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Województwo</label>
+                            {{form_widget(form.addresses[0].province)}}
+                            {{form_errors(form.addresses[0].province)}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-2">
+                            <label>Kod Pocztowy</label>
+                            {{form_widget(form.addresses[0].zipCode)}}
+                            {{form_errors(form.addresses[0].zipCode)}}
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label>Miasto</label>
+                            {{form_widget(form.addresses[0].city)}}
+                            {{form_errors(form.addresses[0].city)}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Ulica</label>
+                            {{form_widget(form.addresses[0].street)}}
+                            {{form_errors(form.addresses[0].street)}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Dodatkowy Email</label>
+                            {{form_widget(form.addresses[0].email)}}
+                            {{form_errors(form.addresses[0].email)}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Dodatkowy telefon</label>
+                            {{form_widget(form.addresses[0].phone)}}
+                            {{form_errors(form.addresses[0].phone)}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Biuro czynne od</label>
+                            {{form_widget(form.addresses[0].openFrom)}}
+                            {{form_errors(form.addresses[0].openFrom)}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Biuro czynne do</label>
+                            {{form_widget(form.addresses[0].openTo)}}
+                            {{form_errors(form.addresses[0].openTo)}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"><h4>Dane Firmy</h4></div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Nazwa</label>
+                            {{form_widget(form.companyData.name)}}
+                            {{form_errors(form.companyData.name)}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>NIP</label>
+                            {{form_widget(form.companyData.nip)}}
+                            {{form_errors(form.companyData.nip)}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>REGON</label>
+                            {{form_widget(form.companyData.regon)}}
+                            {{form_errors(form.companyData.regon)}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>KRS</label>
+                            {{form_widget(form.companyData.krs)}}
+                            {{form_errors(form.companyData.krs)}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Kraj</label>
+                            {{form_widget(form.companyData.address.country)}}
+                            {{form_errors(form.companyData.address.country)}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Miasto</label>
+                            {{form_widget(form.companyData.address.city)}}
+                            {{form_errors(form.companyData.address.city)}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Kod Pocztowy</label>
+                            {{form_widget(form.companyData.address.zipCode)}}
+                            {{form_errors(form.companyData.address.zipCode)}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Ulica</label>
+                            {{form_widget(form.companyData.address.street)}}
+                            {{form_errors(form.companyData.address.street)}}
+                        </div>
+                    </div>
+                        {{form_rest(form)}}
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary pull-right">Zapisz</button>
+              </div>
+          </div>
+          <!-- /.box -->
+        </div>
+            </div>
+        </div>
+    </section>
+{% endblock body %}
+{% block stylesheets %}
+{% endblock %}
+{% block javascripts %}
+    <script type="text/javascript">
+
+    </script>
+{% endblock %}

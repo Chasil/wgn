@@ -1,0 +1,242 @@
+<div class="col-md-12 col-xs-12 no-padding exclusive hidden-print">{% if offer.isExclusive and not archivOffer %}<h5>Oferta na wyłączność</h5>{% endif %}</div>
+<div class="col-md-8 col-xs-12 no-padding-left mb-no-padding-right">
+    <div class="gallery">
+        {%if archivOffer %}
+            <div class="main-photo"><div class="no-img"></div></div>
+        {% else %}
+        <div class="main-photo">
+            {% if offer.importId !='' or offer.legacyId !='' %}
+                {% set thumbType = 'offer_no_watermark' %}
+                {% set bigType = 'offer_big_no_watermark' %}
+            {% else %}
+                {% set thumbType = 'offer' %}
+                {% set bigType = 'offer_big' %}
+            {% endif %}
+            {% if offer.virtualWalkUrl !='' %}
+                <div class="offer-virtual-walk-button-container">
+                    <i class="icon-close-virtual-walk"></i>
+                    <i class="icon-virtual-walk"></i>
+                    <a href="{{ offer.virtualWalkUrl }}" class="offer-virtual-walk-button">
+                       Rozpocznij Spacer
+                    </a>
+                </div>
+            {% endif %}
+            {% if offer.mainPhoto !='' %}
+                <a href="#" class="prev" title="Poprzednie"></a>
+                <a href="{{('/uploads/offers/'~offer.id~'/'~offer.mainPhoto) |imagine_filter(bigType) }}" class="main-img" data-gallery-item="1"><img src="{{('/uploads/offers/'~offer.id~'/'~offer.mainPhoto) |imagine_filter(thumbType) }}" alt="{{offer.name}}"/></a>
+                <a href="#" class="next" title="Następne"></a>
+            {% else %}
+                <div class="no-img"></div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        {% if offer.images | length > 1 and not archivOffer  %}
+            <div class="thumbs hidden-print hidden-xs">
+                <a href="#" class="prev" title="Poprzednie"></a>
+                <ul>
+                {% for image in offer.images %}
+                        <li>
+                            <a href="#" data-gallery-item="{{loop.index}}" title="Powiększ">
+                                <img
+                                        src="{{('/uploads/offers/'~offer.id~'/'~image.name) |imagine_filter('offer_thumbnails') }}"
+                                        alt="{{offer.name}}" class="img-responsive"
+                                        data-preview-src="{{('/uploads/offers/'~offer.id~'/'~image.name) |imagine_filter(thumbType) }}"/>
+                            </a></li>
+                {% endfor %}
+                </ul>
+                <a href="#" class="next" title="Następne"></a>
+            </div>
+            <div class="gallery-links hidden-print">
+                {% for image in offer.images %}
+                        <a href="{{('/uploads/offers/'~offer.id~'/'~image.name) |imagine_filter(bigType) }}" class="gallery-img" data-gallery-item="{{loop.index}}" title="Powiększ"></a>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+    <div class="description">
+        <div class="col-xs-12 no-padding">
+            <p class="date pull-right">Dodano: {{offer.modifyDate | humanDate}}</p>
+        </div>
+        <div class="col-xs-6 no-padding-left">
+            <h3>Opis ogłoszenia:</h3>
+        </div>
+        <div class="col-xs-6 no-padding-right"><p class="signature">sygnatura: {{offer.signature}}</p></div>
+        <div class="col-md-12 no-padding content">
+                {{offer.description | boldKeywords | raw | nl2br}}
+        </div>
+        <div class="col-md-12 no-padding">
+            {% if avgPricem2 is defined %}<p class=" avg-prices">Średnie ceny w tej lokalizacji: <strong>{{avgPricem2 | number_format(2, ',', ' ')}} zł/m&sup2;</strong></p>{% endif %}
+            <p class="offer-views hidden-print">Licznik odsłon: {{offer.hits}}</p>
+        </div>
+    </div>
+    <div class="col-xs-12 no-padding user-buttons hidden-print">
+        <div class="col-xs-3 no-padding"><a href="#" class="print-offer" title="Drukuj"><img src="{{asset('front-layout/gfx/icons/print2.jpg')}}" alt="drukuj" class="img-responsive"/> Drukuj</a></div>
+        <div class="col-xs-4 no-padding"><a href="#"  data-toggle="modal" data-target="#modal-cost-calculator" title="Otwórz kalkulator kosztów"><img src="{{asset('front-layout/gfx/icons/calc.jpg')}}" alt="kalkulator opłat" class="img-responsive"/> Kalkulator opłat</a></div>
+        <div class="col-xs-5 no-padding"><a href="#" data-toggle="modal" data-target="#modal-share" title="Podziel się ze znajomymi"><img src="{{asset('front-layout/gfx/icons/share.jpg')}}" alt="podziel się ze znajomymi" class="img-responsive"/> Podziel się ze znajomymi</a></div>
+    </div>
+</div>
+<div class="col-md-4 col-xs-12 no-padding-right mb-no-padding-left">
+    <div class="col-md-12 no-padding">
+        {%  set mobile = '' %}
+        {%  if not archivOffer %}
+            {% if offer.user is defined and offer.user is not null%}
+             {% if offer.user.phone !='' %}
+                 <div class="pull-left phone hidden-print">tel. {{offer.user.phone | phoneMask}}
+                     {% if offer.user.mobile | length > 0 %}
+                         <br/>kom.: {{offer.user.mobile | phoneMask}}
+                         {%  set mobile = offer.user.mobile %}
+                     {% endif %}
+                     <a href="#" class="button">pokaż<br>numer</a>
+                 </div>
+
+             {% elseif offer.user.mobile %}
+                  <div class="pull-left phone hidden-print">tel. {{offer.user.mobile | phoneMask}}<a href="#" class="button">pokaż<br>numer</a></div>
+                 {%  set mobile = offer.user.mobile %}
+             {% endif %}
+        {% elseif offer.office is defined and offer.office is not null and offer.user is not null %}
+                 <div class="pull-left phone hidden-print">
+                     tel.
+                     {% if offer.office.user is defined %}
+                         {{offer.user.phone | phoneMask}}
+                         {%  set mobile = offer.user.phone %}
+                     {% else %}
+                         {{offer.office.phone | phoneMask}}
+                         {%  set mobile = offer.office.phone %}
+                     {% endif %}
+                     {% if offer.user.mobile | length > 0 %}
+                         <br/>kom.: {{offer.user.mobile | phoneMask}}
+                         {%  set mobile = offer.user.mobile %}
+                     {% endif %}
+                     <a href="#" class="button">pokaż<br>numer</a>
+                 </div>
+        {% else %}
+            {% if offer.phone !='' %}
+                {%  set mobile = offer.phone %}
+                <div class="pull-left phone hidden-print">tel. {{offer.phone | phoneMask}} <a href="#" class="button">pokaż<br>numer</a></div>
+            {% endif %}
+        {% endif %}
+        {%  endif %}
+        {% if offer.isDirect and not archivOffer %}
+            <div class="pull-right direct">
+                <p>oferta bezpośrednia</p>
+                <p>- 0% prowizji</p>
+            </div>
+        {% endif %}
+    </div>
+    {% if not archivOffer %}
+        {{isObserved(offer)}}
+    {% endif %}
+    {% if offer.isExclusive %}
+        {{ isExclusive('normal') }}
+    {% endif %}
+    <div class="col-md-12 info no-padding">
+        <h3>Podstawowe Informacje:</h3>
+        <table class="table">
+            <tr>
+                <td>Lokalizacja:</td>
+                <td>
+                    {{offer.city}}
+                    {% if offer.street %}
+                        {{offer.street}}
+                    {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td class="col-price"><label>Cena</label>
+                    <select name="currency" class="form-control" data-price="{{offer.price}}" data-squere="{{offer.squere}}">
+                        {% for currency in currencies %}
+                            <option value="{{currency.id}}" {% if currency.id == offer.currency.id %}selected="selected"{% endif %}>{{currency.symbol}}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <strong><span id="price-exchange">{{offer.price|number_format(0, ',', ' ')}}</span></strong>
+                    {% if isOccasion(offer) %}<strong class="occasion"><i class="fa fa-tags"></i>okazja!</strong>{% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>Cena /m&sup2;</td>
+                <td><span id="pricem2-exchange">{{offer.pricem2|number_format(0, ',', ' ')}}</span></td>
+            </tr>
+            {% if offer.type is not null %}
+            <tr>
+                <td><strong>Rodzaj</strong></td>
+                <td><strong>{{offer.type.name}}</strong></td>
+            </tr>
+            {% endif %}
+            {% if offer.market %}
+                <tr>
+                    <td>Rynek</td>
+                    <td>{{offer.market.name}}</td>
+                </tr>
+            {% endif %}
+            <tr>
+                <td>Powierzchnia</td>
+                <td>{{offer.squere}} m&sup2;</td>
+            </tr>
+            {% if offer.squerePlot %}
+                <tr>
+                    <td>Powierzchnia działki</td>
+                    <td>{{offer.squerePlot}} m&sup2;</td>
+                </tr>
+            {% endif %}
+            {% if offer.category is null %}
+                {% set uniqueKey = 'Flat' %}
+            {% else %}
+                {% set uniqueKey = offer.category.uniqueKey %}
+            {% endif %}
+            {% include 'AppOfferBundle:_Partials:offer'~ uniqueKey | capitalize ~'Data.html.twig' %}
+        </table>
+    </div>
+    {% if offer.media | length >0 %}
+    <div class="media">
+        <h3>Media</h3>
+        {% for info in offer.media %}
+            {{info.name}}{% if not loop.last %},{% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% if offer.additionalInfo | length >0 %}
+    <div class="additional-info">
+        <h3>Dodatkowe Informacje</h3>
+        {% for info in offer.additionalInfo %}
+            {{info.name}}{% if not loop.last %},{% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% if offer.neighborhood | length >0 %}
+    <div class="neighborhood">
+        <h3>Sąsiedztwo</h3>
+        {% for info in offer.neighborhood %}
+            {{info.name}}{% if not loop.last %},{% endif %}
+        {% endfor %}
+    </div>
+    {% endif %}
+    <div class="credit-offer-box">
+        {% if links is defined %}
+            {% for link in links %}
+                <a href="{{ link.url }}" target="_blank" style="background: {{ link.color }} !important;" class="offer-custom-link">{{ link.name |raw }}</a>
+            {% endfor %}
+        {% endif %}
+        {% if offer.virtualWalkUrl != '' %}
+        <a href="{{ offer.virtualWalkUrl }}" class="offer-virtual-walk-button">
+            Rozpocznij Spacer
+        </a>
+        {% endif %}
+    {{contentBloks('offer_page_right')}}
+    </div>
+    {% if offer.video !='' %}
+    <div class="video">
+        <iframe style="width:100%;min-height: 200px;" src="{{parseEmbedVideo(offer.video)}}" frameborder="0" allowfullscreen></iframe>
+    </div>
+    {% endif %}
+    {% if offer.lat !='' and offer.lng !='' %}
+    <div class="map hidden-print">
+         <h3>Lokalizacja na mapie:</h3>
+         <div class="map-container">
+             <a href="https://maps.google.com/maps?q={{offer.lat}},{{offer.lng}}"><i class="fa fa-map-marker fa-2x" aria-hidden="true" title="Pokaż na mapie"></i> Pokaż na mapie</a>
+         </div>
+    </div>
+    {% endif %}
+</div>

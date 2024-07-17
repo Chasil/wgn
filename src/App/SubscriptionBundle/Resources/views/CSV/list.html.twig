@@ -1,0 +1,4 @@
+Id;Użytkownik;Ilość dostępnych;Ilość użytych;Data Dodania;Data Ważności;Cena
+{% for subscription in pagination %}
+{{subscription.id}};{{subscription.user.username}};{{subscription.numberOfAvailable}};{{subscription.numberOfUsed}};{{subscription.createDate | date('d.m.Y')}};{{subscription.expireDate | date('d.m.Y')}};{{subscription.netPrice}} zł netto ({{subscription.netPrice*(1+ (subscription.tax/100))}} zł brutto);
+{% endfor %}

@@ -1,0 +1,42 @@
+{% if ads != null %}
+
+    {% for item in ads %}
+        {% set element = null %}
+        {% if isMobile() %}
+             {% set element = item.mobileFile %}
+        {% else %}
+              {% set element = item.file %}
+        {% endif %}
+
+        {% if element != null %}
+            {% set split = element|split('.') %}
+            {% if split[1] == 'swf' %}
+
+                <div class="banner">
+                  <object width="{{ item.weight }}" height="{{ item.height }}">
+                        <PARAM NAME="movie" VALUE="{{ asset('uploads/ads/'~ item.id ~'/' ~  element) }}{% if item.url != null %}?clickTAG={{domain}}{{ path('frontend_ad_open_url', { id: item.id }) }}{% endif %}">
+                        <PARAM NAME="wmode" value="transparent">
+                        <embed wmode="transparent" src="{{ asset('uploads/ads/'~ item.id ~'/' ~  element) }}{% if item.url != null %}?clickTAG={{domain}}{{ path('frontend_ad_open_url', { id: item.id }) }}{% endif %}" width="{{ item.weight }}" height="{{ item.height }}" />
+                  </object>
+                </div>
+
+            {% else %}
+                <div class="banner">
+                      {% if item.url != null %}
+                        <a target="blank_" href="{{domain}}{{ path('frontend_ad_open_url', { id: item.id }) }}" title="banner">
+                            <img src="{{ asset('uploads/ads/'~ item.id ~'/' ~  element) }}" width="{{ item.weight }}" height="{{ item.height }}">
+                        </a>
+                      {% else %}
+                          <img src="{{ asset('uploads/ads/'~ item.id ~'/' ~  element) }}" width="{{ item.height }}" height="{{ item.height }}">
+                      {% endif %}
+              </div>
+            {% endif %}
+
+        {% else %}
+           <div class="baner">
+            {{ item.code | raw }}
+          </div>
+        {% endif %}
+
+    {% endfor %}
+{% endif %}

@@ -1,0 +1,4 @@
+<div class="form-group col-xs-3 buttons pull-right">
+    <a href="{{domain}}{{path(app.request.get('_route'),app.request.query.all | merge({'export': 'csv'}))}}" class="btn btn-primary pull-right" title="Pobierz CSV"><i class="fa fa-download"></i> CSV</a>
+    <a href="{{domain}}{{path(app.request.get('_route'),app.request.query.all | merge({'export': 'pdf'}))}}" target="_blank" class="btn btn-primary pull-right" title="Pobierz PDF"><i class="fa fa-file-pdf-o"></i> PDF</a>
+</div>

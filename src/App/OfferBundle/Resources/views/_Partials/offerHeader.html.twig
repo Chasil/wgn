@@ -1,0 +1,46 @@
+<div class="offer-header">
+    <div class="offer-title-img">
+        <img src="{{asset('front-layout/gfx/logo32x32.jpg')}}" class="img-responsive" alt="wgn"/>
+    </div>
+    <div class="offer-title">
+        <h1>{{offer.name}}</h1>
+       {% if offer.category is null %}
+           {% set idCategory = 1 %}
+       {% else %}
+           {% set idCategory = offer.category.id %}
+       {% endif %}
+       {% if offer.transactionType is null %}
+           {% set transactionType = 1 %}
+           {% set transactionTypeName = 'Sprzedaż' %}
+       {% else %}
+           {% set transactionType = offer.transactionType.id %}
+           {% set transactionTypeName = offer.transactionType.name  %}
+       {% endif %}
+       {% if offer.country is null %}
+           {% set country = 1 %}
+       {% else %}
+           {% set country = offer.country.id %}
+       {% endif %}
+       {% if offer.currency is null %}
+           {% set currency = 1 %}
+       {% else %}
+           {% set currency = offer.currency.id %}
+       {% endif %}
+       {% if offer.category !='' %}
+           <a href="{{domain}}{{path('frontend_offer_list',{'search':{'category':idCategory,'transactionType':transactionType,'country':country,'currency':currency}})}}" title="{{offer.category.name}} {{transactionTypeName | lower}}">{{offer.category.name}} {{transactionTypeName | lower}}</a>,
+       {% endif %}
+       {% if offer.region !='' %}
+           <a href="{{domain}}{{path('frontend_offer_list',{'search':{'category':idCategory,'transactionType':transactionType,'country':country,'currency':currency,'locationIndexLike':offer.region}})}}" title="{{offer.region}}">{{offer.region}}</a>,
+       {% endif %}
+       {% if offer.city !='' %}
+           {% if citySubdomain is defined and citySubdomain is not empty %}
+               <a href="{{ path('frontend_offer_search_subdomain',{subdomain:citySubdomain}) }}">{{offer.city}}</a>
+           {%  else %}
+               <a href="{{domain}}{{path('frontend_offer_list',{'search':{'category':idCategory,'transactionType':transactionType,'country':country,'currency':currency,'locationIndexLike':offer.region ~','~offer.city}})}}" title="{{offer.city}}">{{offer.city}}</a>
+           {% endif %}
+        {% endif %}
+        {% if offer.street !='' %}, {% if transactionData is defined and categoryData is defined %}<a href="{{domain}}{{path('frontend_offer_search_url',{'transaction':transactionData.key,'type':categoryData.key,'search':{'locationIndexLike':offer.region ~','~offer.city ~','~offer.street}})}}" title="{{offer.street}}">{{offer.street}}</a>{%  endif %}
+        {% endif %}
+    </div>
+</div>
+

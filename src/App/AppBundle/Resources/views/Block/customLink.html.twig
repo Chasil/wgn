@@ -1,0 +1,5 @@
+<a href="{{config.url}}" class="{{config.class}}"  title="{{config.blockTitle | striptags }}" style="{% if element.customStyle !=''%}{{element.customStyle}}{%endif %}
+   {% if element.headerBgColor !='' %}background:{{element.headerBgColor}} !important;{% endif %}
+   {% if element.headerFontColor !='' %}color:{{element.headerFontColor}} !important;{% endif %}
+   {% if element.headerFontSize !='' %}font-size:{{element.headerFontSize}}px !important;{% endif %}
+   {% if element.headerFontIsBold == true %}font-weight:bold !important;{% endif %}" {% if  config.nofollow is defined and config.nofollow %}rel="nofollow"{% endif %}  {% if  config.nofollow is defined and config.nofollow %}target="blank"{% endif %}>{{config.blockTitle | raw}}</a>

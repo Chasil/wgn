@@ -1,0 +1,56 @@
+{% extends "AppBackOfficeBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <section class="content-header">
+      <h1>
+        Lista Menu
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#" title="Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="#" title="Menu">Menu</a></li>
+        <li class="active">Lista</li>
+      </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            {% include 'AppBackOfficeBundle:_Partials:flashMessage.html.twig' %}
+            <div class="col-md-12">
+            <div class="box">
+            <div class="box-header with-border">
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body scroll">
+              <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Nazwa</th>
+                            <th width="250">Pozycje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for menu in menus %}
+                        <tr class="odd gradeX">
+                            <td>{{menu.name}}</td>
+                            <td><a href="{{path('backoffice_menu_items_list',{'key':menu.uniqueKey})}}" title="Pozycje Menu" class="btn btn-default"><i class="fa fa-list"></i></a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+            </div>
+                <!-- /.col-lg-12 -->
+        </div>
+    </section>
+{% endblock body %}
+{% block javascripts %}
+    <script>
+    $('a[data-show-modal="delete"]').on('click',function(){
+        $('#confirm-delete').find('.danger').attr('href', $(this).data('href'));
+        $('#confirm-delete').modal();
+    });
+    $('select[name="idPosition"]').on('change',function(){
+        $(this).closest('form').submit();
+    });
+    </script>
+{% endblock %}

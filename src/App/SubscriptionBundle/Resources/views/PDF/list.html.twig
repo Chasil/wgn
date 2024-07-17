@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Raport Abonamentów</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- Bootstrap 3.3.2 -->
+    <link href="{{asset('admin-layout/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+    <!-- Font Awesome Icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Ionicons -->
+    <link href="http://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <!-- Morris chart -->
+    <link href="{{asset('dist/css/AdminLTE.min.css')}}" rel="stylesheet" type="text/css" />
+    <!-- jvectormap -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        h3{margin-bottom:20px;}
+        .table{font-size:11px;}
+    </style>
+  </head>
+<body class="login-page">
+<h3>Raport Abonamentów</h3>
+<table class="table table-striped">
+    <tr>
+        <td>Id</td>
+        <td>Użytkownik</td>
+        <td>Ilość dostępnych</td>
+        <td>Ilość użytych</td>
+        <td>Data Dodania</td>
+        <td>Data Ważności</td>
+        <td>Cena<td>
+    </tr>
+    {% for subscription in pagination %}
+    <tr class="odd gradeX">
+        <td>{{subscription.id}}</td>
+        <td>{{subscription.user.username}}</td>
+        <td>{{subscription.numberOfAvailable}}</td>
+        <td>{{subscription.numberOfUsed}}</td>
+        <td>{{subscription.createDate | date('d.m.Y')}}</td>
+        <td>{{subscription.expireDate | date('d.m.Y')}}</td>
+        <td>{{subscription.netPrice}} zł netto ({{subscription.netPrice*(1+ (subscription.tax/100))}} zł brutto)</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

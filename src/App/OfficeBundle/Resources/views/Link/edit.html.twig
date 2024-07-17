@@ -1,0 +1,63 @@
+{% extends "AppBackOfficeBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <section class="content-header">
+      <h1>
+            {% if link.id is null %}Dodaj Link{% else %}Edytuj Dane linku{% endif %}
+      </h1>
+      <ol class="breadcrumb">
+          <li><a href="#" title="Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+          <li class="active"><a href="{{ path('backoffice_offices_list') }}"> Biura WGN</a></li>
+          <li class="active"><a href="{{path('backoffice_office_link_list',{'idOffice':office.id})}}"> Linki: {{ office.name }}</a></li>
+          <li class="active"> Edycja</li>
+      </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            {% include 'AppBackOfficeBundle:_Partials:flashMessage.html.twig' %}
+            <div class="col-md-12">
+                <form method="POST" action="" novalidate enctype="multipart/form-data">
+          <!-- general form elements -->
+                <div class="box box-primary">
+            <!-- /.box-header -->
+            <!-- form start -->
+              <div class="box-body">
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Nazwa</label>
+                            {{form_widget(form.name,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.name)}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Url</label>
+                            {{form_widget(form.url,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.url)}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Kolor</label>
+                            {{form_widget(form.color,{'attr':{'data-validator':'required', 'autocomplete': 'off'}})}}
+                            {{form_errors(form.color)}}
+                        </div>
+                    </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary pull-right">Zapisz</button>
+              </div>
+          </div>
+          <!-- /.box -->
+        </div>
+            </div>
+        </div>
+    </section>
+{% endblock body %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('admin-layout/plugins/colorpicker/bootstrap-colorpicker.min.css')}}" />
+{% endblock %}
+{% block javascripts %}
+    <script src="{{asset('front-layout/lib/validate/validate.min.js')}}"></script>
+    <script src="{{asset('admin-layout/plugins/colorpicker/bootstrap-colorpicker.min.js')}}"></script>
+    <script type="text/javascript">
+        $('form').validate();
+        $('form #link_color').colorpicker({format:'hex'});
+    </script>
+{% endblock %}

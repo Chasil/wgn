@@ -1,0 +1,218 @@
+k,data,sygnatura,link,datawpr) values('2517-3l.jpg','2013-03-21 15:28:45','2517-22-WM','http://www.inet.wgn.pl/oferty/22/2517/foto/','2013-03-21 15:28:45')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('2517-4l.jpg','2013-03-21 15:28:46','2517-22-WM','http://www.inet.wgn.pl/oferty/22/2517/foto/','2013-03-21 15:28:46')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('2517-5l.jpg','2013-03-21 15:28:46','2517-22-WM','http://www.inet.wgn.pl/oferty/22/2517/foto/','2013-03-21 15:28:46')
+13.11.20 22:00:53insert into poldata_oferty(record,klucz,identyfikator,numerbiura,numeroferty,idagent,data_modyfikacji,data_zalozenia,kategoria,kategoriaszcz,cenas,ogrodzenie,dzialka,wlasnosc,front,dzksztalt,powiat,woj,miasto,dzielnzw,dzielnadm,rejon,woda,prad,gaz,kanalizacja,dojazd,telefon,opis,zmiany,fotopath) values('
+		','3','3023','84','3023-84','707','2013-06-07','2013-03-21','SG','aktywizacja gospodarcza','1247400','siatka','2079','własność','70','prostokąt','Piotrków Trybunalski (grodzki)','łódzkie','Piotrków Trybunalski','Centrum','Centrum','Narutowicza','1','1','1','1','asfalt','1','Teren komercyjny w Centrum Piotrkowa Trybunalskiego, złożony z trzech leżących obok siebie działek.
+Łącznie powierzchnia 2 079 m2. Możliwość powiększenia do 2 200 m2. 
+
+Teren położony przy jednej z głównych ulic biegnących przez Piotrków - Aleje Marszałka Piłsudskiego, z drugiej strony teren przylega do ulicy Narutowicza. 
+
+W sąsiedztwie nieruchomości: Sklep meblowy Bodzio, Biedronka, Stacja paliw Shell, Hotel Vestil.
+
+Teren bardzo widoczny z głównej drogi. Bardzo duże natężenie ruchu kołowego. Blisko duże osiedle mieszkaniowe.
+
+Plan zagospodarowania przestrzennego miasta pozwala na budowę budynku handlowo - usługowego, z częścią mieszkalną lub nie, z parkingami.
+
+Dostępne wszystkie media: woda, gaz, energia elektryczna, kanalizacja.
+
+SPRZEDANE. Cena sprzedaży: 600,00 zł za m2 do negocjacji.
+
+Szczegóły i pełna dokumentacja na temat oferty w Biurach WGN Nieruchomości. Sprzedaż Bezpośrednia.
+
+U nas pełna obsługa i bezpieczeństwo. Tylko oferty aktualne na www.wgnpiotrkow.pl. Zapraszamy !
+Kompleksowa i bezpłatna pomoc w wyborze kredytu hipotecznego. U nas na miejscu bezpłatnie Sprawdzisz ofertę ponad 20 Banków. 
+
+
+
+
+Informacje dotyczące nieruchomości zostały sporządzone na podstawie oświadczeń i nie są ofertą w rozumieniu przepisów prawa, mają charakter wyłącznie informacyjny i mogą podlegać aktualizacji, zalecamy ich osobistą weryfikację.','2013-06-07','http://www.inet.wgn.pl/oferty/84/3023/foto/')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('3023-1l.jpg','2013-03-21 15:17:43','3023-84-SG','http://www.inet.wgn.pl/oferty/84/3023/foto/','2013-03-21 15:17:43')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('3023-2l.jpg','2013-03-21 15:17:43','3023-84-SG','http://www.inet.wgn.pl/oferty/84/3023/foto/','2013-03-21 15:17:43')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('3023-3l.jpg','2013-03-21 15:17:44','3023-84-SG','http://www.inet.wgn.pl/oferty/84/3023/foto/','2013-03-21 15:17:44')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('3023-4l.jpg','2013-03-21 15:17:44','3023-84-SG','http://www.inet.wgn.pl/oferty/84/3023/foto/','2013-03-21 15:17:44')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('3023-5l.jpg','2013-03-21 15:17:44','3023-84-SG','http://www.inet.wgn.pl/oferty/84/3023/foto/','2013-03-21 15:17:44')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('3023-6l.jpg','2013-03-21 15:17:45','3023-84-SG','http://www.inet.wgn.pl/oferty/84/3023/foto/','2013-03-21 15:17:45')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('3023-7l.jpg','2013-03-21 15:17:45','3023-84-SG','http://www.inet.wgn.pl/oferty/84/3023/foto/','2013-03-21 15:17:45')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('3023-8l.jpg','2013-03-21 15:17:46','3023-84-SG','http://www.inet.wgn.pl/oferty/84/3023/foto/','2013-03-21 15:17:46')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('3023-9l.jpg','2013-03-21 15:17:46','3023-84-SG','http://www.inet.wgn.pl/oferty/84/3023/foto/','2013-03-21 15:17:46')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('3023-10l.jpg','2013-03-21 15:17:47','3023-84-SG','http://www.inet.wgn.pl/oferty/84/3023/foto/','2013-03-21 15:17:47')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('3023-11l.jpg','2013-03-21 15:17:47','3023-84-SG','http://www.inet.wgn.pl/oferty/84/3023/foto/','2013-03-21 15:17:47')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('3023-12l.jpg','2013-03-21 15:17:48','3023-84-SG','http://www.inet.wgn.pl/oferty/84/3023/foto/','2013-03-21 15:17:48')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('3023-13l.jpg','2013-03-21 15:17:49','3023-84-SG','http://www.inet.wgn.pl/oferty/84/3023/foto/','2013-03-21 15:17:49')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('3023-14l.jpg','2013-03-21 15:17:49','3023-84-SG','http://www.inet.wgn.pl/oferty/84/3023/foto/','2013-03-21 15:17:49')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('3023-15l.jpg','2013-03-21 15:17:49','3023-84-SG','http://www.inet.wgn.pl/oferty/84/3023/foto/','2013-03-21 15:17:49')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('3023-16l.jpg','2013-03-21 15:17:50','3023-84-SG','http://www.inet.wgn.pl/oferty/84/3023/foto/','2013-03-21 15:17:50')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('3023-17l.jpg','2013-03-21 15:17:51','3023-84-SG','http://www.inet.wgn.pl/oferty/84/3023/foto/','2013-03-21 15:17:51')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('3023-18l.jpg','2013-03-21 15:17:51','3023-84-SG','http://www.inet.wgn.pl/oferty/84/3023/foto/','2013-03-21 15:17:51')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('3023-19l.jpg','2013-03-21 15:17:52','3023-84-SG','http://www.inet.wgn.pl/oferty/84/3023/foto/','2013-03-21 15:17:52')
+13.11.20 22:00:53insert into poldata_oferty(record,klucz,identyfikator,numerbiura,numeroferty,idagent,data_modyfikacji,data_zalozenia,kategoria,kategoriaszcz,cenaw,pow,pokoje,pietro,powiat,woj,miasto,rejon,woda,prad,gaz,kanalizacja,balkon,stan,dojazd,material,lazienek,ogrzewanie,opis,zmiany,umiejscowienie,fotopath) values('
+		','3','953','15','953-15','1400','2013-10-25','2013-03-21','WL','biurowy','2000','68.00','3','1','bolesławiecki','dolnośląskie','Bolesławiec','centrum','1','1','1','1','1','dobry','asfalt','cegła','1','C.O.','Masz pomysł na działalność? Ta oferta jest dla Ciebie.
+
+Oferujemy do wynajęcia pomieszczenia biurowe w centrum miasta. Lokal (68 mkw) składa się z trzech pomieszczeń, o powierzchni ok. 34, 23 oraz 11 mkw i znajdują się na pierwszym piętrze. Łączy je wspólny korytarz, na którym znajduje się toaleta. 
+W pierwszym pomieszczeniu znajduje się box socjalny z bieżącą wodą i kanalizacją.
+Pomieszczenie drugie posiada niewielki balkon z możliwością umieszczenia banerów reklamowych od strony uczęszczanej ulicy.
+Koszt wynajmu wynosi 2000,- zł 
+Wymagana jest jednomiesięczna kaucja.
+
+
+NAJEMCA NIE PŁACI PROWIZJI.
+
+
+
+
+
+
+Nr licencji pośrednika odpowiedzialnego za ofertę -15194
+WGN Międzynarodowy Koncern Obrotu Nieruchomościami /o.Bolesławiec ul.Zgorzelecka 34
+tel/fax. 75 732 6115
+kom. 723 855 444','2013-10-25','pawilon','http://www.inet.wgn.pl/oferty/15/953/foto/')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('953-2l.jpg','2013-03-22 12:42:54','953-15-WL','http://www.inet.wgn.pl/oferty/15/953/foto/','2013-03-22 12:42:54')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('953-3l.jpg','2013-03-22 12:42:54','953-15-WL','http://www.inet.wgn.pl/oferty/15/953/foto/','2013-03-22 12:42:54')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('953-4l.jpg','2013-03-22 12:42:54','953-15-WL','http://www.inet.wgn.pl/oferty/15/953/foto/','2013-03-22 12:42:54')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('953-5l.jpg','2013-03-22 12:42:55','953-15-WL','http://www.inet.wgn.pl/oferty/15/953/foto/','2013-03-22 12:42:55')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('953-6l.jpg','2013-03-22 12:42:55','953-15-WL','http://www.inet.wgn.pl/oferty/15/953/foto/','2013-03-22 12:42:55')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('953-7l.jpg','2013-03-22 12:42:55','953-15-WL','http://www.inet.wgn.pl/oferty/15/953/foto/','2013-03-22 12:42:55')
+13.11.20 22:00:53insert into poldata_oferty(record,klucz,identyfikator,numerbiura,numeroferty,idagent,data_modyfikacji,data_zalozenia,kategoria,kategoriaszcz,cenaw,pow,powuz,pokoje,pietro,powiat,woj,miasto,dzielnzw,dzielnadm,rejon,woda,prad,gaz,kanalizacja,balkon,stan,dojazd,material,lazienek,ogrzewanie,opis,zmiany,umiejscowienie,fotopath) values('
+		','3','2516','22','2516-22','407','2013-04-15','2013-03-21','WL','usługowy','5000','150.00','150.00','4','5','poznański','wielkopolskie','Poznań','Centrum','Centrum','św. Marcin','1','1','1','1','1','do remontu','asfalt','cegła','1','C.O.','Do wynajęcia lokal na św. Marcinie.
+
+Lokal mieści się na 5 pietrze kamienicy, obejmuje całą kondygnacje.
+
+Lokal o powierzchni 150m2. We wnętrzu 4 pomieszczenia biurowe o pow. 33m2, 20m2, 33m2, 36m2, świetnie doświetlone światłem naturalnym, docierającym do wnętrza, dzięki dużym oknom. Dodatkowo w lokalu toaleta z przedsionkiem 8m2 oraz duzy korytarz wejściowy 20m2.
+
+Wejście do lokalu przez szklaną fasadę z reprezentacyjnej klatki schodowej.
+Dodatkowym atutem lokalu jest balkon.
+
+
+Cena najmu: 53zł/m2
+
+
+W lokalu może mieścić się biuro, szkoła, bądź jakaś usługa.
+
+WGN Nieruchomości
+Kontakt: (61) 852 33 17 
+Pośrednik licencjonowany, Barbara Adamczyk, nr licencji: 4259','2013-04-15','kamienica','http://www.inet.wgn.pl/oferty/22/2516/foto/')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('2516-1l.jpg','2013-03-21 15:10:44','2516-22-WL','http://www.inet.wgn.pl/oferty/22/2516/foto/','2013-03-21 15:10:44')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('2516-2l.jpg','2013-03-21 15:10:45','2516-22-WL','http://www.inet.wgn.pl/oferty/22/2516/foto/','2013-03-21 15:10:45')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('2516-3l.jpg','2013-03-21 15:10:45','2516-22-WL','http://www.inet.wgn.pl/oferty/22/2516/foto/','2013-03-21 15:10:45')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('2516-4l.jpg','2013-03-21 15:10:45','2516-22-WL','http://www.inet.wgn.pl/oferty/22/2516/foto/','2013-03-21 15:10:45')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('2516-5l.jpg','2013-03-21 15:10:46','2516-22-WL','http://www.inet.wgn.pl/oferty/22/2516/foto/','2013-03-21 15:10:46')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('2516-6l.jpg','2013-03-21 15:10:46','2516-22-WL','http://www.inet.wgn.pl/oferty/22/2516/foto/','2013-03-21 15:10:46')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('2516-7l.jpg','2013-03-21 15:10:46','2516-22-WL','http://www.inet.wgn.pl/oferty/22/2516/foto/','2013-03-21 15:10:46')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('2516-8l.jpg','2013-03-21 15:10:47','2516-22-WL','http://www.inet.wgn.pl/oferty/22/2516/foto/','2013-03-21 15:10:47')
+13.11.20 22:00:53insert into poldata_oferty(record,klucz,identyfikator,numerbiura,numeroferty,idagent,data_modyfikacji,data_zalozenia,kategoria,kategoriaszcz,cenas,dzialka,wlasnosc,dzksztalt,powiat,woj,miasto,rejon,wylacznosc,woda,prad,gaz,kanalizacja,dojazd,opis,zmiany,fotopath) values('
+		','3','399','94','399-94','1131','2013-09-27','2013-03-21','SG','siedliskowy','155000','3443','własność','prostokąt','lubiński','dolnośląskie','Chróstnik','Chróstnik','1','1','1','1','1','utwardzony','Działka o pow. 34,43 a, przeznaczona pod budownictwo jednorodzinne, zlokalizowana w Chróstniku. W bezpośrednim sąsiedztwie zabudowania mieszkalne. Dojazd za pośrednictwem drogi utwardzonej.
+Media: woda w odległości ok. 20m.  Prąd, gaz -  na działce. Kanalizacja - w drodze.
+Nr oferty w biurze: 94-399
+
+Cena sprzedaży: 155 tys. zł. (do negocjacji)
+				
+
+Szczegółowe informacje uzyskają Państwo w biurze                           
+lub pod num. tel. 518 013 569, 696 426 227, 76/742-71-98, 76/742-74-60 
+w godz. od 9.30 do 17.30                                       
+Oferujemy atrakcyjne cenowo kredyty hipoteczne i gotówkowe.                                    
+ZAPRASZAMY!','2013-09-27','http://www.inet.wgn.pl/oferty/94/399/foto/')
+13.11.20 22:00:53insert into poldata_oferty(record,klucz,identyfikator,numerbiura,numeroferty,idagent,data_modyfikacji,data_zalozenia,kategoria,kategoriaszcz,cenas,pow,pokoje,wlasnosc,rokbudowy,oplaty,kondygnacje,powiat,woj,miasto,dzielnzw,rejon,stan,material,wyroznienie,opis,zmiany,umiejscowienie,fotopath) values('
+		','3','243','131','243-131','1263','2013-11-04','2013-03-21','SM','mieszkanie','219000','39.70','2','własność','2010','250','3','Białystok (grodzki)','podlaskie','Białystok','Ignatki','Jodłowa','dobry','cegła','1','Polecamy mieszkanie 2 pokojowe o powierzchni 39.7m2, położone na parterze w nowym budynku z 2010roku. Budynek wspólnoty mieszkaniowej. Teren ładnie zagospodarowany. Bloki usytuowane w spokojnej dzielnicy, blisko miejsc spacerowych, dobrze skomunikowanej z centrum miasta. 
+
+Mieszkanie zadbane, ładnie wykończone w nowoczesnym stylu. Pokój dzienny z wyjściem na ładny balkon, otwarty na zabudowaną funkcjonalnie kuchnię (w cenie zabudowa oraz sprzęt AGD: okap, piekarnik, płytka gazowa, zmywarka, lodówka w zabudowie). Oddzielna sypialnia, duża łazienka z prysznicem.
+
+Budynek jest zarządzany przez wspólnotę (niski czynsz ok. 230zł - latem, zimą - ok. 350zł).
+W pobliżu znajduje się stadnina koni, las, przedszkole, żłobek, sklep, przystanek autobusowy. Przy bloku znajduje się duży parking. 
+
+Szybki termin wydania.
+
+Zapraszamy na prezentację oraz bezpłatne konsultacje kredytowe z doradcami Expandera (oferta 26 banków).','2013-11-04','w nowym budynku','http://www.inet.wgn.pl/oferty/131/243/foto/')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('243-1l.jpg','2013-03-21 14:51:49','243-131-SM','http://www.inet.wgn.pl/oferty/131/243/foto/','2013-03-21 14:51:49')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('243-2l.jpg','2013-03-21 14:51:50','243-131-SM','http://www.inet.wgn.pl/oferty/131/243/foto/','2013-03-21 14:51:50')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('243-3l.jpg','2013-03-21 14:51:50','243-131-SM','http://www.inet.wgn.pl/oferty/131/243/foto/','2013-03-21 14:51:50')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('243-4l.jpg','2013-03-21 14:51:51','243-131-SM','http://www.inet.wgn.pl/oferty/131/243/foto/','2013-03-21 14:51:51')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('243-5l.jpg','2013-03-21 14:51:51','243-131-SM','http://www.inet.wgn.pl/oferty/131/243/foto/','2013-03-21 14:51:51')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('243-6l.jpg','2013-03-21 14:51:52','243-131-SM','http://www.inet.wgn.pl/oferty/131/243/foto/','2013-03-21 14:51:52')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('243-7l.jpg','2013-03-21 14:51:52','243-131-SM','http://www.inet.wgn.pl/oferty/131/243/foto/','2013-03-21 14:51:52')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('243-8l.jpg','2013-03-21 14:51:52','243-131-SM','http://www.inet.wgn.pl/oferty/131/243/foto/','2013-03-21 14:51:52')
+13.11.20 22:00:53insert into poldata_oferty(record,klucz,identyfikator,numerbiura,numeroferty,idagent,data_modyfikacji,data_zalozenia,kategoria,kategoriaszcz,cenaw,pow,powuz,pokoje,pietro,powiat,woj,miasto,dzielnzw,dzielnadm,rejon,woda,prad,gaz,kanalizacja,stan,dojazd,material,lazienek,ogrzewanie,opis,zmiany,umiejscowienie,fotopath) values('
+		','3','2515','22','2515-22','407','2013-04-15','2013-03-21','WL','usługowy','4500','134.00','134.00','4','4','poznański','wielkopolskie','Poznań','Centrum','Centrum','św. Marcin','1','1','1','1','do remontu','asfalt','cegła','1','C.O.','Do wynajęcia lokal na św. Marcinie.
+
+Lokal mieści się na 4 pietrze kamienicy, obejmuje całą kondygnacje.
+
+Lokal o powierzchni 134m2. We wnętrzu 4 pomieszczenia biurowe o pow. 22m2, 39m2, 21m2, 32m2, świetnie doświetlone światłem naturalnym, docierającym do wnętrza, dzięki dużym oknom. Dodatkowo w lokalu toaleta 4,3m2 oraz duzy korytarz wejściowy 17,5m2.
+
+Amfiladowy układ pomieszczeń, wszystkie sale połączone ze sobą drzwiami.
+Wejście do lokalu przez szklaną fasadę z reprezentacyjnej klatki schodowej.
+
+
+Cena najmu: 54zł/m2
+
+
+W lokalu może mieścić się biuro, szkoła, bądź jakaś usługa.
+
+WGN Nieruchomości
+Kontakt: (61) 852 33 17 
+Pośrednik licencjonowany, Barbara Adamczyk, nr licencji: 4259','2013-04-15','kamienica','http://www.inet.wgn.pl/oferty/22/2515/foto/')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('2515-1l.jpg','2013-03-21 15:03:14','2515-22-WL','http://www.inet.wgn.pl/oferty/22/2515/foto/','2013-03-21 15:03:14')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('2515-2l.jpg','2013-03-21 15:03:15','2515-22-WL','http://www.inet.wgn.pl/oferty/22/2515/foto/','2013-03-21 15:03:15')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('2515-3l.jpg','2013-03-21 15:03:15','2515-22-WL','http://www.inet.wgn.pl/oferty/22/2515/foto/','2013-03-21 15:03:15')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('2515-4l.jpg','2013-03-21 15:03:16','2515-22-WL','http://www.inet.wgn.pl/oferty/22/2515/foto/','2013-03-21 15:03:16')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('2515-5l.jpg','2013-03-21 15:03:16','2515-22-WL','http://www.inet.wgn.pl/oferty/22/2515/foto/','2013-03-21 15:03:16')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('2515-6l.jpg','2013-03-21 15:03:16','2515-22-WL','http://www.inet.wgn.pl/oferty/22/2515/foto/','2013-03-21 15:03:16')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('2515-7l.jpg','2013-03-21 15:03:17','2515-22-WL','http://www.inet.wgn.pl/oferty/22/2515/foto/','2013-03-21 15:03:17')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('2515-8l.jpg','2013-03-21 15:03:17','2515-22-WL','http://www.inet.wgn.pl/oferty/22/2515/foto/','2013-03-21 15:03:17')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('2515-9l.jpg','2013-03-21 15:03:17','2515-22-WL','http://www.inet.wgn.pl/oferty/22/2515/foto/','2013-03-21 15:03:17')
+13.11.20 22:00:53insert into poldata_oferty(record,klucz,identyfikator,numerbiura,numeroferty,idagent,data_modyfikacji,data_zalozenia,kategoria,kategoriaszcz,cenas,dzialka,wlasnosc,powiat,woj,miasto,dzielnadm,rejon,woda,prad,wyroznienie,opis,zmiany,fotopath) values('
+		','3','504','133','504-133','1334','2013-06-06','2013-03-21','SG','budowlany jednorodzinny','60525','807','własność','mikołowski','śląskie','Orzesze','Zawiść','OKAZJA','1','1','1','DZIAŁKA BUDOWLANA !! SPRZEDAŻ !! INWESTYCYJNA ! MALOWNICZE MIEJSCE!! SUPER CENA !!! OKAZJA !!!
+
+Oferujemy Państwu na sprzedaż działkę budowlaną. Działka zlokalizowana jest w SPOKOJNEJ i UROKLIWEJ okolicy. W pobliżu działki las i zabudowa jednorodzinna. Media w odległości 74m od granicy działki(woda, prąd). Największym atutem tej nieruchomości gruntowej jest jej idealne położenie, które pozwala śmiało stwierdzić iż miejsce te jest oazą spokoju. Obszar leśny znajdujący się w pobliżu zachęca do aktywnego spędzania czasu podczas wycieczek rowerowych oraz spacerów, a jesienią do zbierania grzybów! Do centrum Orzesza zaledwie 2 km, szybki oraz łatwy dostęp do Mikołowa, Żor, Rybnika oraz Gliwic i Katowic!
+Pamiętaj! Decydując się na zakup tej działki zapewniasz sobie pewność idealnego sąsiedztwa jakim jest las jak również ciszy i spokoju, które pozwolą na zasłużony wypoczynek ! Nie zwlekaj ! Zadzwoń - umów się - zobacz!
+Zapraszamy na prezentację w dogodnym dla Państwa terminie. 
+
+GORĄCO POLECAMY!! Co ważne - dzięki współpracy z największym koncernem obrotu nieruchomościami WGN zyskują Państwo pewność szybkiej i bezpiecznej transakcji!
+Zapraszamy na prezentację w dogodnym dla Państwa terminie!
+Agent odpowiedzialny: Samanta Milanowska: 796 878 989
+Pośrednik odpowiedzialny zawodowo: 19983. Niniejsze ogłoszenie nie stanowi oferty handlowej w rozumieniu przepisów Kodeksu Cywilnego.','2013-06-06','http://www.inet.wgn.pl/oferty/133/504/foto/')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('504-1l.jpg','2013-03-21 14:07:18','504-133-SG','http://www.inet.wgn.pl/oferty/133/504/foto/','2013-03-21 14:07:18')
+13.11.20 22:00:53insert into poldata_oferty(record,klucz,identyfikator,numerbiura,numeroferty,idagent,data_modyfikacji,data_zalozenia,kategoria,kategoriaszcz,cenas,ogrodzenie,dzialka,wlasnosc,dzksztalt,powiat,woj,miasto,dzielnzw,dzielnadm,rejon,woda,prad,gaz,dojazd,opis,zmiany,fotopath) values('
+		','3','2514','22','2514-22','407','2013-04-12','2013-03-21','SG','rolny','27000','brak','91500','własność','inny','inny','Litwa','Wilno','Wilno','Wilno','Wilno','1','1','1','utwardzony','Na sprzedaż działki rolne w Wilnie na Litwie.
+
+Grunt o łącznej powierzchni 9,15ha, podzielony na 5 działek o powierzchni: 1,5ha; 2,2ha; 2,25; 2,7; 0,5ha.
+Działka położona 12 km od Wilna, 30 minut drogi od Centrum Wilna.
+W okolic pola, jezioro.
+
+Na jednej z działek rustykalny dom o 3 pokojach i 2 kuchniach. Do domu poprowadzona woda ze studni, prąd i gaz. Na działce także stodoła i staw.
+ 
+
+Cena: 27 000Euro/ha
+
+
+WGN Nieruchomości
+Kontakt: (61) 852 33 17 
+Pośrednik licencjonowany, Barbara Adamczyk, nr licencji: 4259','2013-04-12','http://www.inet.wgn.pl/oferty/22/2514/foto/')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('2514-1l.jpg','2013-03-21 13:55:28','2514-22-SG','http://www.inet.wgn.pl/oferty/22/2514/foto/','2013-03-21 13:55:28')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('2514-2l.jpg','2013-03-21 13:55:29','2514-22-SG','http://www.inet.wgn.pl/oferty/22/2514/foto/','2013-03-21 13:55:29')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('2514-3l.jpg','2013-03-21 13:55:29','2514-22-SG','http://www.inet.wgn.pl/oferty/22/2514/foto/','2013-03-21 13:55:29')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('2514-4l.jpg','2013-03-21 13:55:29','2514-22-SG','http://www.inet.wgn.pl/oferty/22/2514/foto/','2013-03-21 13:55:29')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('2514-5l.jpg','2013-03-21 13:55:30','2514-22-SG','http://www.inet.wgn.pl/oferty/22/2514/foto/','2013-03-21 13:55:30')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('2514-6l.jpg','2013-03-21 13:55:30','2514-22-SG','http://www.inet.wgn.pl/oferty/22/2514/foto/','2013-03-21 13:55:30')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('2514-7l.jpg','2013-03-21 13:55:30','2514-22-SG','http://www.inet.wgn.pl/oferty/22/2514/foto/','2013-03-21 13:55:30')
+13.11.20 22:00:53insert into poldata_oferty(record,klucz,identyfikator,numerbiura,numeroferty,idagent,data_modyfikacji,data_zalozenia,kategoria,kategoriaszcz,cenas,dzialka,pow,wlasnosc,kondygnacje,powiat,woj,miasto,rejon,opis,zmiany,fotopath) values('
+		','3','319','137','319-137','1296','2013-03-21','2013-03-21','SD','wolnostojący','115000','2000','90.00','własność','1','rawicki','wielkopolskie','Rawicz','Rawicz','Ofertą sprzedaży jest dom z budynkami gospodarczymi zlokalizowany na działce o powierzchni 20 arów zlokalizowany w miejscowości Słupia kapitulna. Nieruchomość do kapitalnego remontu ma powierzchnię 90 m2 z możliwością zaadaptowania poddasza jako użytkowe, budynki gospodarcze 50 m2. Dostępne media woda i prąd.
+
+Serdecznie zapraszam do prezentacji!!!
+
+Pośrednik w obrocie nieruchomościami, oddział w Lesznie Marlena Sosnowska 885 885 260
+
+Bezpłatna pomoc w uzyskaniu kredytu!!!
+
+Informacje dotyczące nieruchomości zostały sporządzone na podstawie oświadczeń i nie są ofertą w rozumieniu przepisów prawa, mają charakter wyłącznie informacyjny i mogą podlegać aktualizacji, zalecamy ich osobistą weryfikację','2013-03-21','http://www.inet.wgn.pl/oferty/137/319/foto/')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('319-1l.jpg','2013-03-21 14:49:44','319-137-SD','http://www.inet.wgn.pl/oferty/137/319/foto/','2013-03-21 14:49:44')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('319-2l.jpg','2013-03-21 14:49:44','319-137-SD','http://www.inet.wgn.pl/oferty/137/319/foto/','2013-03-21 14:49:44')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('319-3l.jpg','2013-03-21 14:49:44','319-137-SD','http://www.inet.wgn.pl/oferty/137/319/foto/','2013-03-21 14:49:44')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('319-4l.jpg','2013-03-21 14:49:45','319-137-SD','http://www.inet.wgn.pl/oferty/137/319/foto/','2013-03-21 14:49:45')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('319-5l.jpg','2013-03-21 14:49:45','319-137-SD','http://www.inet.wgn.pl/oferty/137/319/foto/','2013-03-21 14:49:45')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('319-6l.jpg','2013-03-21 14:49:45','319-137-SD','http://www.inet.wgn.pl/oferty/137/319/foto/','2013-03-21 14:49:45')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('319-7l.jpg','2013-03-21 14:49:45','319-137-SD','http://www.inet.wgn.pl/oferty/137/319/foto/','2013-03-21 14:49:45')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('319-8l.jpg','2013-03-21 14:49:46','319-137-SD','http://www.inet.wgn.pl/oferty/137/319/foto/','2013-03-21 14:49:46')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('319-9l.jpg','2013-03-21 14:49:46','319-137-SD','http://www.inet.wgn.pl/oferty/137/319/foto/','2013-03-21 14:49:46')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('319-10l.jpg','2013-03-21 14:49:46','319-137-SD','http://www.inet.wgn.pl/oferty/137/319/foto/','2013-03-21 14:49:46')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('319-11l.jpg','2013-03-21 14:49:47','319-137-SD','http://www.inet.wgn.pl/oferty/137/319/foto/','2013-03-21 14:49:47')
+13.11.20 22:00:53insert into poldata_zdjecia(plik,data,sygnatura,link,datawpr) values('319-12l.jpg','2013-03-21 

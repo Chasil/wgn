@@ -1,0 +1,43 @@
+{% if payment is not null %}
+<div class="row">
+    <div class="col-md-12 message-details">
+        <div class="col-xs-12">
+            <h5><strong>ID płatności:</strong> {{payment.id}} <strong>Data:</strong> {{payment.createDate | date('d.m.Y G:i')}} - {{paymentName(payment.paymentMethod)}}</h5>
+        </div>
+        <div class="col-xs-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if payment.paymentItems | length > 0 %}
+                        {% for item in payment.paymentItems %}
+                            <tr>
+                                <td>
+                                    {% if item.type == 'promo' %}
+                                        Promocja oferty
+                                    {% else %}
+                                        Publikacja Oferty
+                                    {% endif %}
+                                    {{item.offer.signature}}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    {% else %}
+                    <td>Brak pozycji</td>
+                    {% endif %}
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>
+{% else %}
+    <div class="row">
+    <div class="col-md-12 message-details">
+        <p>Brak dostępu</p>
+    </div>
+</div>
+{% endif %}

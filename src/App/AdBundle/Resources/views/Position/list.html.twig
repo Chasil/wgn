@@ -1,0 +1,73 @@
+{% extends "AppBackOfficeBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <section class="content-header">
+      <h1>
+        Lista Pozycji
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#" title="Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="#" title="Cms">Cms</a></li>
+        <li class="active">Kategorie</li>
+      </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            {% include 'AppBackOfficeBundle:_Partials:flashMessage.html.twig' %}
+            <div class="col-md-12">
+            <div class="box">
+            <div class="box-header with-border">
+              <h3 class="box-title pull-right">
+                  <a href="{{path('backoffice_ad_position_add')}}" class="btn btn-success btn-flat"><i class="fa fa-plus" title="Dodaj Pozycje"></i> Dodaj Pozycje</a>
+              </h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body scroll">
+              <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Nazwa</th>
+                                            <th width="150">Unikalny Klucz</th>
+                                            <th width="150">Tryb Wyświetlania</th>
+                                            <th width="350">Opis</th>
+                                            <th width="250">Opcje</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in positions %}
+                                        <tr class="odd gradeX">
+                                            <td>{{item.name}}</td>
+                                            <td>{{item.uniqKey}}</td>
+                                            <td>{% if item.mode == 0 %} losowo {% else %} wg kolejności {% endif %}</td>
+                                            <td>{{item.description}}</td>
+                                            <td>
+                                                <a href="{{path('backoffice_ad_position_edit',{'id':item.id})}}" class="btn btn-primary btn-flat" title="Edycja"> <i class="fa fa-edit"></i></a>
+                                                {% if item.id !=1 %}<a href="#" data-href="{{path('backoffice_ad_position_delete',{'id':item.id})}}"  data-toggle="tooltip" data-placement="top" title="Usuń" class="btn btn-danger btn-flat" data-show-modal="delete"> <i class="fa fa-trash-o"></i></a>{% endif %}
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+
+            </div>
+          </div>
+            </div>
+                <!-- /.col-lg-12 -->
+        </div>
+    </section>
+{% include 'AppBackOfficeBundle:_Partials:modalDelete.html.twig' %}
+{% endblock body %}
+{% block javascripts %}
+    <script>
+
+    $('a[data-show-modal="delete"]').on('click',function(){
+        $('#confirm-delete').find('.danger').attr('href', $(this).data('href'));
+        $('#confirm-delete').modal();
+    });
+    $('select[name="idCategory"]').on('change',function(){
+        $(this).closest('form').submit();
+    });
+    </script>
+{% endblock %}

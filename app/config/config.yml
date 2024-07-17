@@ -1,0 +1,310 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: app_parameters.yml }
+    - { resource: twig_vars.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: pl
+
+framework:
+    #esi:             ~
+    translator:      { fallbacks: ["%locale%"] }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: false
+    validation:      { enable_annotations: true }
+    #serializer:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+        #assets_version: SomeVersionScheme
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    trusted_proxies: ~
+    session:
+        # handler_id set to null will use default session handler from php.ini
+        cookie_lifetime: 3600
+    fragments:       ~
+    http_method_override: true
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+    form:
+        resources: ['bootstrap_3_layout.html.twig']
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        default_connection: default
+        connections:
+            default:
+                driver:   pdo_mysql
+                host:     "%database_host%"
+                port:     "%database_port%"
+                dbname:   "%database_name%"
+                user:     "%database_user%"
+                password: "%database_password%"
+                charset:  UTF8
+            test:
+                driver:   pdo_mysql
+                host:     "%database_host%"
+                port:     "%database_port%"
+                dbname:   "%database_test_name%"
+                user:     "%database_test_user%"
+                password: "%database_test_password%"
+                charset:  UTF8
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #     path:     "%database_path%"
+
+    orm:
+        default_entity_manager: default
+        entity_managers:
+            default:
+                connection: default
+                naming_strategy: doctrine.orm.naming_strategy.underscore
+                auto_mapping: true
+                mappings:
+                    tree:
+                        type: annotation
+                        alias: Gedmo
+                        prefix: Gedmo\Tree\Entity
+                        dir: "%kernel.root_dir%/../vendor/gedmo/doctrine-extensions/lib/Gedmo/Tree/Entity"
+                dql:
+                    string_functions:
+                        translate: App\OfferBundle\DQL\Translate
+                        MATCH_AGAINST: App\OfferBundle\DQL\MatchAgainst
+                        ACOS: App\OfferBundle\DQL\Acos
+                        ASIN: App\OfferBundle\DQL\Asin
+                        POWER: App\OfferBundle\DQL\Power
+                        PI: App\OfferBundle\DQL\Pi
+                        SIN: App\OfferBundle\DQL\Sin
+                        RADIANS: App\OfferBundle\DQL\Radians
+                        COS: App\OfferBundle\DQL\Cos
+                metadata_cache_driver:
+                    cache_provider: main_cache
+                query_cache_driver:
+                    cache_provider: main_cache
+                result_cache_driver:
+                    cache_provider: main_cache
+            test:
+                connection: test
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    port: 465
+    encryption: ssl
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+
+knp_paginator:
+    page_range: 5                      # default page range used in pagination control
+    default_options:
+        page_name: page                # page query parameter name
+        sort_field_name: sort          # sort field query parameter name
+        sort_direction_name: direction # sort direction query parameter name
+        distinct: true                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
+    template:
+        pagination: KnpPaginatorBundle:Pagination:twitter_bootstrap_v3_pagination.html.twig     # sliding pagination controls template
+        sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
+
+liip_imagine:
+    resolvers:
+        default:
+            web_path:
+              web_root:  %kernel.root_dir%/../web
+              cache_prefix:  media/cache
+
+
+    loaders:
+        default:
+            filesystem:
+                data_root:  %kernel.root_dir%/../web/
+
+    driver:               gd
+    cache:                default
+    data_loader:          default
+    controller:
+        filter_action:         liip_imagine.controller:filterAction
+        filter_runtime_action: liip_imagine.controller:filterRuntimeAction
+    filter_sets:
+        avatar_offer:
+            quality: 80
+            filters:
+                thumbnail: { size: [85,102], mode: outbound }
+        avatar_modal:
+            quality: 80
+            filters:
+                thumbnail: { size: [150,200], mode: outbound }
+        article_thumbnails:
+            quality: 80
+            filters:
+                thumbnail: { size: [205,150], mode: outbound }
+        article_main_thumbnail:
+            quality: 80
+            filters:
+                relative_resize: { widen: 205 }
+        article_list:
+            quality: 80
+            filters:
+                thumbnail: { size: [200,130], mode: outbound }
+        article_main_block:
+            quality: 80
+            filters:
+                thumbnail: { size: [365,235], mode: outbound }
+        article_list_block:
+            quality: 80
+            filters:
+                thumbnail: { size: [100,100], mode: outbound }
+        article_list:
+            quality: 80
+            filters:
+                thumbnail: { size: [200,200], mode: outbound }
+        offer_block:
+            quality: 80
+            filters:
+                thumbnail: { size: [325,210], mode: outbound }
+        offer_slider:
+            quality: 80
+            filters:
+                thumbnail: { size: [325,210], mode: outbound }
+        article_big:
+            quality: 80
+            filters:
+                thumbnail: { size: [800,800], mode: outbound }
+        article_big_inset:
+            quality: 80
+            filters:
+                thumbnail: { size: [800,800], mode: inset }
+        office_offer_thumbnails:
+            quality: 80
+            filters:
+                thumbnail: { size: [145,96], mode: outbound }
+        offer_thumbnails:
+            quality: 80
+            filters:
+                thumbnail: { size: [106,70], mode: outbound }
+        offer_map_thumbnail:
+            quality: 80
+            filters:
+                thumbnail: { size: [200,100], mode: outbound }
+        offer_list:
+            quality: 90
+            filters:
+                thumbnail: { size: [350,196], mode: outbound }
+                watermark:
+                    image: ../web/front-layout/gfx/watermark.png
+        offer_list_no_watermark:
+            quality: 90
+            filters:
+                thumbnail: { size: [350,196], mode: outbound }
+        office_gallery2:
+            quality: 80
+            filters:
+                thumbnail: { size: [500,400], mode: outbound }
+        offer:
+            quality: 80
+            filters:
+                thumbnail: { size: [550,300], mode: inset,allow_upscale: true  }
+                watermark:
+                    image: ../web/front-layout/gfx/watermark.png
+        offer_no_watermark:
+            quality: 80
+            filters:
+                relative_resize: { widen: 550 }
+                #thumbnail: { size: [550,300], mode: inset,allow_upscale: true }
+        offer_thumbnail:
+            quality: 80
+            filters:
+                thumbnail: { size: [105,70], mode: outbound }
+        offer_big:
+            quality: 80
+            filters:
+                thumbnail: { size: [800,800], mode: outbound }
+                watermark:
+                    image: ../web/front-layout/gfx/watermark.png
+        offer_big_no_watermark:
+            quality: 80
+            filters:
+                thumbnail: { size: [800,800], mode: inset }
+fm_elfinder:
+    instances:
+            default:
+                locale: pl
+                editor: tinymce4
+                include_assets: true
+                connector:
+                    roots:
+                        media:
+                            driver:  LocalFileSystem
+                            path: uploads/media
+                            upload_allow: ['all']
+                            upload_max_size: 8M
+
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+    filters:
+        uglifyjs2:
+            bin: %kernel.root_dir%\Resources\node_modules\uglify-js\bin\uglifyjs
+        uglifycss:
+            bin:  %kernel.root_dir%\Resources\node_modules\uglifycss\uglifycss
+        cssrewrite: ~
+
+nelmio_cors:
+   defaults:
+       allow_credentials: true
+       allow_origin: []
+       allow_headers: []
+       allow_methods: []
+       expose_headers: []
+       max_age: 0
+       hosts: []
+   paths:
+    '^/':
+        allow_origin: ['*']
+        allow_headers: ['origin', 'content-type']
+        allow_methods: ['POST', 'PUT', 'GET', 'DELETE','OPTIONS']
+        max_age: 3600
+
+assetic:
+    debug:          '%kernel.debug%'
+    use_controller: '%kernel.debug%'
+    filters:
+        uglifyjs2:
+             bin: %kernel.root_dir%/Resources/node_modules/uglify-js/bin/uglifyjs
+        uglifycss:
+            bin:  %kernel.root_dir%/Resources/node_modules/uglifycss/uglifycss
+        cssrewrite: ~
+
+monolog:
+    channels: ['inet','archive']
+    handlers:
+        inet:
+            # log all messages (since debug is the lowest level)
+            level:    debug
+            type:     rotating_file
+            path:     '%kernel.logs_dir%/inet.log'
+            channels: [inet]
+            max_files: 100
+        archive:
+            # log all messages (since debug is the lowest level)
+            level:    debug
+            type:     rotating_file
+            path:     '%kernel.logs_dir%/archive.log'
+            channels: [archive]
+            max_files: 100

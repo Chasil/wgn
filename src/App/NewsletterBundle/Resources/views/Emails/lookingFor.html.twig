@@ -1,0 +1,64 @@
+
+<table width="100%">
+    <tr>
+        <td align="center">
+            <h1 style="color:#000;">Nowe oferty ze strony wgn.pl</h1>
+            <table width="650">
+            {% for item in offers %}
+                <tr>
+                    <td colspan="2"><h1 style="color:#000;text-decoration: none;"><a href="{{ domain }}{{path('frontend_offer_show',{id:item.id,offerName:item.name | prepareUrl})}}" style="text-decoration: none;color: #000;font-size: 14px;font-weight: normal;" title="{{item.name}}">{{item.name}}</a></h1></td>
+                </tr>
+                <tr>
+                    <td width="245">
+                        {% if item.mainPhoto !='' %}
+                            {% if item.importId !='' or item.legacyId !='' %}
+                                {% set thumbType = 'offer_list_no_watermark' %}
+                            {% else %}
+                                {% set thumbType = 'offer_list' %}
+                            {% endif %}
+                            <a href="{{ domain }}{{path('frontend_offer_show',{id:item.id,offerName:item.name | prepareUrl})}}" class="offer-image" title="{{item.name}}"><img src="{{('/uploads/offers/'~item.id~'/'~item.mainPhoto) |imagine_filter(thumbType) }}" alt="{{item.name}}" style="border:none;" /></a>
+                        {% else %}
+                        <a href="{{ domain }}{{path('frontend_offer_show',{id:item.id,offerName:item.name | prepareUrl})}}" class="offer-image" title="{{item.name}}">
+                            <div class="no-img"></div>
+                        </a>
+                        {% endif %}
+                    </td>
+                    <td valign="top">
+                        <table>
+                            <tr>
+                                <td class="date" style="font-size: 10px;margin-bottom: 4px;margin-top: 2px;color:#000;">Data dodania: {{item.modifyDate | humanDate}}</td>
+                                <td style="font-size: 10px;line-height: 26px;text-align: center;margin-top: -4px;color:#000;">Oferta {{item.signature}}</td>
+                            </tr>
+                            <tr>
+                                <td style="color: #000;font-size: 12px;"><p style="color: #000;font-size: 12px;margin:0;">Państwo: {{item.country.name}}</p>
+                                    <p style="color: #000;font-size: 12px;margin:0;">Miasto: {{item.city}}</p>
+                                    {% if item.floor !='' %}
+                                    <p style="color: #000;font-size: 12px;margin:0;">Piętro: {{item.floor}}</p>
+                                    {% endif %}
+                                    {% if item.rooms is defined and item.rooms > 0 %}
+                                    <p style="color: #000;font-size: 12px;margin:0;">Liczba pokoi: {{item.rooms}}</p>
+                                    {% endif %}
+                                    <p style="color: #000;font-size: 12px;margin:0;">Metraż: {{item.squere}}m&sup2;</p>
+                                </td>
+                                <td>
+                                    <div style="background: #098acf;color: #fff;font-size: 13px;text-decoration: none;padding: 5px 0;border-top-left-radius: 12px;background: #0889ce;background: -moz-linear-gradient(top, #0889ce 0%, #37a8fd 100%);background: -webkit-linear-gradient(top, #0889ce 0%,#37a8fd 100%);background: linear-gradient(to bottom, #0889ce 0%,#37a8fd 100%);filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0889ce', endColorstr='#37a8fd',GradientType=0 );text-align: center;padding: 0 15px;line-height: 30px;"><span class="underline"><span>Cena</span> {{item.price | number_format(0, ',', ' ')}} {% if item.currency.symbol is defined %}{{item.currency.symbol}}{% endif %}</span></div>
+                                    <div style="background: #2d383e;color: #fff;margin-top: 1px;padding: 5px 0; border-bottom-left-radius: 12px;font-size: 12px;margin-bottom: 8px;background: #aeb6c1;background: -moz-linear-gradient(top, #aeb6c1 0%, #2a353b 100%);background: -webkit-linear-gradient(top, #aeb6c1 0%,#2a353b 100%);background: linear-gradient(to bottom, #aeb6c1 0%,#2a353b 100%);filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#aeb6c1', endColorstr='#2a353b',GradientType=0 ); text-align: center;padding: 0 15px;padding-bottom: 8px;padding-top: 8px;">
+                                        cena / m&sup2; {{item.pricem2 | number_format(0, ',', ' ')}} {% if item.currency.symbol is defined %}{{item.currency.symbol}}{% endif %}
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><a href="{{ domain }}{{path('frontend_offer_show',{id:item.id,offerName:item.name | prepareUrl})}}" style="color:#000;text-decoration: none;" title="{{item.description  | replace({"<br />":""}) | slice(0, 120)}}">{{item.description  | replace({"<br />":""}) | slice(0, 120)}}</a> <a href="{{ domain }}{{path('frontend_offer_show',{id:item.id,offerName:item.name | prepareUrl})}}" style="text-decoration: none;" title="więcej"><span class="hidden-md hidden-lg">więcej</span><span class="hidden-xs hidden-sm">...</span> <i class="fa fa-angle-double-right"></i></a></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="border-bottom: 1px solid #ccc;margin-top:20px;"></td>
+                </tr>
+            {% endfor %}
+            </table>
+            <p style="font-size:10px;">Nie chesz otrzymywać powiadomień ? Kliknij w <a href="{{ domain }}{{path('frontend_looking_for_deactivate',{'code':code})}}" title="Rezygnacja">ten link</a></p>
+        </td>
+    </tr>
+</table>

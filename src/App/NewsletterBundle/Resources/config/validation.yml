@@ -1,0 +1,7 @@
+App\NewsletterBundle\Entity\Newsletter:
+    constraints:
+            - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: {fields: email, message: "Podany adres jest już zarejestrowany."}
+    properties:
+        email:
+            - NotBlank: {message: "Pole jest wymagane"}
+            - Email: {message: "Pole jest wymagane"}

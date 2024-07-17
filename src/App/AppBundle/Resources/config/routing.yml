@@ -1,0 +1,22 @@
+backoffice_position_elements_list:
+    path: /backoffice/settings/pageElements
+    defaults: { _controller: AppAppBundle:BlockPosition:list }
+backoffice_position_element_order:
+    path: /backoffice/settings/element/order
+    defaults: { _controller: AppAppBundle:BlockPosition:changeOrdering }
+backoffice_position_element_edit:
+    path: /backoffice/settings/element/edit
+    defaults: { _controller: AppAppBundle:Block:edit }
+backoffice_position_element_delete:
+    path: /backoffice/settings/element/delete
+    defaults: { _controller: AppAppBundle:Block:delete }
+backoffice_position_element_change_publish:
+    path: /backoffice/settings/element/publish
+    defaults: { _controller: AppAppBundle:Block:changePublish }
+backoffice_position_element_add:
+    path: /backoffice/settings/element/add
+    defaults: { _controller: AppAppBundle:Block:add }
+
+frontpage_vote:
+    path: /vote
+    defaults: { _controller: AppAppBundle:Vote:vote }

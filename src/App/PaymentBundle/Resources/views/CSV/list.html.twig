@@ -1,0 +1,4 @@
+Id;Typ;Kwota;Imię i nazwisko;Miato;Ulica;Status;Sygnatura;Login;Data
+{% for payment in payments %}
+{{payment.id}};{{paymentName(payment.paymentMethod)}};{{payment.value}};{{payment.firstName}} {{payment.lastName}};{{payment.zipCode}},{{payment.city}};{{payment.address}};{{paymentStateName(payment.state)}};{% if payment.offer is not null %}{{payment.offer.signature}}{% endif %};{% if payment.user is not null %}{{payment.user.username}}{% endif %};{{payment.createDate | date('d.m.Y H:i:s')}};
+{% endfor %}

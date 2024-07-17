@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Raport Ogłoszeń</title>
+    <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+    <!-- Bootstrap 3.3.2 -->
+    <link href="{{asset('admin-layout/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css" />
+    <!-- Font Awesome Icons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <!-- Ionicons -->
+    <link href="https://code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+    <!-- Morris chart -->
+    <link href="{{asset('dist/css/AdminLTE.min.css')}}" rel="stylesheet" type="text/css" />
+    <!-- jvectormap -->
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        h3{margin-bottom:20px;}
+        .table{font-size:11px;}
+    </style>
+  </head>
+<body class="login-page">
+<h3>Raport Ogłoszeń</h3>
+<table class="table table-striped">
+    <tr>
+        <td>Nazwa</td>
+        <td>Typ Transakcji</td>
+        <td>Kategoria</td>
+        <td>Sygnatura</td>
+        <td>Osoba Kontaktowa</td>
+        <td>Promowane</td>
+        <td>Status</td>
+        <td>Data Dodania</td>
+    </tr>
+{% for offer in offers %}
+    <tr>
+        <td>{{offer.name}}</td>
+        <td>{{offer.transactionType}}</td>
+        <td>{{offer.category}}</td>
+        <td>{{offer.signature}}</td>
+        <td>{{offer.contactPerson}}</td>
+        <td>{% if offer.isPromo and date(offer.promoExpire) > date()%}TAK{% else %}NIE{% endif %}</td>
+        <td>{% if offer.isPublish and date(offer.expireDate) > date()%}Aktywne{% else %}Nieaktywne{% endif %}</td>
+        <td>{{offer.createDate | date('d.m.Y')}}</td>
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>

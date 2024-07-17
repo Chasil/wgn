@@ -1,0 +1,61 @@
+{% extends "AppBackOfficeBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <section class="content-header">
+      <h1>
+        Wysłane wiadomości
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#" title="Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Wysłane wiadomości</li>
+      </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            {% include 'AppBackOfficeBundle:_Partials:flashMessage.html.twig' %}
+            <div class="col-md-12">
+            <div class="box">
+            <div class="box-header with-border">
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body scroll">
+              <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th {% if pagination.isSorted('m.subject') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Temat', 'm.subject') }}</th>
+                            <th width="100" {% if pagination.isSorted('m.sendDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Data Wysłania', 'm.sendDate') }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for message in pagination %}
+                        <tr class="odd gradeX">
+                            <td>{{message.subject}}</td>
+                            <td>{{message.sendDate | date('d.m.Y')}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+            {{ knp_pagination_render(pagination) }}
+            </div>
+          </div>
+            </div>
+                <!-- /.col-lg-12 -->
+        </div>
+    </section>
+{% include 'AppBackOfficeBundle:_Partials:modalDelete.html.twig' %}
+{% endblock body %}
+{% block javascripts %}
+    <script>
+
+    $('a[data-show-modal="delete"]').on('click',function(){
+        $('#confirm-delete').find('.danger').attr('href', $(this).data('href'));
+        $('#confirm-delete').modal();
+    });
+    $('select[name="idCategory"]').on('change',function(){
+        $(this).closest('form').submit();
+    });
+    </script>
+{% endblock %}
+

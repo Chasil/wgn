@@ -1,0 +1,52 @@
+{% extends "AppBackOfficeBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <section class="content-header">
+      <h1>
+            Dodaj Abonament
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#" title="Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Abonamenty</li>
+      </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-6">
+                <form method="POST" action="" novalidate enctype="multipart/form-data">
+          <!-- general form elements -->
+                <div class="box box-primary">
+            <!-- /.box-header -->
+            <!-- form start -->
+              <div class="box-body">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Użytkownik</label>
+                            {{form_widget(form.user,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.user)}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Pakiet</label>
+                            {{form_widget(form.package)}}
+                            {{form_errors(form.package)}}
+                        </div>
+                    </div>
+                        {{form_rest(form)}}
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary pull-right">Zapisz</button>
+              </div>
+          </div>
+          <!-- /.box -->
+        </div>
+            </div>
+        </div>
+    </section>
+{% endblock body %}
+{% block stylesheets %}
+{% endblock %}
+{% block javascripts %}
+    <script src="{{asset('front-layout/lib/validate/validate.min.js')}}"></script>
+    <script type="text/javascript">
+        $('form').validate();
+    </script>
+{% endblock %}

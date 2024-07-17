@@ -1,0 +1,13 @@
+services:
+    detectdevice.manager:
+        class: App\FrontPageBundle\Services\DetectDeviceManager
+        arguments: [@service_container]
+    frontpage.twig.function_extension:
+        class: App\FrontPageBundle\Twig\FunctionExtension
+        arguments: [@service_container]
+        tags:
+            - { name: twig.extension }
+    frontpage.twig.filter_extension:
+        class: App\FrontPageBundle\Twig\FilterExtension
+        tags:
+            - { name: twig.extension }

@@ -1,0 +1,73 @@
+security:
+    encoders:
+        App\UserBundle\Entity\User: sha1
+
+    role_hierarchy:
+        ROLE_SUPER_ADMIN: ROLE_USER,ROLE_BUISNESS,ROLE_AGENT,ROLE_OFFICE,ROLE_AUTHOR,ROLE_MANAGER,ROLE_ADMIN
+        ROLE_ADMIN: ROLE_USER,ROLE_BUISNESS,ROLE_AGENT,ROLE_OFFICE,ROLE_AUTHOR,ROLE_MANAGER
+        ROLE_MANAGER: ROLE_USER,ROLE_BUISNESS,ROLE_AGENT,ROLE_OFFICE,ROLE_AUTHOR
+        ROLE_AUTHOR: ROLE_USER,ROLE_BUISNESS,ROLE_AGENT,ROLE_OFFICE,ROLE_WRITER
+        ROLE_WRITER: ROLE_USER,ROLE_BUISNESS,ROLE_AGENT,ROLE_OFFICE
+        ROLE_OFFICE: ROLE_USER,ROLE_BUISNESS,ROLE_AGENT
+        ROLE_AGENT: ROLE_USER,ROLE_BUISNESS
+        ROLE_BUISNESS: ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        main:
+            entity: { class: App\UserBundle\Entity\User }
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+        backoffice_area:
+            pattern:    ^/backoffice
+            anonymous: ~
+            form_login:
+                login_path:  backoffice_login
+                check_path:  backoffice_login_check
+                default_target_path: /backoffice/dashboard
+            logout:
+                path:   backoffice_logout
+                target: backoffice_login
+            context: site
+        secured_area:
+            remember_me:
+                key:      "%secret%"
+                lifetime: 31536000 # 365 days in seconds
+                path:     /
+                domain:   ~ # Defaults to the current domain from $_SERVER
+            pattern:    ^/
+            anonymous: ~
+            form_login:
+                login_path:  login
+                check_path:  login_check
+                default_target_path: /moje-konto/
+            logout:
+                path:   logout
+                target: /
+            context: site
+
+    access_control:
+        - { path: /_wdt/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: /_profiler/.*, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: /rejestracja, role: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https}
+        - { path: ^/moje-konto, roles: ROLE_USER, requires_channel: https}
+        - { path: /login, role: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https}
+        - { path: /resetPassword, role: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https}
+        - { path: /newPassword, role: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https}
+        - { path: ^/backoffice/zmiana-hasla/.*, role: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https}
+        - { path: ^/backoffice/przypomnienie-hasla.html, role: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https}
+        - { path: ^/profil, roles: ROLE_USER, requires_channel: https}
+        - { path: ^/backoffice/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https}
+        - { path: ^/backoffice/$, roles: ROLE_AGENT, requires_channel: https}
+        - { path: ^/backoffice/dashboard, roles: ROLE_AGENT, requires_channel: https}
+        - { path: ^/backoffice/myoffice, roles: ROLE_AGENT, requires_channel: https}
+        - { path: ^/backoffice/office, roles: ROLE_AGENT, requires_channel: https}
+        - { path: ^/backoffice/ads, roles: ROLE_AGENT, requires_channel: https}
+        - { path: ^/backoffice/ad, roles: ROLE_AGENT, requires_channel: https}
+        - { path: ^/backoffice/article, roles: ROLE_WRITER, requires_channel: https}
+        - { path: ^/backoffice/blog, roles: ROLE_WRITER, requires_channel: https}
+        - { path: ^/backoffice.*, roles: ROLE_MANAGER, requires_channel: https}
+        - { path: /, role: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https}

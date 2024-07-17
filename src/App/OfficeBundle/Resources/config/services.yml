@@ -1,0 +1,40 @@
+services:
+    office.manager:
+        class: App\OfficeBundle\Services\OfficeManager
+        arguments: [@doctrine.orm.entity_manager,@request_stack,@knp_paginator,@service_container]
+    office.report_manager:
+        class: App\OfficeBundle\Services\ReportManager
+        arguments: [@templating, @office.manager,@tfox.mpdfport]
+    office.twig.function_extension:
+        class: App\OfficeBundle\Twig\FunctionExtension
+        arguments: [@service_container]
+        tags:
+            - { name: twig.extension }
+    app.office_voter:
+        class: App\OfficeBundle\Security\OfficeVoter
+        arguments: [@security.access.decision_manager]
+        tags:
+            - { name: security.voter }
+        public: false
+    app.image_voter:
+        class: App\OfficeBundle\Security\ImageVoter
+        arguments: [@security.access.decision_manager]
+        tags:
+            - { name: security.voter }
+        public: false
+
+    block.office_office_list:
+        class: App\OfficeBundle\Services\Block\OfficeList
+        arguments: [@service_container]
+
+    block.office_creditoffice_list:
+        class: App\OfficeBundle\Services\Block\CreditOfficeList
+        arguments: [@service_container]
+
+    block.office_developmentoffice_list:
+        class: App\OfficeBundle\Services\Block\DevelopmentOfficeList
+        arguments: [@service_container]
+
+    office.link.manager:
+        class: App\OfficeBundle\Services\LinkManager
+        arguments: [@doctrine.orm.entity_manager,@request_stack,@knp_paginator]

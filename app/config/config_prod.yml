@@ -1,0 +1,42 @@
+imports:
+    - { resource: config.yml }
+
+#framework:
+#    validation:
+#        cache: main_cache
+#    serializer:
+#        cache: main_cache
+
+#doctrine:
+#    orm:
+#        metadata_cache_driver:
+#            cache_provider: main_cache
+#        query_cache_driver:
+#            cache_provider: main_cache
+#        result_cache_driver:
+#            cache_provider: main_cache
+#
+doctrine_cache:
+    providers:
+        main_cache:
+            type: file_system
+
+monolog:
+    handlers:
+        main:
+            type:         rotating_file
+            action_level: error
+            handler:      nested
+            max_files: 100
+        security:
+            # log all messages (since debug is the lowest level)
+            level:    debug
+            type:     rotating_file
+            path:     '%kernel.logs_dir%/security.log'
+            channels: [security]
+        nested:
+            type:  stream
+            path:  "%kernel.logs_dir%/%kernel.environment%.log"
+            level: debug
+        console:
+            type:  console

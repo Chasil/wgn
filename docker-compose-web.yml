@@ -1,0 +1,43 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8446:443
+      - 8083:80
+    environment:
+      PHP_IDE_CONFIG: "serverName=web"
+    volumes:
+      - ./web/:/var/www/html/
+      - ./:/main/
+    networks:
+      - default
+
+  db:
+    container_name: wgn_db
+    image: mariadb
+    environment:
+      MYSQL_DATABASE: myDb
+      MYSQL_USER: user
+      MYSQL_PASSWORD: test
+      MYSQL_ROOT_PASSWORD: test
+    volumes:
+      - ./MysqlData:/var/lib/mysql
+    ports:
+      - 3309:3306
+    networks:
+      - default
+
+  phpmyadmin:
+    container_name: wgn-phpmyadmin
+    image: phpmyadmin
+    restart: always
+    ports:
+      - 8085:80
+    environment:
+      MYSQL_USER: user
+      MYSQL_PASSWORD: test
+      MYSQL_ROOT_PASSWORD: test
+    networks:
+      - default

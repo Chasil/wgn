@@ -1,0 +1,162 @@
+{% extends "AppBackOfficeBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <section class="content-header">
+      <h1>
+        Nowy opis kategorii
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#" title="Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Oferty</li>
+      </ol>
+    </section>
+    <section class="content">
+        <div class="row category-offers-description">
+            <div class="col-md-12">
+                <form method="POST" action="" novalidate enctype="multipart/form-data">
+                <div class="box box-primary">
+                <div class="box-body">
+                    <div class="row">
+                        <div class="form-group col-md-12">
+                            <label>Kategoria</label>
+                            {{form_widget(form.category,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.category)}}
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>Typ Transakcji</label>
+                            {{form_widget(form.transactionType,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.transactionType)}}
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>Miasto</label>
+                            {{form_widget(form.city)}}
+                            {{form_errors(form.city)}}
+                        </div>
+                        <div class="form-group col-md-12">
+                            <label>Opis</label>
+                            {{form_widget(form.description,{'attr':{'class':'texteditor'}})}}
+                            {{form_errors(form.description)}}
+                        </div>
+
+                        <div class="row gallery">
+                            <div class="col-md-12">
+                                <h2>Dodaj zdjęcia: </h2>
+                            </div>
+                            <div class="col-md-11 images-list">
+                                {% if offer.images | length > 0 %}
+                                    {% for image in offer.images %}
+                                        <div class="img ui-sortable-handle loaded" data-id="{{image.id}}">
+                                            <a href="#" class="remove-image" title="Usuń"></a>
+                                            <img src="{{('/uploads/categoryOffersDescription/'~offer.id~'/'~image.name) |imagine_filter('offer_thumbnails') }}" alt="{{offer.city}}"/>
+                                        </div>
+                                    {% endfor %}
+                                    {% for i in 0..(12 - offer.images | length)%}
+                                        <div class="img"></div>
+                                    {% endfor %}
+                                {% else %}
+                                    <div class="img"></div>
+                                    <div class="img"></div>
+                                    <div class="img"></div>
+                                    <div class="img"></div>
+                                    <div class="img"></div>
+                                    <div class="img"></div>
+                                    <div class="img"></div>
+                                    <div class="img"></div>
+                                    <div class="img"></div>
+                                    <div class="img"></div>
+                                    <div class="img"></div>
+                                    <div class="img"></div>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                    </div>
+                    <input type="file" name="images" class="hidden" id="images" multiple />
+                        {{form_rest(form)}}
+                <!-- /.box-body -->
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary pull-right">Zapisz</button>
+              </div>
+          </div>
+          <!-- /.box -->
+        </div>
+            </div>
+        </div>
+    </section>
+{% endblock body %}
+{% block stylesheets %}
+    <style>
+        .gallery .img {
+            width: 106px;
+            height: 70px;
+            display: inline-block;
+            background: #B5E51D;
+            margin: 4px 4px 4px 0;
+            position: relative;
+            float: left;
+            cursor: pointer;
+        }
+        .gallery .img:after {
+            font-family: FontAwesome;
+            content: "\f067";
+            position: absolute;
+            top: 20%;
+            left: 32%;
+            height: 40px;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            padding: 0px 8px 0px 8px;
+            color: #fff;
+            font-size: 29px;
+        }
+        .gallery .img a.remove-image {
+            display: block;
+            width: 20px;
+            height: 20px;
+            position: absolute;
+            right: 0;
+            color: #fff;
+            background: #DC0000;
+            text-align: center;
+            z-index: 1000;
+        }
+        .gallery .img.loaded {
+            cursor: move;
+        }
+        .gallery .img.loaded:after {
+            content: '';
+            border: 0;
+        }
+    </style>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{asset('front-layout/lib/validate/validate.min.js')}}"></script>
+    <script src="{{asset('admin-layout/plugins/tinymce/tinymce.min.js')}}"></script>
+ {{ elfinder_tinymce_init4() }}
+    <script src="{{asset('front-layout/lib/jqueryui/jquery-ui.min.js')}}"></script>
+    <script type="text/javascript">
+    var idOffer = "{{offer.id}}";
+    var imageAddUrl = "{{path('frontend_category_offer_description_image_add')}}";
+    var imageRemoveUrl = "{{path('frontend_category_offer_description_image_delete')}}";
+    var imageSortUrl = "{{path('frontend_category_offer_description_images_sort')}}";
+
+    tinymce.init({
+        language : 'pl',
+        file_browser_callback : elFinderBrowser,
+        image_advtab: true,
+        mode : "textareas",
+        entity_encoding : "raw",
+        selector: ".texteditor",
+        plugins: [
+            "advlist autolink lists link image lists charmap print preview hr anchor",
+            "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+            "table contextmenu directionality emoticons template textcolor paste colorpicker textpattern"
+        ],
+        toolbar1: "bold italic underline strikethrough | alignleft aligncenter alignright alignjustify | styleselect formatselect fontselect fontsizeselect ",
+        toolbar2: "insertfile undo redo | cut copy paste searchreplace| | bullist numlist outdent indent| bullist numlist | outdent indent blockquote | undo redo | link unlink anchor image media code | insertdatetime preview",
+        toolbar3: "forecolor backcolor| table | hr removeformat | subscript superscript | charmap emoticons | print fullscreen | ltr rtl | visualchars visualblocks nonbreaking",
+        fontsize_formats: "10pt 12pt 14pt 18pt 24pt 36pt",
+    });
+        $('form').validate();
+    </script>
+    <script src="{{asset('front-layout/js/add-category-offer-description-step-2.js')}}"></script>
+{% endblock %}

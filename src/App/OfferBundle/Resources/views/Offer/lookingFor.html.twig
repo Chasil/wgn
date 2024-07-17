@@ -1,0 +1,227 @@
+{% extends "AppFrontPageBundle:_Partials:layout.html.twig" %}
+{% block body %}
+        {% include 'AppArticleBundle:_Partials:leftColumn.html.twig' %}
+        <div class="col-md-8">
+            <div class="row looking-for">
+                <div class="col-md-12">
+                    {% for message in app.session.flashbag.get('success') %}
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      {{ message }}
+                    </div>
+                {% endfor %}
+                    <h1>Poszukuję dla siebie nieruchomość</h1>
+                    <p>Zgłoszone przez poniższy Formularz Twoje poszukiwanie nieruchomości zostanie przekazane do Oddziału WGN. Doradca skontaktuje się z Tobą w celu realizacji zlecenia i zapewnienia najlepszej usługi i bezpieczeństwa transakcji.</p>
+                    <p>Pola oznaczone gwiazdką (*) są wymagane</p>
+                    {% if true %}
+                    <form method="POST" action="" class="form-horizontal" novalidate>
+                    <div class="form-group row">
+                        <label  class="col-sm-4 control-label">Cel*:</label>
+                        <div class="col-sm-8">
+                            {{form_widget(form.transaction,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.transaction)}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label  class="col-sm-4 control-label">Kategoria*:</label>
+                        <div class="col-sm-8">
+                            {{form_widget(form.category,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.category)}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label  class="col-sm-4 control-label">Typ:</label>
+                        <div class="col-sm-8">
+                            {{form_widget(form.type)}}
+                            {{form_errors(form.type)}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label  class="col-sm-4 control-label">Państwo*:</label>
+                        <div class="col-sm-8">
+                            {{form_widget(form.country,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.country)}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label  class="col-sm-4 control-label">Województwo*:</label>
+                        <div class="col-sm-8">
+                            {{form_widget(form.province)}}
+                            {{form_errors(form.province)}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label  class="col-sm-4 control-label">Miasto*:</label>
+                        <div class="col-sm-8">
+                            {{form_widget(form.city,{'attr':{'data-validator':'required','autocomplete':'off'}})}}
+                            {{form_errors(form.city)}}
+                            <div id="c-suggestions"></div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label  class="col-sm-4 control-label">Metraż*:</label>
+                        <label  class="col-sm-1 control-label">od:</label>
+                        <div class="col-sm-3">
+                            {{form_widget(form.squereFrom,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.squereFrom)}}
+                        </div>
+                        <label  class="col-sm-1 control-label">do:</label>
+                        <div class="col-sm-3">
+                            {{form_widget(form.squereTo,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.squereTo)}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label  class="col-sm-4 control-label">Pokoi*:</label>
+                        <label  class="col-sm-1 control-label">od:</label>
+                        <div class="col-sm-3">
+                            {{form_widget(form.roomsFrom,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.roomsFrom)}}
+                        </div>
+                        <label  class="col-sm-1 control-label">do:</label>
+                        <div class="col-sm-3">
+                            {{form_widget(form.roomsTo,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.roomsTo)}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label  class="col-sm-4 control-label">Piętro*:</label>
+                        <label  class="col-sm-1 control-label">od:</label>
+                        <div class="col-sm-3">
+                            {{form_widget(form.floorFrom,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.floorFrom)}}
+                        </div>
+                        <label  class="col-sm-1 control-label">do:</label>
+                        <div class="col-sm-3">
+                            {{form_widget(form.floorTo,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.floorTo)}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label  class="col-sm-4 control-label">Cena*:</label>
+                        <label  class="col-sm-1 control-label">od:</label>
+                        <div class="col-sm-3">
+                            {{form_widget(form.priceFrom,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.priceFrom)}}
+                        </div>
+                        <label  class="col-sm-1 control-label">do:</label>
+                        <div class="col-sm-3">
+                            {{form_widget(form.priceTo,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.priceTo)}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label  class="col-sm-4 control-label">Waluta*:</label>
+                        <div class="col-sm-8">
+                            {{form_widget(form.currency,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.currency)}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12"><h4>Twoje dane adresowe</h4></h1></div>
+                    </div>
+                    <div class="form-group row">
+                        <label  class="col-sm-4 control-label">Twój e-mail*:</label>
+                        <div class="col-sm-8">
+                            {{form_widget(form.email,{'attr':{'data-validator':'required,email'}})}}
+                            {{form_errors(form.email)}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label  class="col-sm-4 control-label">Imię i nazwisko*:</label>
+                        <div class="col-sm-8">
+                            {{form_widget(form.name,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.name)}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label  class="col-sm-4 control-label">Telefon:</label>
+                        <div class="col-sm-8">
+                            {{form_widget(form.phone)}}
+                            {{form_errors(form.phone)}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label  class="col-sm-4 control-label">Wiadomość:</label>
+                        <div class="col-sm-8">
+                            {{form_widget(form.message)}}
+                            {{form_errors(form.message)}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-sm-8 col-sm-offset-4">
+                            {{form_widget(form.agreeRegulations,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.agreeRegulations)}}
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <div class="col-md-12"><button class="btn btn-success pull-right" type="submit">Wyślij</button></div>
+                    </div>
+                    {{form_errors(form)}}
+                    {{form_rest(form)}}
+                    {% else %}
+                        <div class="message-box">Formularz został wysłany. Dziękujemy.</div>
+                    {% endif %}
+                </form>
+                </div>
+            </div>
+        </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{asset('front-layout/lib/validate/validate.min.js')}}"></script>
+    <script type="text/javascript">
+         var suggestionsCityUrl = '{{path('frontend_city_autocomplete')}}';
+        $('.form-horizontal').validate();
+        $( "#looking_for_city" ).on( "keyup", function() {
+           if($(this).val().length > 1){
+             searchCity();
+           }
+        });
+        function searchCity() {
+        $.ajax({
+           method: "GET",
+           url: suggestionsCityUrl +"?q="+$('#looking_for_city').val()
+         }).done(function(data){
+             var content = '';
+             if(data.results.length>0){
+                 content = '';
+             }
+             for(var i=0;i<data.results.length;i++){
+                 content += '<div class="search-result-row" data-name="'+data.results[i].name+'">'+data.results[i].name+'</div>';
+             }
+            $('#c-suggestions').show();
+            $('#c-suggestions').html(content);
+
+         });
+        };
+        $('#c-suggestions').on('click','.search-result-row',function(){
+            $('#looking_for_city').val($(this).data('name'));
+            $('#c-suggestions').html('');
+            $('#c-suggestions').hide();
+        });
+        var getCategoryTypesUrl = '{{path('frontend_search_get_category_types',{'idCategory':'idCategory'})}}';
+        $('#looking_for_category').on('change',function(){
+         var url = getCategoryTypesUrl.replace('idCategory',$(this).val());
+         $.ajax({
+           method: "GET",
+           url: url,
+         }).done(function(data){
+             var content = '';
+             if(data.results.length>0){
+                 content = '<option value="">dowolny</option>';
+             }
+             for(var i=0;i<data.results.length;i++){
+                 content += '<option value="'+data.results[i].name+'">'+data.results[i].name+'</div>';
+             }
+            $('#looking_for_type').html(content);
+
+         });
+        });
+    </script>
+{% endblock %}
+{%block metaDescription %}Poszukuję dla siebie nieruchomość ✅ Ponad 60 000 Ofert. ✅ 27 Lat Doświadczenia na Rynku Polskim i Zagranicznym ✅ Niemal 70 Biur Nieruchomości w Całej Polsce. Sprawdź Teraz i Zadzwoń »{% endblock %}
+{%block ogDescription %}Poszukuję dla siebie nieruchomość ✅ Ponad 60 000 Ofert. ✅ 27 Lat Doświadczenia na Rynku Polskim i Zagranicznym ✅ Niemal 70 Biur Nieruchomości w Całej Polsce. Sprawdź Teraz i Zadzwoń »{% endblock %}
+{%block twitterDescription %}Poszukuję dla siebie nieruchomość ✅ Ponad 60 000 Ofert. ✅ 27 Lat Doświadczenia na Rynku Polskim i Zagranicznym ✅ Niemal 70 Biur Nieruchomości w Całej Polsce. Sprawdź Teraz i Zadzwoń »{% endblock %}
+{%block pageTitle %}Poszukuję dla siebie nieruchomość. Mieszkania na Sprzedaż - Ogłoszenia Nieruchomości WGN{%endblock%}
+{%block ogTitle %}Poszukuję dla siebie nieruchomość. Mieszkania na Sprzedaż - Ogłoszenia Nieruchomości WGN{% endblock %}
+{%block twitterTitle %}Poszukuję dla siebie nieruchomość. Mieszkania na Sprzedaż - Ogłoszenia Nieruchomości WGN{% endblock %}

@@ -1,0 +1,61 @@
+<div class="col-md-6 {% if config.class is defined %}{{config.class}}{% endif %}" id="article-list-{{element.id}}" {% if element.customStyle !=''%}style="{{element.customStyle}}"{%endif %}>
+    <div class="article-list">
+        {% if config.blockTitle is defined %}
+            <h2 style="
+                {% if element.headerBgColor !='' %}background:{{element.headerBgColor}} !important;{% endif %}
+                {% if element.headerFontColor !='' %}color:{{element.headerFontColor}} !important;{% endif %}
+                {% if element.headerFontSize !='' %}font-size:{{element.headerFontSize}}px !important;{% endif %}
+                {% if element.headerFontIsBold == true %}font-weight:bold !important;{% endif %}
+                ">{{config.blockTitle}}
+            </h2>{% endif %}
+        {% if items | length > 0 %}
+            {% if items[0].mainPhoto !=''%}
+                {% if items[0].isUrl %}
+                    {% set url = items[0].url %}
+                {% else %}
+                    {% set url =  domain ~ path('frontend_article_show',{categoryName:category.name | prepareUrl,id:items[0].id,articleName:items[0].name | prepareUrl}) %}
+                {% endif %}
+                <a href="{{url}}" class="main-article" title="{{items[0].name}}">
+                    <img src="{{('/uploads/articles/'~items[0].id~'/'~items[0].mainPhoto) |imagine_filter('article_main_block') }}" alt="{{items[0].name}}" class="img-responsive"/>
+                    <div class="article-title">{{items[0].name}}</div>
+                </a>
+                {% if items | length > 1 %}
+                    <ul>
+                        {% for item in items  | slice(1, items | length) %}
+                             <li>
+                                {% if item.isUrl %}
+                                    {% set url = item.url %}
+                                {% else %}
+                                    {% set url =  domain ~ path('frontend_article_show',{categoryName:category.name | prepareUrl,id:item.id,articleName:item.name | prepareUrl}) %}
+                                {% endif %}
+                                 <a href="{{url}}" style="
+                   {% if element.fontSize !='' %}font-size:{{element.fontSize}}px !important;{% endif %}
+                   {% if element.fontColor !='' %}color:{{element.fontColor}} !important;{% endif %}
+                   {% if element.fontIsBold == true %}font-weight:bold !important;{% endif %}
+                   " title="{{item.name}}">{{item.name}}</a>
+                             </li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% else %}
+                <ul>
+                    {% for item in items %}
+                        <li>
+                            {% if item.isUrl %}
+                                {% set url = item.url %}
+                            {% else %}
+                                {% set url = domain ~ path('frontend_article_show',{categoryName:category.name | prepareUrl,id:item.id,articleName:item.name | prepareUrl}) %}
+                            {% endif %}
+                            <a href="{{url}}" style="
+                   {% if element.fontSize !='' %}font-size:{{element.fontSize}}px !important;{% endif %}
+                   {% if element.fontColor !='' %}color:{{element.fontColor}} !important;{% endif %}
+                   {% if element.fontIsBold == true %}font-weight:bold !important;{% endif %}
+                   " title="{{item.name}}">{{item.name}}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <a href="{{domain}}{{path('frontend_article_category_show',{idCategory:category.id,categoryName:category.name | prepareUrl})}}" class="more pull-left" title="więcej">więcej</a>
+        {% endif %}
+    </div>
+</div>

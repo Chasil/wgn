@@ -1,0 +1,15 @@
+{%  if articles | length > 0 %}
+    <div class="article-list">
+        <ul>
+            {% for article in articles %}
+                {% if blog.isWithoutLocation %}
+                    {% set url =  domain ~ path('frontend_blog_article_search_url',{slug: article.slug,transaction: blog.transactionName,type:blog.typeName}) %}
+            {% else %}
+                {% set url = host_scheme ~ ':' ~ path('frontend_subdomain_article',{slug: article.slug,subdomain: blog.subdomain},true) %}
+                {% endif %}
+                <li>
+                    <a href="{{ url }}">{{ article.name }}</a></li>
+            {%  endfor %}
+        </ul>
+    </div>
+{% endif %}

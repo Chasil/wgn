@@ -1,0 +1,7 @@
+<a href="{{ app.request.getSchemeAndHttpHost() }}{{path('app_front_page_homepage')}}" title="WGN"><img src="{{ app.request.getSchemeAndHttpHost() }}{{asset('/front-layout/gfx/logo-md.jpg')}}" alt="wgn" style="width: 135px;border:none;"/></a>
+<h3 style="font-weight: normal;">Witaj,</h3>
+<p>Orzymałeś/aś zapytanie z portalu wgn.pl do oferty {{contactData.offer.signature }} - "{{contactData.offer.name }}". Poniżej treść wiadomości:<p>
+<p>{{contactData.message}}</p>
+<p>Dane kontaktowe</p>
+{% if contactData.email !='' %}<p>e-mail: {{contactData.email}}</p>{%endif%}
+{% if contactData.email !='' %}<p>tel.:{{contactData.phone}}</p>{%endif%}

@@ -1,0 +1,20 @@
+<div class="col-md-12 order">
+    <div class="form-group has-feedback">
+        <label>znajdź ofertę po sygnaturze</label>
+        <input type="text" class="form-control" name="signature" value="{{app.request.get('signature')}}"/>
+        <span class="glyphicon glyphicon-search form-control-feedback"></span>
+    </div>
+    <div class="form-group">
+        <label>sortuj</label>
+        <select class="form-control" data-action="changeOrder" name="order">
+            <option value="modifyDate_DESC" {% if app.request.get('order') == "modifyDate_DESC" %}selected="selected"{% endif %}>najnowszych</option>
+            <option value="modifyDate_ASC" {% if app.request.get('order') == "modifyDate_ASC" %}selected="selected"{% endif %}>najstarszych</option>
+            <option value="priceDef_ASC" {% if app.request.get('order') == "priceDef_ASC" %}selected="selected"{% endif %}>najniższej ceny</option>
+            <option value="priceDef_DESC" {% if app.request.get('order') == "priceDef_DESC" %}selected="selected"{% endif %}>najwyższej ceny</option>
+            <option value="priceDefm2_ASC" {% if app.request.get('order') == "priceDefm2_ASC" %}selected="selected"{% endif %}>najniższej ceny m&sup2;</option>
+            <option value="priceDefm2_DESC" {% if app.request.get('order') == "priceDefm2_DESC" %}selected="selected"{% endif %}>najwyższej ceny m&sup2;</option>
+            <option value="squere_ASC" {% if app.request.get('order') == "squere_ASC" %}selected="selected"{% endif %}>najmiejszej powierzchni</option>
+            <option value="squere_DESC" {% if app.request.get('order') == "squere_DESC" %}selected="selected"{% endif %}>największej powierzchni</option>
+        </select>
+    </div>
+</div>

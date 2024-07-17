@@ -1,0 +1,10 @@
+<div style="width:100%;text-align:center;">
+    <div style="width:525px;display: inline-block;">
+        <a href="{{ app.request.getSchemeAndHttpHost() }}{{path('app_front_page_homepage')}}" title="WGN"><img src="{{ app.request.getSchemeAndHttpHost() }}{{asset('/front-layout/gfx/logo-md.jpg')}}" alt="wgn" style="width: 165px;border:none;"/></a>
+        <h3 style="text-align: left;color:#003169;">Dzień Dobry</h3>
+        <p style="text-align: left;color:#003169;">Twoje ogłoszenie <strong>{{offer.name}}({{offer.signature}})</strong> oczekuje na potwierdzenie i opłacenie. Podczas opłacania możesz dodatkowo wyróżnić ogłoszenie, żeby było bardziej skuteczne</p>
+        <div style="background: #003169;width:100%;height:110px;font-size: 14px;">
+            <a href="{{ app.request.getSchemeAndHttpHost() }}{{path('frontend_offer_payment',{code:offer.activationCode})}}" style="color: #000;display: inline-block;padding: 15px 40px;background: #b5e51d;width: 100px;margin-top: 32px;text-decoration:none;" title="Potwierdź">Potwierdź</a>
+        </div>
+    </div>
+</div>

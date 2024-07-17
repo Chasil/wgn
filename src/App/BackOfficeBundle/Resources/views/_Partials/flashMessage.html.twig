@@ -1,0 +1,14 @@
+<div class="col-md-12">
+{% for message in app.session.flashbag.get('success') %}
+    <div class="alert alert-success alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Sukces!</strong> {{ message }}
+    </div>
+{% endfor %}
+{% for message in app.session.flashbag.get('error') %}
+    <div class="alert alert-error alert-dismissible" role="alert">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <strong>Błąd!</strong> {{ message }}
+    </div>
+{% endfor %}
+</div>

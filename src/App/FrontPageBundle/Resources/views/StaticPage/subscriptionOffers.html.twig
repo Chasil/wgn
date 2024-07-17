@@ -1,0 +1,125 @@
+{% extends "AppFrontPageBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    {% include 'AppArticleBundle:_Partials:leftColumn.html.twig' %}
+    <div class="col-md-8 no-padding-right offset-top">
+        <div class="row">
+            <div class="row">
+                {% include 'AppFrontPageBundle:_Partials:flashMessage.html.twig' %}
+            </div>
+            <p>Aby zaprenumerować oferty na e-mail, wpisz swój adres email, a następnie wybierz kryteria wyszukiwania, na podstawie których będziesz otrzymywać informację o nowych ofertach na adres email.</p>
+            <form method="GET" action="{{ form.vars.action}}" id="search-box-form" class="hidden-sm hidden-xs" novalidate>
+            <div class="hidden-print lf" id="search-box">
+                <div id="lf-search-container" class="bg-gray">
+                    <div id="lf-search-left-column">
+                        <div id="row-top">
+                            <div class="field-email">
+                                <label>Twój email</label>
+                                <div class="form-group from">
+                                    <input type="text" name="email" placeholder="twoj@email.pl" autocomplete="off" data-validator="required" class="form-control">
+                                </div>
+                            </div>
+                            <div class="field-type">
+                                <label>Typ nieruchomości</label>
+                                <div class="form-group">
+                                    <div class="pretty-select">{{form_widget(form.category)}}</div>
+                                </div>
+                            </div>
+                            <div class="field-transaction">
+                                <label>Transakcja</label>
+                                <div class="form-group">
+                                     <div class="pretty-select">{{form_widget(form.transactionType)}}</div>
+                                </div>
+                            </div>
+                            <div class="field-country">
+                                <div class="form-group">
+                                    <label>Kraj</label>
+                                     <div class="pretty-select">{{form_widget(form.country)}}</div>
+                                </div>
+                            </div>
+                            <div class="field-location">
+                                <label>Lokalizacja</label>
+                                <div class="form-group">
+                                    <div class="input-group">
+                                         {{form_widget(form.locationIndexLike,{'attr':{'placeholder':'miejscowość, dzielnica, ulica','autocomplete':'off'}})}}
+                                        <span class="input-group-btn">
+                                            <div class="pretty-select">{{form_widget(form.distance,{'attr':{'class':'btn'}})}}</div>
+                                        </span>
+                                    </div>
+                                    <div id="l-suggestions" style="display: none;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="row-bottom">
+                                    <div class="field-price">
+                                        <label>Cena</label>
+                                        <div class="form-group from" id="price-from">
+                                            {{form_widget(form.priceDefFrom,{'attr':{'placeholder':'od','autocomplete':'off'}})}}
+                                        </div>
+                                        <div class="form-group to">
+                                            {{form_widget(form.priceDefTo,{'attr':{'placeholder':'do','autocomplete':'off'}})}}
+                                        </div>
+                                        <div class="form-group currency">
+                                            <div class="pretty-select">{{form_widget(form.currency)}}</div>
+                                        </div>
+                                    </div>
+                                    <div class="field-squere">
+                                        <label>Powierzchnia w m&sup2;</label>
+                                        <div class="form-group from">
+                                            {{form_widget(form.squereFrom,{'attr':{'placeholder':'od','autocomplete':'off'}})}}
+                                        </div>
+                                        <div class="form-group to">
+                                            {{form_widget(form.squereTo,{'attr':{'placeholder':'do','autocomplete':'off'}})}}
+                                        </div>
+                                    </div>
+                                    <div class="rooms-fields {% if app.request.get('search[category]', null, true) > 2%}hidden{% endif %}">
+                                        <label>Liczba pokoi</label>
+                                            <div class="form-group from">
+                                                {{form_widget(form.roomsFrom,{'attr':{'placeholder':'od','autocomplete':'off'}})}}
+                                            </div>
+                                            <div class="form-group to">
+                                                {{form_widget(form.roomsTo,{'attr':{'placeholder':'do','autocomplete':'off'}})}}
+                                            </div>
+                                    </div>
+                                    <div class="type-fields {% if app.request.get('search[category]', null, true) < 3%}hidden{% endif %}">
+                                        <label>Rodzaj działki</label>
+                                        <div class="form-group">
+                                                {{form_widget(form.type)}}
+                                        </div>
+                                    </div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="progress">
+                            <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                              <span class="sr-only">0% Complete (success)</span>
+                            </div>
+                 </div>
+                <div id="search-advanced-options" class="hidden-xs">
+
+                    <div id="search-advanced-options-container"></div>
+                    <div class="clearfix"></div>
+                </div>
+                <div id="search-bottom">
+                    <a href="#" data-action="showMore" id="advanced-search" class="more" title="więcej opcji">rozwiń opcje</a>
+                    <button class="btn btn-success wgn-main-find-btn">Zapisz</button>
+                </div>
+
+                </div>
+            {{ form_end(form, {'render_rest': false}) }}
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{asset('front-layout/lib/validate/validate.js')}}"></script>
+    <script type="text/javascript">
+        var resultsNotificationUrl = '{{path('frontend_results_notification')}}';
+    </script>
+    <script src="{{asset('front-layout/js/lf.js')}}"></script>
+{% endblock %}
+{%block metaDescription %}Prenumerata ofert &#9989; Ponad 60 000 Ofert. &#9989; 27 Lat Doświadczenia na Rynku Polskim i Zagranicznym &#9989; Niemal 70 Biur Nieruchomości w Całej Polsce. Sprawdź Teraz i Zadzwoń »{% endblock %}
+{%block ogDescription %}Prenumerata ofert &#9989; Ponad 60 000 Ofert. &#9989; 27 Lat Doświadczenia na Rynku Polskim i Zagranicznym &#9989; Niemal 70 Biur Nieruchomości w Całej Polsce. Sprawdź Teraz i Zadzwoń »{% endblock %}
+{%block twitterDescription %}Prenumerata ofert &#9989; Ponad 60 000 Ofert. &#9989; 27 Lat Doświadczenia na Rynku Polskim i Zagranicznym &#9989; Niemal 70 Biur Nieruchomości w Całej Polsce. Sprawdź Teraz i Zadzwoń »{% endblock %}
+{%block pageTitle %}Prenumerata ofert. Mieszkania na Sprzedaż - Ogłoszenia Nieruchomości WGN{%endblock%}
+{%block ogTitle %}Prenumerata ofert. Mieszkania na Sprzedaż - Ogłoszenia Nieruchomości WGN{% endblock %}
+{%block twitterTitle %}Prenumerata ofert. Mieszkania na Sprzedaż - Ogłoszenia Nieruchomości WGN{% endblock %}

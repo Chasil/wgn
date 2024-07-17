@@ -1,0 +1,22 @@
+{% if message is not null %}
+<div class="row">
+    <div class="col-md-12 message-details">
+        {% if message.sender is not null%}
+            <div class="col-xs-12">
+                {{message.sender.firstName}}{{message.sender.lastName}}
+            </div>
+        {% endif %}
+        <div class="col-xs-12">Temat: <strong>{{message.subject}}</strong></div>
+
+        <div class="col-xs-12 message-content">{{message.content}}</div>
+        <div class="col-xs-12">{% if message.phone !='' %}<strong>Telefon: </strong>{{message.phone}}{% endif %}</div>
+        <div class="col-xs-12">{% if message.email !='' %} <strong>Email:</strong>{{message.email}}{% endif %}</div>
+    </div>
+</div>
+{% else %}
+    <div class="row">
+    <div class="col-md-12 message-details">
+        <p>Brak dostępu</p>
+    </div>
+</div>
+{% endif %}

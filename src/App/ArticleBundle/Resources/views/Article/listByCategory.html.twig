@@ -1,0 +1,27 @@
+{% extends "AppPageBundle::layout.html.twig" %}
+{% block body %}
+    <div class="container clearfix">
+            <div class="col-md-3 col-sm-3">
+            {% include "AppPageBundle:_Partials:categoriesLeftMenu.html.twig" %}
+            </div>
+            <div class="col-md-9 col-sm-9 page">
+            {%for item in items %}
+                <div class="col-md-12 offer">
+                    <div class="row">
+                          <div class="col-md-12 col-sm-12">
+                            <h4 class="media-heading">
+                                <a href="{{domain}}{{path('app_page_show_with_category',{'idCategory':category.id,categoryTitle:category.name | prepareUrl(),id:item.id,pageTitle:item.name | prepareUrl()})}}" title="{{item.name}}">{{item.name}}</a></h4>
+                            {{item.intro | raw}}
+                            {% if item.content !='' %}
+                                <div class="params pull-right">
+                                <a href="{{domain}}{{path('app_page_show_with_category',{'idCategory':category.id,categoryTitle:category.name | prepareUrl(),id:item.id,pageTitle:item.name | prepareUrl()})}}" title="Więcej">Więcej</a>
+                                </div>
+                            {% endif %}
+                          </div>
+                    </div>
+                </div>
+            {% endfor %}
+            {{ knp_pagination_render(items,'AppOffersBundle:_Partials:pagination.html.twig') }}
+            </div>
+    </div>
+{% endblock %}

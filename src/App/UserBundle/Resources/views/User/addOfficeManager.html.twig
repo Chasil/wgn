@@ -1,0 +1,89 @@
+{% extends "AppBackOfficeBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <section class="content-header">
+      <h1>
+        Nowy Użytkownik
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#" title="Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Użytkownicy</li>
+      </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <form method="POST" action="" novalidate enctype="multipart/form-data">
+          <!-- general form elements -->
+                <div class="box box-primary">
+            <!-- /.box-header -->
+            <!-- form start -->
+              <div class="box-body">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Login</label>
+                            {{form_widget(form.username,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.username)}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>E-mail</label>
+                            {{form_widget(form.email)}}
+                            {{form_errors(form.email)}}
+                        </div>
+                    </div>
+                    {% if form.plainPassword is defined %}
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Hasło</label>
+                            {{form_widget(form.plainPassword.first,{'attr':{'data-validator':'required,length','data-validator-length':'8,'}})}}
+                            {{form_errors(form.plainPassword.first)}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Powtórz Hasło</label>
+                            {{form_widget(form.plainPassword.second,{'attr':{'data-validator':'required','data-validator-length':'8,'}})}}
+                        </div>
+                    </div>
+                    {% endif %}
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Imię</label>
+                            {{form_widget(form.firstName)}}
+                            {{form_errors(form.firstName)}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Nazwisko</label>
+                            {{form_widget(form.lastName)}}
+                            {{form_errors(form.lastName)}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label>Rola</label>
+                            {{form_widget(form.role,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.role)}}
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label>Biuro</label>
+                            {{form_widget(form.office,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.office)}}
+                        </div>
+                    </div>
+                        {{form_rest(form)}}
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary pull-right">Zapisz</button>
+              </div>
+          </div>
+          <!-- /.box -->
+        </div>
+            </div>
+        </div>
+    </section>
+{% endblock body %}
+{% block stylesheets %}
+{% endblock %}
+{% block javascripts %}
+    <script src="{{asset('front-layout/lib/validate/validate.min.js')}}"></script>
+    <script type="text/javascript">
+        $('form').validate();
+    </script>
+{% endblock %}
