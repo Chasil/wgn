@@ -17,7 +17,3 @@ services:
         class: Twig_Extensions_Extension_Text
         tags:
             - { name: twig.extension }
-    app.default_controller:
-        class: App\AppBundle\Controller\DefaultController
-        arguments: [ '@service_container' ]
-        public: true
