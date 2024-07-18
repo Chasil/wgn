@@ -1,0 +1,20 @@
+<div class="row description">
+    {% if form.properties.name is defined %}
+    <div class="col-md-12">
+        <div class="form-group">
+            <label class="header">Nadaj tytuł swojego ogłoszenia * (od 20 do 75 znaków), po zapisaniu podany tytuł nie może być zmieniany.</label>
+            {{form_widget(form.properties.name,{'attr':{'data-validator':'required,length','data-validator-length':'20,75'}})}}
+            {{form_errors(form.properties.name)}}
+        </div>
+    </div>
+    {% endif %}
+    <div class="col-md-12">
+        <h2>Opis ogłoszenia*</h2>
+    </div>
+     <div class="col-md-12">
+        <div class="form-group">
+            {{form_widget(form.properties.description,{'attr':{'data-validator':'required'}})}}
+            {{form_errors(form.properties.description)}}
+        </div>
+    </div>
+</div>

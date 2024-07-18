@@ -1,0 +1,31 @@
+services:
+    user.manager:
+        class: App\UserBundle\Services\UserManager
+        arguments: [@service_container, @security.context]
+    user.report_manager:
+        class: App\UserBundle\Services\ReportManager
+        arguments: [@templating, @user.manager,@tfox.mpdfport]
+    user.auth_handler:
+        class: App\UserBundle\Handler\Auth
+        arguments: [@router,@service_container]
+    user.activity_listener:
+        class: App\UserBundle\EventListener\ActivityListener
+        arguments: [@service_container]
+        tags:
+          - { name: kernel.event_listener, event: kernel.controller, method: onCoreController }
+    user.security.authentication_failure_event_listener:
+        class: App\UserBundle\EventListener\AuthenticationListener
+        arguments: [@user.manager]
+        tags:
+            - { name: kernel.event_listener, event: security.authentication.failure, method: onAuthenticationFailure }
+
+    user.security.interactive_login_listener:
+        class: App\UserBundle\EventListener\AuthenticationListener
+        arguments: [@user.manager]
+        tags:
+            - { name: kernel.event_listener, event: security.interactive_login, method: onAuthenticationSuccess }
+    user.twig.function_extension:
+        class: App\UserBundle\Twig\FunctionExtension
+        arguments: []
+        tags:
+            - { name: twig.extension }

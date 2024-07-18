@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  {% if size != 'xl' %}
+      <link rel="stylesheet" href="{{domain}}{{asset('front-layout/css/embed/reset.css')}}">
+  {% endif %}
+
+    <link rel="stylesheet" href="{{domain}}{{asset('front-layout/css/embed/main.css')}}">
+    <style>
+        #search-box label,#advanced-search.more,#search-on-map {
+                color: {{getSettings('searchTextColor')}};
+            }
+            #search-bottom .btn-success, #search-bottom .btn-success:visited{
+                background-color: {{getSettings('searchButtonBgColor')}};
+                border-color: {{getSettings('searchButtonBgColor')}};
+                color: {{getSettings('searchButtonTextColor')}};
+            }
+            #search-bottom .btn-success:hover, #search-bottom .btn-success:active, #search-bottom .btn-success:focus {
+                background-color: {{getSettings('searchButtonHoverBgColor')}};
+                border-color: {{getSettings('searchButtonHoverBgColor')}};
+            }
+    </style>
+</head>
+<body>
+{% if size !='xl' %}
+<div class="wgn-search-box {% if size == 'm' %}size2{% elseif size=='l' %}size3{% endif %}">
+  <div class="wgn-search-box-logo"></div>
+  <div class="wgn-search-box-text">znajdź nieruchomość
+w 3 sekundy</div>
+    <ul class="wgn-search-box-list">
+      <li><a href="{{path('frontend_offer_list',{'search':{'category':1,'country':1,'currency':1}})}}" target="blank" title="mieszkania">mieszkania</a></li>
+      <li><a href="{{path('frontend_offer_list',{'search':{'category':2,'country':1,'currency':1}})}}" target="blank" title="domy">domy</a></li>
+      <li><a href="{{path('frontend_offer_list',{'search':{'category':3,'country':1,'currency':1}})}}" target="blank" title="działki">działki</a></li>
+      <li><a href="{{path('frontend_offer_list',{'search':{'category':4,'country':1,'currency':1}})}}" target="blank" title="lokale">lokale</a></li>
+      <li><a href="{{path('frontend_offer_list',{'search':{'category':5,'country':1,'currency':1}})}}" target="blank" title="komercyjne">komercyjne</a></li>
+      <li><a href="{{path('frontend_offer_list',{'search':{'category':6,'country':1,'currency':1}})}}" target="blank" title="garaże">garaże</a></li>
+    </ul>
+  <div class="wgn-clear"></div>
+</div>
+{% else %}
+<form method="GET" action="{{domain}}{{ form.vars.action}}" id="search-box-form" class="hidden-sm hidden-xs" novalidate>
+<div class="container hidden-print embed xl" id="search-box">
+    <div class="wgn-search-box-logo"></div><div class="wgn-search-box-text">znajdź nieruchomość w 3 sekundy</div>
+    <div id="search-container" class="bg-gray">
+        <div id="search-left-column">
+            <div id="row-top">
+                <div class="field-type">
+                    <label>Typ nieruchomości</label>
+                    <div class="form-group">
+                        <div class="pretty-select">{{form_widget(form.category)}}</div>
+                    </div>
+                </div>
+                <div class="field-transaction">
+                    <label>Transakcja</label>
+                    <div class="form-group">
+                         <div class="pretty-select">{{form_widget(form.transactionType)}}</div>
+                    </div>
+                </div>
+                <div class="field-country">
+                    <div class="form-group">
+                        <label>Kraj</label>
+                         <div class="pretty-select">{{form_widget(form.country)}}</div>
+                    </div>
+                </div>
+                <div class="field-location">
+                    <label>Lokalizacja</label>
+                    <div class="form-group">
+                        <div class="input-group">
+                             {{form_widget(form.locationIndexLike,{'attr':{'placeholder':'miejscowość, dzielnica, ulica','autocomplete':'off'}})}}
+                            <span class="input-group-btn">
+                                <div class="pretty-select">{{form_widget(form.distance,{'attr':{'class':'btn'}})}}</div>
+                            </span>
+                        </div>
+                        <div id="l-suggestions"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="row-bottom">
+                        <div class="field-price">
+                            <label>Cena</label>
+                            <div class="form-group from" id="price-from">
+                                {{form_widget(form.priceDefFrom,{'attr':{'placeholder':'od','autocomplete':'off'}})}}
+                            </div>
+                            <div class="form-group to">
+                                {{form_widget(form.priceDefTo,{'attr':{'placeholder':'do','autocomplete':'off'}})}}
+                            </div>
+                            <div class="form-group currency">
+                                <div class="pretty-select">{{form_widget(form.currency)}}</div>
+                            </div>
+                        </div>
+                        <div class="field-squere">
+                            <label>Powierzchnia w m&sup2;</label>
+                            <div class="form-group from">
+                                {{form_widget(form.squereFrom,{'attr':{'placeholder':'od','autocomplete':'off'}})}}
+                            </div>
+                            <div class="form-group to">
+                                {{form_widget(form.squereTo,{'attr':{'placeholder':'do','autocomplete':'off'}})}}
+                            </div>
+                        </div>
+                        <div class="rooms-fields {% if app.request.get('search[category]', null, true) > 2%}hidden{% endif %}">
+                            <label>Liczba pokoi</label>
+                                <div class="form-group from">
+                                    {{form_widget(form.roomsFrom,{'attr':{'placeholder':'od','autocomplete':'off'}})}}
+                                </div>
+                                <div class="form-group to">
+                                    {{form_widget(form.roomsTo,{'attr':{'placeholder':'do','autocomplete':'off'}})}}
+                                </div>
+                        </div>
+                        <div class="type-fields {% if app.request.get('search[category]', null, true) < 3%}hidden{% endif %}">
+                            <label>Rodzaj działki</label>
+                            <div class="form-group">
+                                    {{form_widget(form.type)}}
+                            </div>
+                        </div>
+
+            </div>
+        </div>
+        <div id="search-right-column">
+            <a href="{{domain}}{{path('frontend_offers_on_map')}}" id="search-on-map" title="Szukaj na mapie">Szukaj<br/> na mapie</a>
+        </div>
+    </div>
+    <div class="progress">
+                <div class="progress-bar progress-bar-primary" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                  <span class="sr-only">0% Complete (success)</span>
+                </div>
+     </div>
+    <div id="search-advanced-options" class="hidden-xs">
+
+        <div id="search-advanced-options-container"></div>
+        <div class="clearfix"></div>
+    </div>
+    <div id="search-bottom">
+        <button class="btn btn-success wgn-main-find-btn">Szukaj</button>
+    </div>
+
+    </div>
+{{ form_end(form, {'render_rest': false}) }}
+{% endif %}
+    <script>
+        var suggestionsUrl = '{{domain}}{{path('frontend_location_autocomplete')}}';
+        var searchAdvancedFormUrl = '{{domain}}{{path('frontend_search_advanced_form',app.request.query.all)}}';
+        var availableCountriesUrl = '{{domain}}{{path('frontend_available_countries')}}';
+    </script>
+    <script src="{{domain}}{{asset('/front-layout/lib/numberformat/jquery.number.min.js')}}"></script>
+<script src="{{domain}}{{asset('front-layout/js/app.js')}}"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% if offers | length >0 %}
+    <div class="similar-offers  hidden-print">
+        <h3>{{ title }}</h3>
+        <div class="row">
+            {% for item in offers %}
+                <div class="{{ class }} item">
+                    <div class="border-bottom">
+                        <a href="{{offerUrl(item)}}" title="{{item.name}}">
+                            <div class="main-photo">
+                                {% if item.mainPhoto !='' %}
+                                    <img src="{{('/uploads/offers/'~item.id~'/'~item.mainPhoto) |imagine_filter('offer_thumbnails') }}" alt="{{item.name}}"/>
+                                {% endif %}
+                            </div>
+                            <div class="data">
+                                <h4>{{item.name |  truncate(15, true,'')}}</h4>
+                                <h5>{{item.city}} {{item.street | slice(0,18)}}</h5>
+                                <p class="pull-left">{{item.squere}} m&sup2;</p>
+                                <p class="pull-right">{{item.price| number_format(0, ',', ' ')}} {% if item.currency.symbol is defined  %}{{item.currency.symbol}}{% endif %}</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endif %}

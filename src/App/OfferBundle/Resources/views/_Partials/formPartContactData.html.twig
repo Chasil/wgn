@@ -1,0 +1,26 @@
+<div class="row contact">
+    <div class="col-md-12">
+        <h2>Dane kontaktowe publikowane w ogłoszeniu</h2>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label>Imię i nazwisko</label>
+            {{form_widget(form.properties.contactPerson)}}
+            {{form_errors(form.properties.contactPerson)}}
+        </div>
+    </div>
+     <div class="col-md-6">
+        <div class="form-group">
+            <label>E-mail*</label>
+            {{form_widget(form.properties.email,{'attr':{'data-validator':'required,email'}})}}
+            {{form_errors(form.properties.email)}}
+        </div>
+    </div>
+     <div class="col-md-6">
+        <div class="form-group">
+            <label>Telefon kontaktowy</label>
+            {{form_widget(form.properties.phone)}}
+            {{form_errors(form.properties.phone)}}
+        </div>
+    </div>
+</div>

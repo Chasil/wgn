@@ -1,0 +1,15 @@
+<div class="col-md-12 search-list
+{% if app.request.get('_route') == 'frontend_offer_search_url'
+    or app.request.get('_route') == 'frontend_offer_search_url_with_location'
+    or app.request.get('_route') == 'frontend_offer_search_url_agent'
+    or app.request.get('_route') == 'frontend_offer_search_url_agent_with_location'
+    or app.request.get('_route') == 'frontend_offer_list_agent'
+    or app.request.get('_route') == 'frontend_offer_list_office'
+%}blue{% endif %}">
+    <h3>{% if app.request.get('_route') == 'frontend_offer_search_url' %} Sprawdź też inne nieruchomości w innych miastach{% else %}Sprawdź najnowsze oferty w serwisie{% endif %}</h3>
+        <div class="row search-list-links" style="display:block;">
+            {% for offer in offers %}
+                <a href="{{offerUrlFromArray(offer)}}" title="{{offer.name}}">{{offer.name}}</a>
+            {% endfor %}
+        </div>
+</div>

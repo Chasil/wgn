@@ -1,0 +1,5 @@
+Nazwa;Miasto;E-mail;Telefon;Gsm;Fax;www
+{% for office in offices %}
+{{office.displayName}};{{office.defaultAddress.city}};{{office.email}};{{office.phone}};{{office.mobile}};{{office.fax}};{{office.www}}
+{% endfor %}
+

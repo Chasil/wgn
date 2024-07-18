@@ -1,0 +1,125 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&subset=latin,latin-ext);
+@charset "utf-8";
+html, body {
+	font-family: 'Roboto', Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 300;
+	color: #535353;
+	margin: 0;
+	padding: 0;
+	background-color: #ffffff;
+}
+div {
+	position: relative;
+}
+h1 {
+	float: left;
+	width: 247px;
+	height: 69px;
+	padding: 0px;
+	overflow: hidden;
+	margin: 28px 0 0 30px;
+}
+#ask {
+	float: left;
+	height: 440px;
+	width: 600px;
+}
+form {
+	padding: 0;
+	float: left;
+	width: 520px;
+	margin-top: 0;
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: 40px;
+}
+input, textarea, select {
+	font-family: 'Roboto', Arial, Helvetica, sans-serif;
+	font-size: 14px;
+	font-style: normal;
+	font-weight: 300;
+	color: #535353;
+	vertical-align: middle;
+	border-radius: 5px;
+}
+ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	float: left;
+}
+fieldset {
+	border: none;
+	margin: 0;
+	padding: 0;
+}
+li {
+	display: block;
+	height: 30px;
+	padding: 5px 0 5px 0;
+	clear: left;
+}
+label {
+	float: left;
+	display: block;
+	width: 130px;
+	font-size: 12px;
+	line-height: 30px;
+	text-align: right;
+	color: #a0a0a0;
+	text-transform: uppercase;
+	padding: 0px 10px 0 0;
+}
+input {
+	float: left;
+	width: 340px;
+	height: 24px;
+	padding: 3px;
+	display: block;
+	border: 1px solid #c8c8c8;
+}
+textarea {
+	float: left;
+	width: 340px;
+	height: 118px;
+	padding: 3px;
+	display: block;
+	border: 1px solid #c8c8c8;
+}
+input#wyslij {
+	float: right;
+	font-size: 14px;
+	line-height: 34px;
+	font-weight: 300;
+	color: #ffffff;
+	background-color: #2a8ec6;
+	text-align: center;
+	display: block;
+	width: 120px;
+	height: 34px;
+	text-transform: uppercase;
+	border-style: none;
+	cursor: pointer;
+	padding: 0;
+	margin-top: 4px;
+	margin-right: 0;
+	margin-bottom: 0;
+	margin-left: 0;
+}
+#ask h2 {
+	font-family: 'Roboto', Arial, Helvetica, sans-serif;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 300;
+	color: #00aeff;
+	margin-top: 25px;
+	margin-right: 0px;
+	margin-bottom: 20px;
+	margin-left: 0px;
+}
+#ask p {
+	text-align: center;
+	margin: 0px;
+}

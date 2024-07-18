@@ -1,0 +1,8 @@
+app_archiv_homepage:
+    path:     /
+    host:     "archiwum.{domain}"
+    defaults:
+        _controller: AppArchiveBundle:FrontPage:show
+        domain: '%domain%'
+    requirements:
+        domain: '%domain%'

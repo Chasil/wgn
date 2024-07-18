@@ -1,0 +1,69 @@
+{% extends "AppBackOfficeBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <section class="content-header">
+      <h1>
+        Blogi
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#" title="Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Blogi</li>
+      </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            {% include 'AppBackOfficeBundle:_Partials:flashMessage.html.twig' %}
+            <div class="col-md-12">
+            <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title pull-right"><a href="{{path('backoffice_blog_add')}}" class="btn btn-success btn-flat" title="Dodaj Blog"><i class="fa fa-plus"></i> Dodaj Blog</a></h3>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body scroll">
+              <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Nazwa</th>
+                            <th width="150" {% if blogs.isSorted('d.category') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(blogs, 'Kategoria', 'd.category') }}</th>
+                            <th width="150" {% if blogs.isSorted('d.transactionType') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(blogs, 'Typ transakcji', 'd.transactionType') }}</th>
+                            <th width="100" {% if blogs.isSorted('d.city') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(blogs, 'Miasto', 'd.city') }}</th>
+                            <th width="250">Opcje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for blog in blogs %}
+                        <tr class="odd gradeX">
+                            <td>{{blog.name}}</td>
+                            <td>{{blog.category}}</td>
+                            <td>{{blog.transactionType}}</td>
+                            <td>{{blog.city}}</td>
+                            <td>
+                                <a href="{{path('backoffice_blog_articles_list',{'id':blog.id})}}" class="btn btn-primary btn-flat"  data-toggle="tooltip" data-placement="top" title="lista artykułów"> <i class="fa fa-list"></i></a>
+                                <a href="{{path('backoffice_blog_edit',{'id':blog.id})}}" class="btn btn-primary btn-flat"  data-toggle="tooltip" data-placement="top" title="edycja"> <i class="fa fa-edit"></i></a>
+                                <a href="#" data-href="{{path('backoffice_blog_delete',{'id':blog.id})}}"  data-toggle="tooltip" data-placement="top" title="Usuń" class="btn btn-danger btn-flat" data-show-modal="delete"> <i class="fa fa-trash-o"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+            {{ knp_pagination_render(blogs) }}
+            </div>
+          </div>
+            </div>
+                <!-- /.col-lg-12 -->
+        </div>
+    </section>
+{% include 'AppBackOfficeBundle:_Partials:modalDelete.html.twig' %}
+{% endblock body %}
+{% block javascripts %}
+    <script>
+    $('a[data-show-modal="delete"]').on('click',function(){
+        $('#confirm-delete').find('.danger').attr('href', $(this).data('href'));
+        $('#confirm-delete').modal();
+    });
+    </script>
+{% endblock %}
+
+

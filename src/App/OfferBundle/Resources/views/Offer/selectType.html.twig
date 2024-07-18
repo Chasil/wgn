@@ -1,0 +1,68 @@
+{% extends "AppFrontPageBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <div class="new-offer">
+        <div class="col-md-12 no-padding">
+            <div class="message info red">Dodaj ogłoszenie  a TWOJA OFERTA ukaże się równolegle na ponad 50 portalach partnerskich.  <br>Koszt 11,07 zł, czas emisji 90 dni. <a href="https://wgn.pl/artykuly/wprowadzanie-ofert-na-wgnpl-poprzez-sms-lub-abonament-prenumerata/22454,wykaz-portali-partnerskich-wgnpl.html" target="_blank">Wykaz portali na których ukażą się oferty.</a></div>
+            <div class="progress-bar top bg-gray">
+                <div class="col-md-1 col-xs-4 no-padding bg-green arrow-right"><h2>Etap I.</h2></div>
+                <div class="col-md-4 col-xs-7">
+                    <h3>Forma transakcji &nbsp;&nbsp;Chcę</h3>
+                </div>
+                <div class="col-md-7 col-xs-12 radio-inline-group">
+                        <label class="radio-inline">
+                            <input type="radio" name="transactionType" checked="checked" value="1"> sprzedać
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="transactionType" value="2"> kupić
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="transactionType" value="3"> wynająć
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="transactionType" value="4"> nająć
+                        </label>
+                </div>
+            </div>
+            <div class="progress-bar bg-gray">
+                <div class="col-md-1 col-xs-4 no-padding bg-green arrow-right"><h2>Etap II.</h2></div>
+                <div class="col-md-10 col-xs-7"><h3>Wybierz kategorię nieruchomości</h3></div>
+            </div>
+            <div id="accordion-container">
+            <div class="accordion" role="tablist" aria-multiselectable="true">
+                {% for category in categories %}
+                <div class="panel col-md-4  col-xs-6 offer-category">
+                    <div role="tab" id="category-{{loop.index}}">
+                        <a class="collapsed" role="button" data-toggle="collapse" data-parent=".row.accordion" href="#category-types-{{loop.index}}" aria-expanded="false" aria-controls="category-types-{{loop.index}}" title="{{category.name}}">
+                        {{category.name}}
+                        </a>
+                    </div>
+                    <ul id="category-types-{{loop.index}}" class="collapse" role="tabpanel" aria-labelledby="category-{{loop.index}}">
+                        {% for type in category.publishedTypes %}
+                            <li><a href="{{path('frontend_offer_add_step_2',{'type':type.id})}}" data-type="{{type.id}}" title="{{type.name}}">{{type.name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                    {%if loop.index % 3 == 0 and not loop.last %}
+                        </div><div class="accordion">
+                    {% endif %}
+                {% endfor %}
+                </div>
+            </div>
+            <div class="progress-bar bottom bg-gray">
+                <div class="col-md-9"></div>
+                <div class="col-md-3 no-padding">
+                    <button class="next bg-green pull-right" data-href="{{path('frontend_offer_add_step_2')}}"><img src="{{asset('front-layout/gfx/icons/arrow.jpg')}}" alt="dalej" class="img-responsive"/>Dalej</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{asset('front-layout/js/add-offer-step-1.js')}}"></script>
+{% endblock %}
+{%block metaDescription %}Dodaj Ofertę &#9989; Ponad 60 000 Ofert. &#9989; 27 Lat Doświadczenia na Rynku Polskim i Zagranicznym &#9989; Niemal 70 Biur Nieruchomości w Całej Polsce. Sprawdź Teraz i Zadzwoń »{% endblock %}
+{%block ogDescription %}Dodaj Ofertę &#9989; Ponad 60 000 Ofert. &#9989; 27 Lat Doświadczenia na Rynku Polskim i Zagranicznym &#9989; Niemal 70 Biur Nieruchomości w Całej Polsce. Sprawdź Teraz i Zadzwoń »{% endblock %}
+{%block twitterDescription %}Dodaj Ofertę &#9989; Ponad 60 000 Ofert. &#9989; 27 Lat Doświadczenia na Rynku Polskim i Zagranicznym &#9989; Niemal 70 Biur Nieruchomości w Całej Polsce. Sprawdź Teraz i Zadzwoń »{% endblock %}
+{%block pageTitle %}Dodaj Ofertę. Mieszkania na Sprzedaż - Ogłoszenia Nieruchomości WGN{%endblock%}
+{%block ogTitle %}Dodaj Ofertę. Mieszkania na Sprzedaż - Ogłoszenia Nieruchomości WGN{% endblock %}
+{%block twitterTitle %}Dodaj Ofertę. Mieszkania na Sprzedaż - Ogłoszenia Nieruchomości WGN{% endblock %}

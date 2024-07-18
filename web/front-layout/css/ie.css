@@ -1,0 +1,17 @@
+.pretty-select {
+    width: 100%;
+    overflow: hidden;
+    background: none;
+    border-radius: 2px;
+    padding-left: 0;
+    background-image: none;
+}
+
+.pretty-select select {
+    background: #fff;
+    line-height: 1 !important;
+    border: 0;
+    padding-left: 8px !important;
+}
+#search-box .input-group-btn select,
+#search-box select.form-control{padding-right:3px !important;}

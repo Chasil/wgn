@@ -1,0 +1,52 @@
+services:
+    offer.manager:
+        class: App\OfferBundle\Services\OfferManager
+        arguments: [@service_container]
+    search.manager:
+        class: App\OfferBundle\Services\SearchManager
+        arguments: [@service_container]
+    message.manager:
+        class: App\OfferBundle\Services\MessageManager
+        arguments: [@service_container]
+    observed.manager:
+        class: App\OfferBundle\Services\ObservedManager
+        arguments: [@service_container]
+    app.offer_voter:
+        class: App\OfferBundle\Security\OfferVoter
+        arguments: [@security.access.decision_manager]
+        tags:
+            - { name: security.voter }
+    app.message_voter:
+        class: App\OfferBundle\Security\MessageVoter
+        arguments: [@security.access.decision_manager]
+        tags:
+            - { name: security.voter }
+        public: false
+    offer.report_manager:
+        class: App\OfferBundle\Services\ReportManager
+        arguments: [@templating, @offer.manager,@tfox.mpdfport]
+    offer_category_description.manager:
+        class: App\OfferBundle\Services\OfferCategoryDescriptionManager
+        arguments: [@doctrine.orm.entity_manager, @knp_paginator,@request_stack, @doctrine_cache.providers.main_cache, @service_container]
+    offer.twig.function_extension:
+        class: App\OfferBundle\Twig\FunctionExtension
+        arguments: [@service_container]
+        tags:
+            - { name: twig.extension }
+    offer.twig.filter_extension:
+        class: App\OfferBundle\Twig\FilterExtension
+        arguments: [@service_container]
+        tags:
+            - { name: twig.extension }
+
+    offer.link.manager:
+        class: App\OfferBundle\Services\LinkManager
+        arguments: [@doctrine.orm.entity_manager,@request_stack,@knp_paginator]
+
+    block.offer_current_offers:
+        class: App\OfferBundle\Services\Block\CurrentOffers
+        arguments: [@service_container]
+
+    block.offer_archived_offers:
+        class: App\OfferBundle\Services\Block\ArchivedOffers
+        arguments: [@service_container]

@@ -1,0 +1,38 @@
+backoffice_ad_add:
+    path: /backoffice/ad/add
+    defaults: { _controller: AppAdBundle:Ad:add }
+
+backoffice_ad_edit:
+    path: /backoffice/ad/edit/{id}
+    defaults: { _controller: AppAdBundle:Ad:edit }
+
+backoffice_ad_delete:
+    path: /backoffice/ad/delete/{id}
+    defaults: { _controller: AppAdBundle:Ad:delete }
+
+backoffice_ads_list:
+    path: /backoffice/ads/list/
+    defaults: { _controller: AppAdBundle:Ad:list }
+
+backoffice_ad_position_add:
+    path: /backoffice/ad/position/add
+    defaults: { _controller: AppAdBundle:Position:add }
+
+backoffice_ad_position_edit:
+    path: /backoffice/ad/position/edit/{id}
+    defaults: { _controller: AppAdBundle:Position:edit }
+
+backoffice_ad_position_delete:
+    path: /backoffice/ad/position/delete/{id}
+    defaults: { _controller: AppAdBundle:Position:delete }
+
+backoffice_ad_positions_list:
+    path: /backoffice/ads/positions/list/
+    defaults: { _controller: AppAdBundle:Position:list }
+backoffice_ad_change_order:
+    path:     /backoffice/ad/{id}/order/{direction}
+    defaults: { _controller: AppAdBundle:Ad:changeOrdering}
+
+frontend_ad_open_url:
+    path:     /ad/redirect
+    defaults: { _controller: AppAdBundle:Ad:openUrl}

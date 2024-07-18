@@ -1,0 +1,18 @@
+{% if offer.dimensions %}
+<tr>
+    <td>Wymiary</td>
+    <td>{{offer.dimensions}} m&sup2</td>
+</tr>
+{% endif %}
+{% if offer.hasFence %}
+<tr>
+    <td>Ogrodzenie</td>
+    <td>{% if offer.hasFence == 0 %}nie{% else %}tak{% endif %}</td>
+</tr>
+{% endif %}
+{% if offer.legalStatus %}
+<tr>
+    <td>Stan prawny działki</td>
+    <td>{{offer.legalStatus}}</td>
+</tr>
+{% endif %}

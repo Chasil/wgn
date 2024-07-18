@@ -1,0 +1,12 @@
+{% if offices | length > 0 %}
+    <ul>
+    {% for office in offices %}
+        {% if office.subdomain !='' %}
+            {% set url = officeSubdomain(office.subdomain) %}
+        {% else %}
+            {% set url = path('frontpage_office_show',{'id':office.id,'name':office.name|prepareUrl()}) %}
+        {% endif %}
+        <li><a href="{{url}}" title="{{office.name}}, {{office.addresses[0].street}}"><strong>{{office.name}}</strong>, {{office.addresses[0].street}}</a></li>
+    {% endfor %}
+     </ul>
+{% endif %}

@@ -1,0 +1,27 @@
+backoffice_newsletter_list:
+    path:     /backoffice/newsletter
+    defaults: { _controller: AppNewsletterBundle:Newsletter:list }
+backoffice_newsletter_sent_messages_list:
+    path:     /backoffice/newsletter/sent/messages
+    defaults: { _controller: AppNewsletterBundle:Newsletter:listSentMessages }
+backoffice_newsletter_send:
+    path:     /backoffice/newsletter/send
+    defaults: { _controller: AppNewsletterBundle:Newsletter:send }
+backoffice_newsletter_active:
+    path:     /backoffice/newsletter/active
+    defaults: { _controller: AppNewsletterBundle:Newsletter:active }
+frontend_newsletter_add:
+    path:     /newsletter.html
+    defaults: { _controller: AppNewsletterBundle:Newsletter:add }
+backoffice_newsletter_delete:
+    path:     /backoffice/newsletter/delete
+    defaults: { _controller: AppNewsletterBundle:Newsletter:delete }
+frontend_newsletter_confirm:
+    path:     /potwierdzenie-newsletter.html
+    defaults: { _controller: AppNewsletterBundle:Newsletter:confirm}
+frontend_newsletter_deactivate:
+    path:     /newsletter-wipisz.html
+    defaults: { _controller: AppNewsletterBundle:Newsletter:deactivate}
+frontend_looking_for_deactivate:
+    path:     /prenumerata-ofert-wipisz.html
+    defaults: { _controller: AppNewsletterBundle:Newsletter:deactivateLookingFor}

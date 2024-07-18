@@ -1,0 +1,18 @@
+{% if offer.floor %}
+<tr>
+    <td>Piętro</td>
+    <td>{% if offer.floor == 0 %}parter{% else %}{{offer.floor}}{% endif %}</td>
+</tr>
+{% endif %}
+{% if offer.yearOfBuilding %}
+<tr>
+    <td>Rok budowy</td>
+    <td>{{offer.yearOfBuilding}}</td>
+</tr>
+{% endif %}
+{% if offer.availableFrom %}
+<tr>
+    <td>Nieruchomość dostępna od</td>
+    <td>{{offer.availableFrom | date('d.m.Y')}}</td>
+</tr>
+{% endif %}

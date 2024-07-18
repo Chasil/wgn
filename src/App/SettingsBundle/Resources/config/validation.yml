@@ -1,0 +1,8 @@
+App\SettingsBundle\Entity\Link:
+  properties:
+    name:
+      - NotBlank: ~
+    url:
+      - NotBlank: ~
+    color:
+      - NotBlank: ~

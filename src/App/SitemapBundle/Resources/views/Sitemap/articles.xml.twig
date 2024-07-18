@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    {% for item in posts %}
+        <url>
+            <!-- test -->
+            <loc>{{domain}}{{path('frontend_article_show',{categoryName: item.category.name | prepareSitemapUrl,id:item.id,articleName:item.name | prepareSitemapUrl})}}</loc>
+            <lastmod>{{item.publishDate | date('Y-m-d')}}</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>0.8</priority>
+        </url>
+    {% endfor %}
+</urlset>

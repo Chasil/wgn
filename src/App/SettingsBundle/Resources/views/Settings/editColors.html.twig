@@ -1,0 +1,106 @@
+{% extends "AppBackOfficeBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <section class="content-header">
+      <h1>
+        Ustawienia Kolorów
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#" title="Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="#" title="Ustawienia">Ustawienia</a></li>
+        <li class="active">Kolory strony</li>
+      </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            {% include 'AppBackOfficeBundle:_Partials:flashMessage.html.twig' %}
+            <div class="col-md-12">
+                <form method="POST" action="" novalidate enctype="multipart/form-data">
+          <!-- general form elements -->
+                <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Treść</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+
+              <div class="box-body">
+                    <div class="row">
+                        <div class="form-group col-xs-6">
+                            <label>Kolor tła menu (postać szesnastkowa)</label>
+                            {{form_widget(form.menuBgColor,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.menuBgColor)}}
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label>Kolor tekstu menu (postać szesnastkowa)</label>
+                            {{form_widget(form.menuTextColor,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.menuTextColor)}}
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label>Kolor tła nagłówka h1 (postać szesnastkowa)</label>
+                            {{form_widget(form.h1Color)}}
+                            {{form_errors(form.h1Color)}}
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label>Kolor nagłówka h1 (postać szesnastkowa)</label>
+                            {{form_widget(form.h1TextColor,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.h1TextColor)}}
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label>Kolor tła wyszkiwarki (postać szesnastkowa)</label>
+                            {{form_widget(form.searchBgColor,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.searchBgColor)}}
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label>Kolor tekstu wyszkiwarki (postać szesnastkowa)</label>
+                            {{form_widget(form.searchTextColor,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.searchTextColor)}}
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label>Kolor tła przycisku wyszkiwarki (postać szesnastkowa)</label>
+                            {{form_widget(form.searchButtonBgColor,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.searchButtonBgColor)}}
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label>Kolor tła przycisku wyszkiwarki po najechaniu (postać szesnastkowa)</label>
+                            {{form_widget(form.searchButtonHoverBgColor,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.searchButtonHoverBgColor)}}
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label>Kolor tekstu przycisku wyszkiwarki (postać szesnastkowa)</label>
+                            {{form_widget(form.searchButtonTextColor,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.searchButtonTextColor)}}
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label>Kolor tła stopki (postać szesnastkowa)</label>
+                            {{form_widget(form.footerBgColor,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.footerBgColor)}}
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label>Kolor tesktu stopki (postać szesnastkowa)</label>
+                            {{form_widget(form.footerTextColor,{'attr':{'data-validator':'required'}})}}
+                            {{form_errors(form.footerTextColor)}}
+                        </div>
+                    </div>
+                    {{form_rest(form)}}
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Zapisz</button>
+              </div>
+          </div>
+          <!-- /.box -->
+        </div>
+            </div>
+        </div>
+    </section>
+{% endblock body %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('admin-layout/plugins/colorpicker/bootstrap-colorpicker.min.css')}}" />
+{% endblock %}
+{% block javascripts %}
+    <script src="{{asset('front-layout/lib/validate/validate.min.js')}}"></script>
+    <script src="{{asset('admin-layout/plugins/colorpicker/bootstrap-colorpicker.min.js')}}"></script>
+    <script>
+        $('form').validate();
+        $('form input').colorpicker({format:'hex'});
+    </script>
+{% endblock %}

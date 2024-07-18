@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    {% for offer in posts %}
+        <url>
+            <loc>{{ host_scheme }}://archiwum.{{domain_without_scheme}}{{path('frontend_offer_show',{id:offer.id,offerName:offer.name | prepareUrl})}}</loc>
+            <lastmod>{{offer.modifyDate | date('Y-m-d')}}</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>0.8</priority>
+        </url>
+    {% endfor %}
+</urlset>

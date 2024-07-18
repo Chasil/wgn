@@ -1,0 +1,13 @@
+<div class="form-group">
+    <label>sortuj od: </label>
+    <select class="form-control" data-action="changeOrder" name="order">
+        <option value="o.modifyDate_DESC" {% if app.request.get('order') == "o.modifyDate_DESC" %}selected="selected"{% endif %}>najnowszych</option>
+        <option value="o.modifyDate_ASC" {% if app.request.get('order') == "o.modifyDate_ASC" %}selected="selected"{% endif %}>najstarszych</option>
+        <option value="o.priceDef_ASC" {% if app.request.get('order') == "o.priceDef_ASC" %}selected="selected"{% endif %}>najniższej ceny</option>
+        <option value="o.priceDef_DESC" {% if app.request.get('order') == "o.priceDef_DESC" %}selected="selected"{% endif %}>najwyższej ceny</option>
+        <option value="o.priceDefm2_ASC" {% if app.request.get('order') == "o.priceDefm2_ASC" %}selected="selected"{% endif %}>najniższej ceny m&sup2;</option>
+        <option value="o.priceDefm2_DESC" {% if app.request.get('order') == "o.priceDefm2_DESC" %}selected="selected"{% endif %}>najwyższej ceny m&sup2;</option>
+        <option value="o.squere_ASC" {% if app.request.get('order') == "o.squere_ASC" %}selected="selected"{% endif %}>najmiejszej powierzchni</option>
+        <option value="o.squere_DESC" {% if app.request.get('order') == "o.squere_DESC" %}selected="selected"{% endif %}>największej powierzchni</option>
+    </select>
+</div>

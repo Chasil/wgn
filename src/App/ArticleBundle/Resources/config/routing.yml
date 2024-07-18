@@ -1,0 +1,208 @@
+backoffice_article_add:
+    path: /backoffice/article/add
+    defaults: { _controller: AppArticleBundle:Article:add }
+
+backoffice_article_edit:
+    path: /backoffice/article/edit/{id}
+    defaults: { _controller: AppArticleBundle:Article:edit }
+
+backoffice_article_save_slug:
+    path: /backoffice/article/saveSlug
+    defaults: { _controller: AppArticleBundle:Article:saveSlug }
+
+backoffice_article_delete:
+    path: /backoffice/article/delete/{id}
+    defaults: { _controller: AppArticleBundle:Article:delete }
+
+backoffice_articles_list:
+    path: /backoffice/articles/list/
+    defaults: { _controller: AppArticleBundle:Article:list }
+
+backoffice_blog_articles_list:
+    path: /backoffice/blog/articles/list/
+    defaults: { _controller: AppArticleBundle:BlogArticle:list }
+
+backoffice_blog_article_add:
+    path: /backoffice/blog/article/add/
+    defaults: { _controller: AppArticleBundle:BlogArticle:add }
+
+backoffice_blog_article_edit:
+    path: /backoffice/blog/article/edit/
+    defaults: { _controller: AppArticleBundle:BlogArticle:edit }
+
+backoffice_blog_article_delete:
+    path: /backoffice/blog/article/delete/{id}
+    defaults: { _controller: AppArticleBundle:BlogArticle:delete }
+
+backoffice_blog_list:
+    path:     /backoffice/blog/list
+    defaults: { _controller: AppArticleBundle:Blog:list}
+
+backoffice_blog_add:
+    path:     /backoffice/blog/add
+    defaults: { _controller: AppArticleBundle:Blog:add}
+backoffice_blog_edit:
+    path:     /backoffice/blog/edit
+    defaults: { _controller: AppArticleBundle:Blog:edit}
+backoffice_blog_delete:
+    path:     /backoffice/blog/delete
+    defaults: { _controller: AppArticleBundle:Blog:delete}
+backoffice_blog_article_change_publish:
+    path: /backoffice/blog/article/publish
+    defaults: { _controller: AppArticleBundle:BlogArticle:changePublish }
+
+backoffice_blog_article_change_order:
+    path:     /backoffice/blog/article/{id}/order/{direction}
+    defaults: { _controller: AppArticleBundle:BlogArticle:changeOrdering}
+
+backoffice_articles_list_modal:
+    path: /backoffice/articles/list/modal
+    defaults: { _controller: AppArticleBundle:Article:listModal }
+
+backoffice_article_change_publish:
+    path: /backoffice/article/publish
+    defaults: { _controller: AppArticleBundle:Article:changePublish }
+
+backoffice_article_category_add:
+    path: /backoffice/article/category/add
+    defaults: { _controller: AppArticleBundle:Category:add }
+
+backoffice_article_category_edit:
+    path: /backoffice/article/category/edit/{id}
+    defaults: { _controller: AppArticleBundle:Category:edit }
+
+backoffice_article_category_delete:
+    path: /backoffice/article/category/delete/{id}
+    defaults: { _controller: AppArticleBundle:Category:delete }
+
+backoffice_article_categories_list:
+    path: /backoffice/articles/categories/list/
+    defaults: { _controller: AppArticleBundle:Category:list }
+
+backoffice_article_categories_list_modal:
+    path: /backoffice/articles/categories/list/modal/
+    defaults: { _controller: AppArticleBundle:Category:listModal }
+
+backoffice_article_change_order:
+    path:     /backoffice/article/{id}/order/{direction}
+    defaults: { _controller: AppArticleBundle:Article:changeOrdering}
+
+backoffice_article_image_add:
+    path:     /backoffice/article/{id}/image/add
+    defaults: { _controller: AppArticleBundle:Image:add}
+
+backoffice_article_image_delete:
+    path:     /backoffice/article/image/delete
+    defaults: { _controller: AppArticleBundle:Image:delete}
+
+backoffice_article_images_sort:
+    path:     /backoffice/article/images/sort
+    defaults: { _controller: AppArticleBundle:Image:sort}
+
+backoffice_article_category_description_add:
+    path:     /backoffice/article/categoryDescription/add
+    defaults: { _controller: AppArticleBundle:CategoryArticleDescription:add }
+
+backoffice_article_category_description_edit:
+    path:     /backoffice/article/categoryDescription/edit
+    defaults: { _controller: AppArticleBundle:CategoryArticleDescription:edit }
+
+backoffice_article_category_description_list:
+    path:     /backoffice/article/categoryDescriptions
+    defaults: { _controller: AppArticleBundle:CategoryArticleDescription:list }
+
+backoffice_article_category_description_delete:
+    path:     /backoffice/article/categoryDescription/delete
+    defaults: { _controller: AppArticleBundle:CategoryArticleDescription:delete }
+
+frontend_article_show:
+    path:     /artykuly/{categoryName}/{id},{articleName}.html
+    defaults: { _controller: AppArticleBundle:Article:show}
+
+frontend_blog_article_search_url:
+    path:     /{transaction}/{type}/blog/{slug}.html
+    defaults: { _controller: AppArticleBundle:BlogArticle:show}
+    requirements:
+        transaction: sprzedaz|kupno|wynajem|najem
+        type:  mieszkanie|dom|dzialka|lokal|obiekt-komercyjny|garaz|nieruchomosc-komercyjna|komercyjne
+
+frontend_article_category_show:
+    path:     /artykuly/{idCategory},{categoryName}/
+    defaults: { _controller: AppArticleBundle:Category:show}
+
+frontend_articles_show_by_tag:
+    path:     /artykuly/tag/{idTag},{tagName}/
+    defaults: { _controller: AppArticleBundle:Article:listByTag}
+frontend_article_recommend:
+    path:     /artykuly/send/recommend
+    defaults: { _controller: AppArticleBundle:Article:sendRecommend}
+
+frontend_article_redirect:
+    path:     /artykuly/{category}/{id}
+    defaults: { _controller: AppArticleBundle:Article:redirect}
+
+frontend_subdomain_article:
+    path:     /{slug}.html
+    host:     "{subdomain}.{domain}"
+    defaults:
+        _controller: AppArticleBundle:BlogArticle:show
+        domain: '%domain%'
+    requirements:
+        subdomain: "^(([[:alnum:]]*-[[:alnum:]]*-[[:alnum:]-]*)*)$"
+        domain: '%domain%'
+
+######## redirect z wgn.pl
+redirect_artykul:
+    path: /i/{a},a,{legacyId},{c},{lang},{name}.html
+    defaults:
+      _controller: FrameworkBundle:Redirect:redirect
+      route: app_front_page_homepage
+      permanent: true
+redirect_artykul2:
+    path: /i/a,{b},{legacyId},{lang},{name}.html
+    defaults:
+      _controller: FrameworkBundle:Redirect:redirect
+      route: app_front_page_homepage
+      permanent: true
+redirect_tagi:
+    path: /tagi/{id}/{tagName}
+    defaults:
+      _controller: FrameworkBundle:Redirect:redirect
+      route: app_front_page_homepage
+      permanent: true
+redirect_news:
+    path: /i/n,{a},{b},{lang},{name}.html
+    defaults:
+      _controller: FrameworkBundle:Redirect:redirect
+      route: app_front_page_homepage
+      permanent: true
+redirect_news2:
+    path: /i/n,{a},{lang},{name}.html
+    defaults:
+      _controller: FrameworkBundle:Redirect:redirect
+      route: app_front_page_homepage
+      permanent: true
+redirect_i:
+    path: /i/{p}
+    defaults:
+      _controller: FrameworkBundle:Redirect:redirect
+      route: app_front_page_homepage
+      permanent: true
+redirect_rss:
+    path: /rss/{params}/{params2}.xml
+    defaults:
+      _controller: FrameworkBundle:Redirect:redirect
+      route: app_front_page_homepage
+      permanent: true
+redirect_rss2:
+    path: /rssnews/{params}
+    defaults:
+      _controller: FrameworkBundle:Redirect:redirect
+      route: app_front_page_homepage
+      permanent: true
+redirect_rss3:
+    path: /rss/{params}.xml
+    defaults:
+      _controller: FrameworkBundle:Redirect:redirect
+      route: app_front_page_homepage
+      permanent: true

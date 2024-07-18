@@ -1,0 +1,17 @@
+<div class="offices-mobile-menu hidden-md hidden-lg hidden-print">
+    <a href="#"><img src="{{ asset('front-layout/gfx/logo-white-border.gif') }}"> Biura WGN</a>
+    <div class="submenu" style="display: none;">
+        <a href="#" data-target="offices-pl">BIURA WGN W POLSCE</a>
+        <div id="offices-pl" class="offices-list" style="display: none;padding-bottom: 30px;">
+            {%  for office in offices %}
+                <a href="{{ host_scheme }}://{{ office.subdomain }}.{{ domain_without_scheme }}" class="search-office-result-row">{{ office.name }} - {{ office.addresses[0].street }}</a>
+            {%  endfor %}
+        </div>
+        <a href="#" data-target="offices-es">BIURA WGN W HISZPANII</a>
+        <div id="offices-es" class="offices-list" style="display: none;">
+            {%  for office in officesEs %}
+                <a href="{{ host_scheme }}://{{ office.subdomain }}.{{ domain_without_scheme }}" class="search-office-result-row">{{ office.name }} - {{ office.addresses[0].street }}</a>
+            {%  endfor %}
+        </div>
+    </div>
+</div>

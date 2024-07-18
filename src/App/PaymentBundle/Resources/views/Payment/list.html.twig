@@ -1,0 +1,123 @@
+{% extends "AppBackOfficeBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <section class="content-header">
+      <h1>
+        Lista Płatności
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#" title="Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Lista Płatności</li>
+      </ol>
+    </section>
+    <section class="content payments">
+        <div class="row">
+            {% include 'AppBackOfficeBundle:_Partials:flashMessage.html.twig' %}
+            <div class="col-md-12">
+            <div class="box">
+            <div class="box-header with-border">
+                <div class="col-md-12 filters no-padding-left">
+                    <form role="search" action="" method="GET" novalidate>
+                        <div class="form-group col-xs-2">
+                            <label>Typ</label>
+                            {{form_widget(form.paymentMethod)}}
+                        </div>
+                        <div class="form-group col-xs-2">
+                            <label>Status Transakcji</label>
+                            {{form_widget(form.state)}}
+                        </div>
+                        <div class="form-group col-xs-2">
+                            <label>Sygnatura Ogłoszenia</label>
+                            {{form_widget(form.signature)}}
+                        </div>
+                        <div class="form-group col-xs-1">
+                            <label>Data od</label>
+                            {{form_widget(form.dateFrom)}}
+                        </div>
+                        <div class="form-group col-xs-1">
+                            <label>Data do</label>
+                            {{form_widget(form.dateTo)}}
+                        </div>
+                        <div class="form-group col-xs-2 buttons">
+                            <button type="submit" class="btn btn-success">Szukaj</button>
+                            <a href="{{path(app.request.get('_route'))}}" class="btn btn-default" title="Wyczyść">Wyczyść</a>
+                        </div>
+                        {% include 'AppPaymentBundle:_Partials:downloadButtons.html.twig' %}
+                    </form>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body scroll">
+              <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th width="50" {% if pagination.isSorted('p.id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Id', 'p.id') }}</th>
+                            <th width="50" {% if pagination.isSorted('p.paymentMethod') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Typ', 'p.paymentMethod') }}</th>
+                            <th width="100" {% if pagination.isSorted(['p.value']) %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Kwota', ['p.value']) }}</th>
+                            <th width="250" {% if pagination.isSorted(['p.firstName','p.lastName']) %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Imię i nazwisko', ['p.firstName','p.lastName']) }}</th>
+                            <th width="200" {% if pagination.isSorted(['p.city','p.zipCode']) %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Miasto', ['p.city','p.zipCode']) }}</th>
+                            <th width="150" {% if pagination.isSorted('p.address') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Ulica', 'p.address') }}</th>
+                            <th width="150" {% if pagination.isSorted('p.state') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Status', 'p.state') }}</th>
+                            <th width="150" {% if pagination.isSorted('o.signature') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Sygnatura', 'o.signature') }}</th>
+                            <th width="150" {% if pagination.isSorted('u.username') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Login', 'u.username') }}</th>
+                            <th width="150" {% if pagination.isSorted('p.createDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Data', 'p.createDate') }}</th>
+                            <th>Opcje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for payment in pagination %}
+                        <tr class="odd gradeX">
+                            <td>{{payment.id}}</td>
+                            <td>{{paymentName(payment.paymentMethod)}}</td>
+                            <td>{{payment.value}}</td>
+                            <td>{{payment.firstName}} {{payment.lastName}}</td>
+                            <td>{% if payment.zipCode !='' %}{{payment.zipCode}},{% endif %}{{payment.city}}</td>
+                            <td>{{payment.address}}</td>
+                            <td>{{paymentStateName(payment.state)}}</td>
+                            <td>{% if payment.offer is defined and payment.offer is not null %}{{payment.offer.signature}}{% endif %}</td>
+                            <td>{% if payment.user is defined and payment.user is not null %}{{payment.user.username}}{% endif %}</td>
+                            <td>{{payment.createDate | date('d.m.Y H:i:s')}}</td>
+                            <td>
+                                <a href="#" class="btn btn-default btn-flat" data-payment-id="{{payment.id}}"  data-toggle="tooltip" data-placement="top" title="Pokaż szeczegóły"><i class="fa fa-info"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+            {{ knp_pagination_render(pagination) }}
+            </div>
+          </div>
+            </div>
+                <!-- /.col-lg-12 -->
+        </div>
+    </section>
+{% include 'AppPaymentBundle:_Partials:modalPaymentDetails.html.twig' %}
+{% include 'AppBackOfficeBundle:_Partials:modalDelete.html.twig' %}
+{% endblock body %}
+{% block javascripts %}
+    <script src="{{asset('admin-layout/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
+    <script src="{{asset('admin-layout/plugins/datepicker/locales/pl.min.js')}}"></script>
+    <script>
+     var paymentDetailsUrl = '{{path('frontpage_payment_details')}}';
+     $('#search_dateFrom').datepicker({format: 'yyyy-mm-dd',language:'pl'});
+     $('#search_dateTo').datepicker({format: 'yyyy-mm-dd',language:'pl'});
+    $('.payments a[data-payment-id]').on('click',function(e){
+    e.preventDefault();
+    $('#modal-payment-details').find('.modal-body').html('');
+    $.ajax({
+        method:'POST',
+        url:paymentDetailsUrl,
+        beforeSend:function(){
+            $('#modal-payment-details').find('.modal-body').html('<div class="loader"><i class="fa fa-spinner fa-spin fa-2x"></i></div>');
+        },
+        data:{id:$(this).attr('data-payment-id')}
+    }).done(function(data){
+        $('#modal-payment-details').find('.modal-body').html(data);
+    });
+    $('#modal-payment-details').modal();
+});
+    </script>
+{% endblock %}
+

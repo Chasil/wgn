@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    {% for sitemap in posts %}
+        <sitemap>
+            <loc>{{domain}}/{{sitemap|basename}}</loc>
+            <lastmod>{{ date().getTimestamp|date('Y-m-d\\TH:i:sP') }}</lastmod>
+        </sitemap>
+    {% endfor %}
+</sitemapindex>

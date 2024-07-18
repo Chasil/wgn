@@ -1,0 +1,7 @@
+services:
+    subscription.manager:
+        class: App\SubscriptionBundle\Services\SubscriptionManager
+        arguments: [@service_container]
+    subscription.report_manager:
+        class: App\SubscriptionBundle\Services\ReportManager
+        arguments: [@templating, @subscription.manager,@tfox.mpdfport]

@@ -1,0 +1,91 @@
+{% spaceless %}
+<div data-category="2" class="advanced-group">
+    <div class="col-md-4 no-padding">
+        <div class="form-group" data-form-part="market">
+            <label>Rynek</label>
+            <div class="pretty-select">{{form_widget(form.market)}}</div>
+        </div>
+        <div class="form-group">
+            <label>Rodzaj domu</label>
+            <div class="pretty-select">{{form_widget(form.type)}}</div>
+        </div>
+        <div class="col-md-12 no-padding-left"><label>Cena za 1m2</label></div>
+        <div class="col-md-4 no-padding">
+            <div class="form-group">
+                {{form_widget(form.priceDefm2From,{'attr':{'placeholder':'od','autocomplete':'off'}})}}
+            </div>
+        </div>
+        <div class="col-md-4 col-md-offset-1 no-padding">
+            <div class="form-group">
+                {{form_widget(form.priceDefm2To,{'attr':{'placeholder':'do','autocomplete':'off'}})}}
+            </div>
+        </div>
+        <div class="col-md-3 no-padding-right">
+                <div class="form-group">
+                    <div class="pretty-select">
+                        <select id="search_currency_house" name="search[currency]" class="form-control">
+                            <option value="1">zł</option>
+                            <option value="2">€</option>
+                            <option value="3">$</option>
+                        </select>
+                    </div>
+                </div>
+        </div>
+        <div class="form-group col-md-12 no-padding">
+            <label>Dach</label>
+            <div class="pretty-select">{{form_widget(form.roof)}}</div>
+        </div>
+    </div>
+    <div class="col-md-4 padding-2x">
+        <div class="col-md-12 no-padding-left"><label>Powierzchnia działki m&sup2;</label></div>
+        <div class="col-md-6 no-padding-left">
+            <div class="form-group">
+                {{form_widget(form.squerePlotFrom,{'attr':{'placeholder':'od','autocomplete':'off'}})}}
+            </div>
+        </div>
+        <div class="col-md-6 no-padding-right">
+            <div class="form-group">
+                {{form_widget(form.squerePlotTo,{'attr':{'placeholder':'do','autocomplete':'off'}})}}
+            </div>
+        </div>
+        <div class="form-group col-md-12 no-padding">
+            <label>Liczba kondygnacji w budynku</label>
+            <div class="pretty-select">{{form_widget(form.storeys)}}</div>
+        </div>
+        <div class="col-md-12 no-padding-left"><label>Rok budowy</label></div>
+        <div class="col-md-6 no-padding-left">
+            <div class="form-group">
+                {{form_widget(form.yearOfBuildingFrom,{'attr':{'placeholder':'od','autocomplete':'off'}})}}
+            </div>
+        </div>
+        <div class="col-md-6 no-padding-right">
+            <div class="form-group">
+                {{form_widget(form.yearOfBuildingTo,{'attr':{'placeholder':'do','autocomplete':'off'}})}}
+            </div>
+        </div>
+        <div class="form-group form-group col-md-12 no-padding">
+            <label>Stan techniczny</label>
+            <div class="pretty-select">{{form_widget(form.technicalCondition)}}</div>
+        </div>
+    </div>
+    <div class="col-md-4 no-padding">
+        <div class="form-group" data-form-part="description">
+            <label>Szukaj po słowach kluczowych w opisie</label>
+            {{form_widget(form.descriptionLike)}}
+        </div>
+        <div class="form-group" data-form-part="signature">
+            <label>Numer oferty</label>
+            {{form_widget(form.signatureLike)}}
+        </div>
+        <div data-form-part="features">
+            {{form_widget(form.mainPhotoHas)}}
+            {{form_widget(form.isDirect)}}
+            {{form_widget(form.isExclusive)}}
+        </div>
+    </div>
+    <div class="col-md-12 no-padding">
+        <h3>Dodatkowe informacje</h3>
+        {{form_widget(form.additionalInfo)}}
+    </div>
+</div>
+{% endspaceless %}

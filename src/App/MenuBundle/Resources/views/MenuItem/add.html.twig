@@ -1,0 +1,64 @@
+{% extends "AppBackOfficeBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <section class="content-header">
+      <h1>
+        {% if menuItem.id is null %}Dodaj pozycję menu{% else %} Edytuj pozycję menu: {{menuItem.name}}{% endif %}
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#" title="Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active" title="Menu">Menu</li>
+      </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            {% include 'AppBackOfficeBundle:_Partials:flashMessage.html.twig' %}
+            <div class="col-md-12">
+            <div class="box">
+            <div class="box-header with-border">
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <form method="POST" action="" novalidate>
+                    <div class="form-group">
+                        <label>Nazwa</label>
+                        {{form_widget(form.name,{'attr':{'data-validator':'required'}})}}
+                        {{form_errors(form.name)}}
+                    </div>
+                    <div class="form-group">
+                        <label>Pozycja Nadrzędna</label>
+                        {{form_widget(form.parent,{'attr':{'data-validator':'required'}})}}
+                        {{form_errors(form.parent)}}
+                    </div>
+                    {{form_rest(form)}}
+                <button type="submit" class="btn btn-primary">Zapisz</button>
+                </form>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+            </div>
+          </div>
+            </div>
+                <!-- /.col-lg-12 -->
+        </div>
+    </section>
+    {% include 'AppArticleBundle:_Partials:modalList.html.twig' %}
+    {% include 'AppArticleBundle:_Partials:modalCategoryList.html.twig' %}
+{% endblock body %}
+{% block javascripts %}
+    <script src="{{asset('front-layout/lib/validate/validate.min.js')}}"></script>
+    <script>
+        var url = '{{path(app.request.get('_route'),{'key':app.request.get('key'),'id':app.request.get('id')})}}';
+        $('#menu_item_type').on('change',function(){
+            window.location = url + '&type='+$(this).val();
+        });
+        $('#menu_item_article').on('focus',function(){
+            $('#modal-article-list').modal();
+        });
+        $('#menu_item_category').on('focus',function(){
+            $('#modal-categories-list').modal();
+        });
+        $('.box-body form').validate();
+    </script>
+{% endblock %}
+
+

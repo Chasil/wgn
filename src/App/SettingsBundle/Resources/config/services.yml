@@ -1,0 +1,16 @@
+services:
+    settings.manager:
+        class: App\SettingsBundle\Services\SettingsManager
+        arguments: [@service_container]
+
+    block.settings_company_data:
+        class: App\SettingsBundle\Services\Block\CompanyData
+        arguments: [@service_container]
+
+    myimage.manager:
+        class: App\SettingsBundle\Services\MyImageManager
+        arguments: [@service_container]
+
+    settings.link.manager:
+        class: App\SettingsBundle\Services\LinkManager
+        arguments: [@doctrine.orm.entity_manager,@request_stack,@knp_paginator]

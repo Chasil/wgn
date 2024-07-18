@@ -1,0 +1,65 @@
+{% extends "AppFrontPageBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <div class="new-offer payment">
+        <div class="col-md-12 no-padding">
+            <div class="progress-bar top bg-gray">
+                <div class="col-md-1 col-xs-3 no-padding bg-green arrow-right"><h2></h2></div>
+                <div class="col-md-11 col-xs-9">
+                    <h3>Zapłać</h3>
+                </div>
+            </div>
+            <p class="required-info">Pola oznaczone * gwiazdką są obowiązkowe</p>
+            <div class="col-md-12">
+                <form action="" method="POST" id="payment-form" novalidate>
+
+                <div class="offer-options">
+                    <h1 style="margin-left: 40%;width: 465px;text-align:left;">I. Płatność za wyróżnienie ogłoszenia</h1>
+                    <table>
+                        <tbody>
+                            {% set totalValue  = 0%}
+                            {% for item in payment.paymentItems %}
+                               {% set totalValue  = totalValue + item.value%}
+                                <tr>
+                                    <td>
+                                        Ogłoszenie {{item.offer.signature}} - Wyróżnienie oferty na 14 dni
+                                    </td>
+                                    <td>30,75 zł z VAT</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td>
+                                    Razem:
+                                </td>
+                                <td class="total"><span>{{totalValue}}</span> zł z VAT</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <h1 style="margin-left: 40%;width: 465px;text-align:left;">II. Sposób zapłaty</h1>
+                </div>
+
+                <div class="payment-methods col-md-10 col-md-offset-1">
+                    <div class="payment card {% if payment.paymentMethod =='card' %}selected{% endif %}"><div class="pull-left">{{form_widget(form.paymentMethod[0])}}</div> <div class="total pull-right"><span>{{totalValue}}</span> zł z VAT</div></div>
+                    <div class="form-group">{{form_widget(form.agreeRegulations,{'attr':{'class':'pull-left','data-validator':'required'}})}}</div>
+                    <div class="form-group">{{form_widget(form.agreeProcessingData,{'attr':{'class':'pull-left','data-validator':'required'}})}}</div>
+                    <div class="col-md-12 no-padding"><button type="submit" class="btn btn-success pull-right">Zapłać</button></div>
+                    <div class="bottom-info">
+                    <p>Nieruchomość wprowadzona na WGN.pl będzie dostępna również na ponad 100 serwisach ogłoszeniowych.:</p>
+                    <p>www.ekskluzyw.pl, www.wgnkredyty.pl, www.komercja24.pl, www.propertyjournal.pl, www.apartamentypolska.com.pl, www.mieszkaniawwarszawie.net, www.dokupna.pl, www.wynajem.pl, www.dzialki.pl, www.mieszkaniawroclaw.com.pl,www.lokalebiurowewroclaw.pl, www.samedomy.pl, www.domysprzedaz.info, www.mieszkaniasprzedaz.net,www.mieszkaniawroclawwynajem.pl, www.biurawroclaw.com.pl, www.elitarny24.pl, www.wynajemmieszkanwroclaw.com.pl, www.mieszkaniasprzedaz.com.pl</p>
+                    </div>
+                </div>
+                    {{form_rest(form)}}
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{asset('front-layout/lib/validate/validate.js')}}"></script>
+    <script>
+        var price = parseFloat($('.total span').html());
+        var promoPrice = 0;
+    </script>
+    <script src="{{asset('front-layout/js/payment.js')}}"></script>
+{% endblock %}

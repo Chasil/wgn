@@ -1,0 +1,79 @@
+{% extends "AppFrontPageBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <h5 class="text-center"><a href="https://wgn.pl/poszukuje-nieruchomosci.html" class="sold-property">Sprzedaj bezpiecznie nieruchomość z WGN</a></h5>
+    {% include 'AppFrontPageBundle:_Partials:promoOffers.html.twig' %}
+        {% include 'AppFrontPageBundle:_Partials:leftColumn.html.twig' %}
+        <div class="col-md-8 right-column front-page">
+                {{contentBloks('frontpage_right')}}
+            <div class="second-ofer-box">
+                <div class="col-md-12 no-padding hidden-xs hidden-sm">
+                    <h5 class="offers-header">Polecane nieruchomości inwestycyjne</h5>
+                    {{contentBloks('frontpage_invest')}}
+                </div>
+                <div class="col-md-12 no-padding">
+                    <h5 class="offers-header">Polecane apartamenty i luksusowe mieszkania</h5>
+                    {{contentBloks('frontpage_apartmants')}}
+                </div>
+                <div class="col-md-12 no-padding hidden-sm">
+                    <h5 class="offers-header">Polecane pałace, dworki i zamki</h5>
+                    {{contentBloks('frontpage_palace')}}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 search-list">
+        {{searchLinksBox()}}
+        </div>
+        <div class="col-md-12 search-list">
+        {{articleLinksBox()}}
+        </div>
+        <div class="col-md-12 search-list">
+            {{ categoriesLinksBox() }}
+        </div>
+        <div class="banner-bottom hidden-sm hidden-xs">{{contentBloks('frontpage_bottom')}}</div>
+
+{% endblock %}
+{% block javascripts %}
+    <script src="{{asset('front-layout/lib/slider/slider.js')}}"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('.b-slider').slider();
+        });
+        $('.search-list a[data-action]').on('click',function(e){
+            e.preventDefault();
+            var target = $(this).attr('data-target');
+            $('.search-list a.active').removeClass('active');
+            $(this).addClass('active');
+            $('.search-list-links[data-target="'+target+'"]').slideDown();
+            $('.search-list-links[data-target!="'+target+'"]').slideUp();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function(){
+            if($(window).width() < 992){
+                $("#promo-slider").slick({
+                    dots: false,
+                    arrows: false,                
+                });
+
+                $('#prev-offer').on('click', function(){
+                    $("#promo-slider").slick('slickPrev');
+                });
+
+                $('#next-offer').on('click', function(){
+                    $("#promo-slider").slick('slickNext');
+                });
+
+                // function repositionOfferOccasion(){
+                //     $('.offer-occasion').each(function(index){
+                //         $(this).css('top', -$('#promo-slider .b-box img').height());
+                //     })
+                //     setTimeout(repositionOfferOccasion, 1000);
+                // }
+                // repositionOfferOccasion();
+            }
+        })
+    </script>
+{% endblock %}

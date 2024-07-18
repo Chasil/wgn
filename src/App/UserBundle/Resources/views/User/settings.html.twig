@@ -1,0 +1,217 @@
+{% extends "AppFrontPageBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <div class="">
+        <div class="col-md-12 account settings">
+            {% include 'AppUserBundle:_Partials:accountButtons.html.twig' %}
+            <div class="clearfix"></div>
+                {% include 'AppFrontPageBundle:_Partials:flashMessage.html.twig' %}
+                <div class="row">
+                    <div class="col-md-10">
+                <form action="" method="post" id="password-form" novalidate>
+                    <div class="col-xs-12"><h5>Zmień hasło</h5></div>
+                    <div class="form-group col-md-5 {% if passwordForm.plainPassword.first.vars.errors is not empty %} has-error{%endif%}">
+                       <label for="frontend_bundle_profilebundle_user_password">Hasło</label>
+                         {{form_widget(passwordForm.plainPassword.first, { 'attr': {'class': 'form-control','data-validator':'required,length','data-validator-length':'8,'} })}}
+                               {{ form_errors(passwordForm.plainPassword.first)}}
+                    </div>
+                    <div class="form-group col-md-5{% if passwordForm.plainPassword.first.vars.errors is not empty %} has-error{%endif%}">
+                       <label for="frontend_bundle_profilebundle_user_password">Powtórz Hasło</label>
+                         {{form_widget(passwordForm.plainPassword.second, { 'attr': {'class': 'form-control','data-validator':'required,length','data-validator-length':'8,'} })}}
+                    </div>
+                {{form_rest(passwordForm)}}
+                <div class="col-md-2 no-padding">
+                    <div class="form-group has-feedback">
+                        <button type="submit" class="btn btn-success btn-block btn-flat">Zatwierdź</button>
+                    </div>
+                </div>
+                </form>
+
+                <form action="" method="post" id="email-form" novalidate>
+                <div class="col-xs-12"><h5>Zmień adres email</h5></div>
+                <div class="col-md-5">
+                    <div class="form-group {% if emailForm.email.first.vars.errors is not empty %} has-error{%endif%}">
+                       <label for="frontend_bundle_profilebundle_user_password">E-mail</label>
+                         {{form_widget(emailForm.email.first, { 'attr': {'class': 'form-control','data-validator':'required,length','data-validator-length':'8,'} })}}
+                               {{ form_errors(emailForm.email.first)}}
+                    </div>
+                </div>
+                <div class="col-md-5">
+                    <div class="form-group {% if emailForm.email.first.vars.errors is not empty %} has-error{%endif%}">
+                       <label for="frontend_bundle_profilebundle_user_password">Powtórz Email</label>
+                         {{form_widget(emailForm.email.second, { 'attr': {'class': 'form-control','data-validator':'required,length','data-validator-length':'8,'} })}}
+                    </div>
+                </div>
+                {{form_rest(emailForm)}}
+                <div class="col-md-2 no-padding">
+                    <div class="form-group has-feedback">
+                        <button type="submit" class="btn btn-success btn-block btn-flat">Zatwierdź</button>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <p>* obowiązkowe</p>
+                </div>
+                </form>
+            </div>
+                </div>
+            <div class="row">
+                <div class="col-md-10">
+                    <form action="" method="post" id="address-form" novalidate>
+                    <div class="col-xs-12">
+                        <div class="border-top"></div>
+                        <h5>Dane Kontaktowe</h5>
+                    </div>
+                    <div class="col-md-4 no-padding-right">
+                        <div class="form-group {% if addressForm.name.vars.errors is not empty %} has-error{%endif%}">
+                           <label for="frontend_bundle_profilebundle_user_password">Nazwa firmy/ instytucji</label>
+                             {{form_widget(addressForm.name, { 'attr': {'class': 'form-control','data-validator':'required'} })}}
+                                   {{ form_errors(addressForm.name)}}
+                        </div>
+                    </div>
+                    <div class="col-md-4 no-padding-right">
+                        <div class="form-group {% if addressForm.street.vars.errors is not empty %} has-error{%endif%}">
+                           <label for="frontend_bundle_profilebundle_user_password">Ulica i nr budynku /lokalu</label>
+                             {{form_widget(addressForm.street, { 'attr': {'class': 'form-control','data-validator':'required'} })}}
+                                   {{ form_errors(addressForm.street)}}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group {% if addressForm.city.vars.errors is not empty %} has-error{%endif%}">
+                           <label for="frontend_bundle_profilebundle_user_password">Miasto</label>
+                             {{form_widget(addressForm.city, { 'attr': {'class': 'form-control','data-validator':'required'} })}}
+                                   {{ form_errors(addressForm.city)}}
+                        </div>
+                    </div>
+                    <div class="col-md-4 no-padding-right">
+                        <div class="form-group {% if addressForm.zipCode.vars.errors is not empty %} has-error{%endif%}">
+                           <label for="frontend_bundle_profilebundle_user_password">Kod pocztowy</label>
+                             {{form_widget(addressForm.zipCode, { 'attr': {'class': 'form-control','data-validator':'required'} })}}
+                                   {{ form_errors(addressForm.zipCode)}}
+                        </div>
+                    </div>
+                    <div class="col-md-4 no-padding-right">
+                        <div class="form-group {% if addressForm.phone.vars.errors is not empty %} has-error{%endif%}">
+                           <label for="frontend_bundle_profilebundle_user_password">Telefon</label>
+                             {{form_widget(addressForm.phone, { 'attr': {'class': 'form-control','data-validator':'required'} })}}
+                                   {{ form_errors(addressForm.phone)}}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group {% if addressForm.phone2.vars.errors is not empty %} has-error{%endif%}">
+                           <label for="frontend_bundle_profilebundle_user_password">Telefon nr 2</label>
+                             {{form_widget(addressForm.phone2, { 'attr': {'class': 'form-control','data-validator':'required'} })}}
+                                   {{ form_errors(addressForm.phone2)}}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                         <label for="frontend_bundle_profilebundle_user_password">Godziny pracy biura (PN - PT)</label>
+                         <div class="row">
+                            <div class="form-group col-md-6 no-padding-right {% if addressForm.openFrom.vars.errors is not empty %} has-error{%endif%}">
+                                 {{form_widget(addressForm.openFrom, { 'attr': {'class': 'form-control','data-validator':'required'} })}}
+                                       {{ form_errors(addressForm.openFrom)}}
+                            </div>
+                             <div class="form-group col-md-6 no-padding-right {% if addressForm.openFrom.vars.errors is not empty %} has-error{%endif%}">
+                                 {{form_widget(addressForm.openTo, { 'attr': {'class': 'form-control','data-validator':'required'} })}}
+                                       {{ form_errors(addressForm.openTo)}}
+                             </div>
+                         </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group {% if addressForm.email.vars.errors is not empty %} has-error{%endif%}">
+                           <label for="frontend_bundle_profilebundle_user_password">Adres Email nr 2</label>
+                             {{form_widget(addressForm.email, { 'attr': {'class': 'form-control','data-validator':'required'} })}}
+                                   {{ form_errors(addressForm.email)}}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group has-feedback">
+                            <button type="submit" class="btn btn-success btn-block btn-flat">Zatwierdź</button>
+                        </div>
+                    </div>
+                    {{form_rest(addressForm)}}
+                    </form>
+                </div>
+                <div class="col-md-2 avatar-form">
+                    Dodaj logo / swoje zdjęcie
+                    <div class="avatar-img-container">
+                    {% if user.avatar is defined and user.avatar !=''%}
+                        <img src="{{('/uploads/avatar/'~user.id~'/'~user.avatar) |imagine_filter('avatar_offer') }}" alt="" class="img-responsive upload-img"/>
+                        <a href="#" data-action="deleteAvatar" title="Usuń zdjęcie">Usuń zdjęcie</a>
+                    {% else %}
+                        <div class="no-img upload-img"></div>
+                    {% endif %}
+                        <div class="loader hidden"><i class="fa fa-spinner fa-spin fa-2x"></i></div>
+                    </div>
+                    <form>
+                        {{form_widget(avatarForm.file, { 'attr': {'class': 'hidden'} })}}
+
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-10">
+                    <form action="" method="post" id="company-form" novalidate>
+                    <div class="col-xs-12">
+                        <div class="border-top"></div>
+                        <h5>Dane do faktury</h5>
+                        <p style="color:red">Jeśli dokonujesz płatności przelewem online, karta lub zwykłym przelewem (nie sms) i chcesz otrzymać fakturę VAT z tytułu zakupu usług np. emisji ogłoszenia standardowego,zakupu pakietu ogłoszeń, zakupu wyróżnień, musisz teraz wypełnić dane do FVAT. </p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group {% if compnayDataForm.name.vars.errors is not empty %} has-error{%endif%}">
+                           <label for="frontend_bundle_profilebundle_user_password">Nazwa firmy/ instytucji</label>
+                             {{form_widget(compnayDataForm.name, { 'attr': {'class': 'form-control','data-validator':'required'} })}}
+                                   {{ form_errors(compnayDataForm.name)}}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group {% if compnayDataForm.nip.vars.errors is not empty %} has-error{%endif%}">
+                           <label for="frontend_bundle_profilebundle_user_password">NIP</label>
+                             {{form_widget(compnayDataForm.nip, { 'attr': {'class': 'form-control','data-validator':'required'} })}}
+                                   {{ form_errors(compnayDataForm.nip)}}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group {% if compnayDataForm.address.street.vars.errors is not empty %} has-error{%endif%}">
+                           <label for="frontend_bundle_profilebundle_user_password">Ulica i nr budynku /lokalu</label>
+                             {{form_widget(compnayDataForm.address.street, { 'attr': {'class': 'form-control','data-validator':'required'} })}}
+                                   {{ form_errors(compnayDataForm.address.street)}}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group {% if compnayDataForm.address.zipCode.vars.errors is not empty %} has-error{%endif%}">
+                           <label for="frontend_bundle_profilebundle_user_password">Kod pocztowy</label>
+                             {{form_widget(compnayDataForm.address.zipCode, { 'attr': {'class': 'form-control','data-validator':'required'} })}}
+                                   {{ form_errors(compnayDataForm.address.zipCode)}}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group {% if compnayDataForm.address.city.vars.errors is not empty %} has-error{%endif%}">
+                           <label for="frontend_bundle_profilebundle_user_password">Miejscowość</label>
+                             {{form_widget(compnayDataForm.address.city, { 'attr': {'class': 'form-control','data-validator':'required'} })}}
+                                   {{ form_errors(compnayDataForm.address.city)}}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group has-feedback">
+                            <button type="submit" class="btn btn-success btn-block btn-flat">Zatwierdź</button>
+                        </div>
+                    </div>
+                    {{form_rest(addressForm)}}
+                    </form>
+                </div>
+                <div class="col-md-2">
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{asset('front-layout/lib/validate/validate.min.js')}}"></script>
+    <script>
+        var avatarAddUrl = '{{domain}}{{path('user_account_avatar_add')}}';
+        var avatarDeleteUrl = '{{domain}}{{path('user_account_avatar_delete')}}';
+        $('#password-form').validate();
+        $('#email-form').validate();
+    </script>
+    <script src="{{asset('front-layout/js/account.js')}}"></script>
+{% endblock %}

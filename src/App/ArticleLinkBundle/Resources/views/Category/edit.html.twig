@@ -1,0 +1,48 @@
+{% extends "AppBackOfficeBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <section class="content-header">
+      <h1>
+          {% if category.id is not null %} Edycja Kategorii - {{category.name}} {% else %} Nowa Kategoria {% endif %}
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#" title="Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="#" title="Wygląd">Wygląd</a></li>
+        <li class="active">Linki</li>
+      </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-8">
+                <form method="POST" action="" novalidate enctype="multipart/form-data">
+          <!-- general form elements -->
+                <div class="box box-primary">
+            <div class="box-header with-border">
+              <h3 class="box-title">Treść</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+
+              <div class="box-body">
+                    <div class="form-group">
+                        <label>Nazwa</label>
+                        {{form_widget(form.name,{'attr':{'data-validator':'required'}})}}
+                    </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <button type="submit" class="btn btn-primary">Zapisz</button>
+              </div>
+          </div>
+          <!-- /.box -->
+        </div>
+            </div>
+            {{form_rest(form)}}
+        </div>
+    </section>
+    	</form>
+{% endblock body %}
+{% block javascripts %}
+    <script src="{{asset('front-layout/lib/validate/validate.min.js')}}"></script>
+    <script type="text/javascript">
+    $('form').validate();
+    </script>
+{% endblock %}

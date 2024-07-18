@@ -1,0 +1,9 @@
+services:
+    menu.manager:
+        class: App\MenuBundle\Services\MenuManager
+        arguments: [@service_container]
+    menu.twig.function_extension:
+        class: App\MenuBundle\Twig\FunctionExtension
+        arguments: [@service_container]
+        tags:
+            - { name: twig.extension }

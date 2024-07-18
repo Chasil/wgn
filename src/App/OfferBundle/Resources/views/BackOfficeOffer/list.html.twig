@@ -1,0 +1,135 @@
+{% extends "AppBackOfficeBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <section class="content-header">
+      <h1>
+        Lista Ogłoszeń
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#" title="Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Oferty</li>
+      </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            {% include 'AppBackOfficeBundle:_Partials:flashMessage.html.twig' %}
+            <div class="col-md-12">
+            <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title pull-right">
+                    <a href="#" data-show-modal="selectCategory" class="btn btn-success btn-flat" title="Dodaj Ofertę"><i class="fa fa-plus"></i> Dodaj Ofertę</a></h3>
+                <div class="col-md-12 filters no-padding">
+                    <form role="search" action="" method="GET" novalidate>
+                        <div class="form-group col-xs-1 no-padding-left">
+                            <label>Status</label>
+                            {{form_widget(form.isPublish)}}
+                        </div>
+                        <div class="form-group col-xs-1 no-padding-left">
+                            <label>Typ transakcji</label>
+                            {{form_widget(form.transactionType)}}
+                        </div>
+                        <div class="form-group col-xs-1 no-padding-left">
+                            <label>Kategoria</label>
+                            {{form_widget(form.category)}}
+                        </div>
+                        <div class="form-group col-xs-1">
+                            <label>Sygnatura</label>
+                            {{form_widget(form.signature)}}
+                        </div>
+                        <div class="form-group col-xs-2">
+                            <label>Imię i nazwisko</label>
+                            {{form_widget(form.name)}}
+                        </div>
+                        <div class="form-group col-xs-1">
+                            <label>Data od</label>
+                            {{form_widget(form.dateFrom)}}
+                        </div>
+                        <div class="form-group col-xs-1">
+                            <label>Data do</label>
+                            {{form_widget(form.dateTo)}}
+                        </div>
+                        <div class="form-group col-xs-2 buttons">
+                            <button type="submit" class="btn btn-success">Szukaj</button>
+                            <a href="{{path(app.request.get('_route'))}}" class="btn btn-default" title="Wyczyść">Wyczyść</a>
+                        </div>
+                        {% include 'AppOfferBundle:_Partials:downloadButtons.html.twig' %}
+                    </form>
+                </div>
+                    <div class="col-md-12 no-padding">
+                        <p><strong>Oferty aktywne:</strong> {{countOffers(true)}}, <strong>Oferty nieaktywne:</strong> {{countOffers(false)}}</p>
+                    </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body scroll">
+              <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th width="130">Zdjęcie</th>
+                            <th width="350" {% if pagination.isSorted('o.name') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Nazwa', 'o.name') }}</th>
+                            <th width="140" {% if pagination.isSorted('t.id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Typ Transakcji', 't.id') }}</th>
+                            <th width="140" {% if pagination.isSorted('c.id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Kategoria', 'c.id') }}</th>
+                            <th width="150" {% if pagination.isSorted('o.signature') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Sygnatura', 'o.signature') }}</th>
+                            <th width="150" {% if pagination.isSorted('o.contactPerson') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Osoba Kontaktowa', 'o.contactPerson') }}</th>
+                            <th width="100" {% if pagination.isSorted(['o.isPromo','o.promoExpire']) %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Promowane', ['o.isPromo','o.promoExpire']) }}</th>
+                            <th width="100" {% if pagination.isSorted(['o.isPublish','o.expireDate']) %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Status', ['o.isPublish','o.expireDate']) }}</th>
+                            <th width="110" {% if pagination.isSorted('o.createDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Data Dodania', 'o.createDate') }}</th>
+                            <th width="110" {% if pagination.isSorted('o.expireDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Data ważności', 'o.expireDate') }}</th>
+                            <th>Opcje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for offer in pagination %}
+                        <tr class="odd gradeX">
+                            <td>{% if offer.mainPhoto is not null %}<img src="{{('/uploads/offers/'~offer.id~'/'~offer.mainPhoto) |imagine_filter('offer_thumbnails') }}" alt="{{offer.name}}"/>{% endif %}</td>
+                            <td>{{offer.name}}</td>
+                            <td>{{offer.transactionType}}</td>
+                            <td>{{offer.category}}</td>
+                            <td>{{offer.signature}}</td>
+                            <td>{{offer.contactPerson}}</td>
+                            <td>{% if offer.isPromo and date(offer.promoExpire) > date()%}TAK{% else %}NIE{% endif %}</td>
+                            <td>{% if offer.isPublish and date(offer.expireDate) > date()%}Aktywne{% else %}Nieaktywne{% endif %}</td>
+                            <td>{{offer.createDate | date('d.m.Y')}}</td>
+                            <td>{{offer.expireDate | date('d.m.Y')}}</td>
+                            <td>
+                                {% if offer.isPublish %}
+                                    <a href="{{path('backoffice_offer_change_publish',{'id':offer.id,'publish':0})}}" class="btn btn-success btn-flat"  data-toggle="tooltip" data-placement="top" title="ukryj"> <i class="fa fa-plus"></i></a>
+                                {% else %}
+                                    <a href="{{path('backoffice_offer_change_publish',{'id':offer.id,'publish':1})}}" class="btn btn-danger btn-flat"  data-toggle="tooltip" data-placement="top" title="pokaż"> <i class="fa fa-minus"></i></a>
+                                {% endif %}
+                                <a href="{{path('backoffice_offer_change_options',{'id':offer.id})}}" class="btn btn-default btn-flat"  data-toggle="tooltip" data-placement="top" title="zmień opcje"> <i class="fa fa-star"></i></a>
+                                <a href="{{path('backoffice_offer_link_list',{'idOffer':offer.id})}}" class="btn btn-primary btn-flat"  data-toggle="tooltip" data-placement="top" title="linki"> <i class="fa fa-list"></i></a>
+                                <a href="{{path('backoffice_offer_edit',{'id':offer.id})}}" class="btn btn-primary btn-flat"  data-toggle="tooltip" data-placement="top" title="edycja"> <i class="fa fa-edit"></i></a>
+                                <a href="#" data-href="{{path('backoffice_offer_delete',{'id':offer.id})}}"  data-toggle="tooltip" data-placement="top" title="Usuń" class="btn btn-danger btn-flat" data-show-modal="delete"> <i class="fa fa-trash-o"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+            {{ knp_pagination_render(pagination) }}
+            </div>
+          </div>
+            </div>
+                <!-- /.col-lg-12 -->
+        </div>
+    </section>
+{% include 'AppBackOfficeBundle:_Partials:modalDelete.html.twig' %}
+{% include 'AppOfferBundle:_Partials:modalSelectCategory.html.twig' %}
+{% endblock body %}
+{% block javascripts %}
+    <script src="{{asset('admin-layout/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
+    <script src="{{asset('admin-layout/plugins/datepicker/locales/pl.min.js')}}"></script>
+    <script>
+    $('#search_dateFrom').datepicker({format: 'yyyy-mm-dd',language:'pl'});
+    $('#search_dateTo').datepicker({format: 'yyyy-mm-dd',language:'pl'});
+    $('a[data-show-modal="delete"]').on('click',function(){
+        $('#confirm-delete').find('.danger').attr('href', $(this).data('href'));
+        $('#confirm-delete').modal();
+    });
+    $('a[data-show-modal="selectCategory"]').on('click',function(){
+        $('#select-category').modal();
+    });
+    </script>
+{% endblock %}
+

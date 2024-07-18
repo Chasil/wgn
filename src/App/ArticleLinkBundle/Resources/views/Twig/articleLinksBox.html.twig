@@ -1,0 +1,12 @@
+<div class="col-md-12 search-list">
+    {% if categories | length > 0 %}
+        <h3>Polecane Artykuły</h3>
+        <div class="row search-list-links" style="display: block;">
+            {% for category in categories %}
+                {% for link in category.links %}
+                        <a href="{{link.url}}" title="{{link.name}}">{{link.name}}</a>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>

@@ -1,0 +1,84 @@
+{%  if not archivOffer %}
+<div class="col-md-12 no-padding user-data">
+    <hr>
+    <div class="col-md-12 no-padding">
+        <div class="avatar">
+            {% if offer.user.office  is defined and  offer.user.office is not null %}<a href="#" data-action="showAgent" data-id="{{offer.user.id}}" title="Pokaż">{% endif %}
+                {% if offer.user.avatar is defined and offer.user.avatar !=''%}
+                    <img src="{{('/uploads/avatar/'~offer.user.id~'/'~offer.user.avatar) |imagine_filter('avatar_offer') }}" alt="" class="img-responsive"/>
+                {% else %}
+                    <div class="no-img agent"></div>
+                {% endif %}
+            {% if offer.user.office  is defined and  offer.user.office is not null %}</a>{% endif %}
+        </div>
+        <div>
+            {% if offer.office  is defined and  offer.office is not null %}
+                <p class="company-name"><img src="{{'/front-layout/gfx/wgn-sm.png'}}" alt="wgn"/>{{offer.office.name}}</p>
+                {% if offer.user is not null %}
+                <div class="user-contact-data">
+                    <p><strong>{{offer.user.firstName}} {{offer.user.lastName}}</strong></p>
+                    <p>e-mail:  <a href="mailto:{{offer.user.email}}" title="{{offer.user.email}}">{{offer.user.email}}</a></p>
+                    {% if offer.user.phone | length > 0 %}
+                        <p>tel.: {{offer.user.phone}}</p>
+                    {% endif %}
+                    {% if offer.user.mobile | length > 0 %}
+                        <p>tel.kom.: {{offer.user.mobile}}</p>
+                    {% endif %}
+                </div>
+                {% else %}
+                    <div class="user-contact-data">
+                        <p>e-mail:  <a href="mailto:{{offer.office.email}}" title="{{offer.office.email}}">{{offer.office.email}}</a></p>
+                        <p>tel.: {{offer.office.phone}}</p>
+                    </div>
+                {% endif %}
+                <div class="user-contact-office-data">
+                    <p><strong>Adres biura:</strong></p>
+                    <p>{{offer.office.defaultAddress.street}}</p>
+                    <p>{{offer.office.defaultAddress.zipCode}}, {{offer.office.defaultAddress.city}}, {% if offer.office.defaultAddress.country is defined and offer.office.defaultAddress.country is not null %} {{offer.office.defaultAddress.country.name}}{% endif %}</p>
+                    <p>{{offer.office.defaultAddress.phone}}</p>
+                </div>
+                {% if offer.office.additionalServices is not null and offer.office.additionalServices | length > 0%}
+                    <div class="user-contact-additional-services no-padding-right">
+                        <p>Nasze dodatkowe usługi:</p>
+                        <ul class="our-services">
+                        {% for service in offer.office.additionalServices %}
+                            <li><a href="{{service.url}}" title="{{service.name}}">{{service.name}}</a></li>
+                        {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            {% elseif offer.user.companyData is defined and  offer.user.companyData is not null %}
+                <div class="user-contact-data">
+                    {% if offer.contactPerson !=''%}<p><strong>{{offer.contactPerson}}</strong></p>{% endif %}
+                    {% if offer.email !=''%}<p>e-mail: <a href="mailto:{{offer.email}}" title="{{offer.email}}">{{offer.email}}</a></p>{% endif %}
+                    {% if offer.phone !=''%}<p>tel.: {{offer.phone}}</p>{% endif %}
+                    {#
+                    <p>{{offer.user.companyData.name}}</p>
+                    <p><strong>{{offer.user.firstName}} {{offer.user.lastName}}</strong></p>
+                    <p>e-mail:  <a href="mailto:{{offer.user.email}}">{{offer.user.email}}</a></p>
+                    {% if offer.user.phone | length > 0 %}
+                        <p>tel.: {{offer.user.phone}}</p>
+                    {% elseif offer.user.mobile | length > 0 %}
+                        <p>tel.: {{offer.user.mobile}}</p>
+                    {% endif %}#}
+                </div>
+                <div class="user-contact-office-data">
+                    <p><strong>Adres biura:</strong></p>
+                    <p>{{offer.user.companyData.address.street}}</p>
+                    <p>{{offer.user.companyData.address.zipCode}}, {{offer.user.companyData.address.city}}, {% if offer.user.companyData.address.country is defined and offer.user.companyData.address.country is not null %} {{offer.user.companyData.address.country.name}}{% endif %}</p>
+                    <p>{{offer.user.companyData.address.phone}}</p>
+                </div>
+            {% else %}
+                <div class="user-contact-data">
+                    <p class="company-name">&nbsp;</p>
+                    {% if offer.contactPerson !=''%}<p><strong>{{offer.contactPerson}}</strong></p>{% endif %}
+                    {% if offer.email !=''%}<p>e-mail: <a href="mailto:{{offer.email}}" title="{{offer.email}}">{{offer.email}}</a></p>{% endif %}
+                    {% if offer.phone !=''%}<p>tel.: {{offer.phone}}</p>{% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="col-md-5 no-padding-right"></div>
+    <hr>
+</div>
+{%  endif %}

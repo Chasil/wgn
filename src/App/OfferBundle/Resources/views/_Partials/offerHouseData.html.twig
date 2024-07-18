@@ -1,0 +1,66 @@
+{% if offer.rooms %}
+<tr>
+    <td>Ilość pokoi</td>
+    <td>{{offer.rooms}}</td>
+</tr>
+{% endif %}
+{% if offer.windows %}
+<tr>
+    <td>Okna</td>
+    <td>{{offer.windows}}</td>
+</tr>
+{% endif %}
+{% if offer.storeys %}
+<tr>
+    <td>Ilość kondygnacji</td>
+    <td>{{offer.storeys}}</td>
+</tr>
+{% endif %}
+{% if offer.yearOfBuilding %}
+<tr>
+    <td>Rok budowy</td>
+    <td>{{offer.yearOfBuilding}}</td>
+</tr>
+{% endif %}
+{% if offer.accessRoad %}
+<tr>
+    <td>Dojazd</td>
+    <td>{{offer.accessRoad}}</td>
+</tr>
+{% endif %}
+{% if offer.roofCover %}
+<tr>
+    <td>Pokrycie dachu</td>
+    <td>{{offer.roofCover}}</td>
+</tr>
+{% endif %}
+{% if offer.roof %}
+<tr>
+    <td>Dach</td>
+    <td>{{offer.roof}}</td>
+</tr>
+{% endif %}
+{% if offer.availableFrom %}
+<tr>
+    <td>Nieruchomość dostępna od</td>
+    <td>{{offer.availableFrom | date('d.m.Y')}}</td>
+</tr>
+{% endif %}
+{% if offer.technicalCondition %}
+<tr>
+    <td>Stan techniczny</td>
+    <td>{{offer.technicalCondition}}</td>
+</tr>
+{% endif %}
+{% if offer.exhibitionWindows %}
+<tr>
+    <td>Wystawa Okien</td>
+    <td>{{offer.exhibitionWindows}}</td>
+</tr>
+{% endif %}
+{% if offer.monthPayments %}
+<tr>
+    <td>Wysokość czynszu</td>
+    <td>{{offer.monthPayments}}{{offer.monthPaymentsCurrency.symbol}}</td>
+</tr>
+{% endif %}

@@ -1,0 +1,36 @@
+{% if offer.storeys %}
+<tr>
+    <td>Ilość kondygnacji</td>
+    <td>{{offer.storeys}}</td>
+</tr>
+{% endif %}
+{% if offer.yearOfBuilding %}
+<tr>
+    <td>Rok Budowy</td>
+    <td>{{offer.yearOfBuilding}}</td>
+</tr>
+{% endif %}
+{% if offer.legalStatus %}
+<tr>
+    <td>Stan prawny działki</td>
+    <td>{{offer.legalStatus}}</td>
+</tr>
+{% endif %}
+{% if offer.technicalCondition %}
+<tr>
+    <td>Stan techniczny</td>
+    <td>{{offer.technicalCondition}}</td>
+</tr>
+{% endif %}
+{% if offer.accessRoad %}
+<tr>
+    <td>Dojazd</td>
+    <td>{{offer.accessRoad}}</td>
+</tr>
+{% endif %}
+{% if offer.availableFrom %}
+<tr>
+    <td>Nieruchomość dostępna od</td>
+    <td>{{offer.availableFrom | date('d.m.Y')}}</td>
+</tr>
+{% endif %}

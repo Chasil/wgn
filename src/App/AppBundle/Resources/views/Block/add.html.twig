@@ -1,0 +1,112 @@
+{% extends "AppBackOfficeBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <section class="content-header">
+      <h1>
+        Dodaj Element
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#" title="Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="#" title="Ustawienia">Ustawienia</a></li>
+        <li class="active">Elementy Strony</li>
+      </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            {% include 'AppBackOfficeBundle:_Partials:flashMessage.html.twig' %}
+            <div class="col-md-12">
+            <div class="box">
+            <div class="box-header with-border">
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+                <form method="POST" action="" novalidate>
+                    <div class="form-group">
+                        <label>Nazwa Elementu</label>
+                        {{form_widget(form.name,{'attr':{'data-validator':'required'}})}}
+                        {{form_errors(form.name)}}
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-4">
+                            <label>Kolor nagłówka (postać szesnastkowa)</label>
+                            {{form_widget(form.headerBgColor,{'attr':{'class':'colorpicker'}})}}
+                            {{form_errors(form.headerBgColor)}}
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <label>Rozmiar czcionki nagłówka(px)</label>
+                            {{form_widget(form.headerFontSize)}}
+                            {{form_errors(form.headerFontSize)}}
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <label>Kolor czcionki nagłówka (postać szesnastkowa)</label>
+                            {{form_widget(form.headerFontColor,{'attr':{'class':'colorpicker'}})}}
+                            {{form_errors(form.headerFontColor)}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        {{form_widget(form.headerFontIsBold)}}
+                        {{form_errors(form.headerFontIsBold)}}
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-4">
+                            <label>Rozmiar czcionki (px)</label>
+                            {{form_widget(form.fontSize)}}
+                            {{form_errors(form.fontSize)}}
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <label>Kolor czcionki (postać szesnastkowa)</label>
+                            {{form_widget(form.fontColor,{'attr':{'class':'colorpicker'}})}}
+                            {{form_errors(form.fontColor)}}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{form_widget(form.fontIsBold)}}
+                        {{form_errors(form.fontIsBold)}}
+                    </div>
+                    <div class="form-group">
+                        <label>Dodatkowe style css</label>
+                        {{form_widget(form.customStyle)}}
+                        {{form_errors(form.customStyle)}}
+                    </div>
+                    <div class="form-group">
+                        {{type}}&nbsp;&nbsp; <a href="#" class="btn btn-success" data-action="changeType" data-toggle="modal" title="Zmień" data-target="#select-element-type">Zmień</a>
+                    </div>
+                    <div class="form-group">
+                        <label>Pozycja Elementu</label>
+                        {{form_widget(form.place,{'attr':{'data-validator':'required'}})}}
+                        {{form_errors(form.place)}}
+                    </div>
+                    {% for element in form.config %}
+                        <div class="form-group">
+                            <label>{{form_label(element)}}</label>
+                            {{form_widget(element)}}
+                            {{form_errors(element)}}
+                        </div>
+                    {% endfor %}
+                    {{form_rest(form)}}
+                <button type="submit" class="btn btn-primary">Zapisz</button>
+                </form>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+            </div>
+          </div>
+            </div>
+                <!-- /.col-lg-12 -->
+        </div>
+    </section>
+{% include 'AppAppBundle:_Partials:modalSelectType.html.twig' %}
+{% endblock body %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{asset('admin-layout/plugins/colorpicker/bootstrap-colorpicker.min.css')}}" />
+{% endblock %}
+{% block javascripts %}
+    <script src="{{asset('front-layout/lib/validate/validate.min.js')}}"></script>
+    <script src="{{asset('admin-layout/plugins/colorpicker/bootstrap-colorpicker.min.js')}}"></script>
+    <script>
+        $('.box-body form').validate();
+        $('.colorpicker').colorpicker({format:'hex'});
+    </script>
+{% endblock %}
+
+

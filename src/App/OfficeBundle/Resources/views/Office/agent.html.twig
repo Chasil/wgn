@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="col-xs-5">
+            {% if agent.avatar !='' %}
+                <img src="{{('/uploads/avatar/'~agent.id~'/'~agent.avatar) |imagine_filter('avatar_modal') }}" class="img-responsive" alt="{{agent.firstName}},{{agent.lastName}}"/>
+            {% else %}
+                <div class="no-img agent"></div>
+            {% endif %}
+        </div>
+        <div class="col-xs-7">
+            <div class="office-header"><img src="{{asset('front-layout/gfx/wgn-sm.jpg')}}" alt="wgn"/>{{agent.office.name}}</div>
+                    <h5>{{agent.firstName}} {{agent.lastName}}</h5>
+                    {% if agent.position !='' %}<p>{{agent.position}}</p>{% endif %}
+                    {% if agent.email !='' %}<p>e-mail: <a href="mailto:{{agent.email}}" title="{{agent.email}}">{{agent.email}}</a></p>{% endif %}
+                    {% if agent.phone !='' %}<p>tel. {{agent.phone}}</p>{% endif %}
+                    {% if agent.mobile !='' %}<p>tel. {{agent.mobile}}</p>{% endif %}
+                    <h5>Adres biura:</h5>
+                    <p>{{agent.office.defaultAddress.street}}</p>
+                    <p>{{agent.office.defaultAddress.zipCode}} {{agent.office.defaultAddress.city}}, {{agent.office.defaultAddress.country.name}}</p>
+                    {% if agent.office.phone !='' %}<p>tel. {{agent.office.phone}}</p>{% endif %}
+                    {% if agent.office.mobile !='' %}<p>tel. {{agent.office.mobile}}</p>{% endif %}
+                    {% if agent.office.email !='' %}<p>e-mail: <a href="mailto:{{agent.office.email}}" title="{{agent.office.email}}">{{agent.office.email}}</a></p>{% endif %}
+                    {% if agent.office.defaultAddress.openFrom is not null and  agent.office.defaultAddress.openTo %}
+                        <p><strong>Godziny pracy biura:</strong></p>
+                        <p>poniedziałek - piatek: {{agent.office.defaultAddress.openFrom}}{{agent.office.defaultAddress.openTo}}</p>
+                    {% endif %}
+        </div>
+        <div class="col-xs-12"><a href="{{ domain }}{{path('frontend_offer_list_agent',{'user':agent.id})}}" class="agent-offers" title="Zobacz Oferty Agenta">Zobacz Oferty Agenta</a></div>
+    </div>
+</div>

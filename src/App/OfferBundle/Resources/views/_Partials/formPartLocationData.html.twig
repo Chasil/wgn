@@ -1,0 +1,131 @@
+<div class="row location">
+    <div class="col-md-12">
+        <h2>Informacje podstawowe</h2>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label>Kraj*</label>
+            {{form_widget(form.country,{'attr':{'data-validator':'required'}})}}
+            {{form_errors(form.country)}}
+        </div>
+        {% if transaction.id == 2 or transaction.id==4 %}
+            {% set required = false %}
+        {% else %}
+            {% set required = true %}
+        {% endif %}
+        <div class="form-group">
+            <label>Dzielnica / osiedle / ulica {% if required %}*{%endif %}</label>
+            {% if required %}
+                {{form_widget(form.street,{'attr':{'data-validator':'required','autocomplete':'off'}})}}
+            {% else %}
+                {{form_widget(form.street,{'attr':{'autocomplete':'off'}})}}
+            {%endif %}
+            {{form_errors(form.street)}}
+            <div id="s-suggestions" class="sgg"></div>
+        </div>
+        <div class="form-group">
+            {% if offer.category.uniqueKey == 'house'%}
+                <label>Powierzchnia domu {% if required %}*{% else %} do{%endif %}</label>
+            {% elseif  offer.category.uniqueKey == 'commercial' %}
+                <label>Powierzchnia budynku{% if required %}*{% else %} do{%endif %}</label>
+            {% else %}
+                <label>Powierzchnia{% if required %}*{% else %} do{%endif %}</label>
+            {% endif %}
+            <div class="input-group">
+                {% if required %}
+                    {{form_widget(form.properties.squere,{'attr':{'data-validator':'required,float'}})}}
+                {% else %}
+                    {{form_widget(form.properties.squere,{'attr':{'data-validator':'float'}})}}
+                {%endif %}
+                <div class="input-group-addon">m&sup2;</div>
+            </div>
+            {{form_errors(form.properties.squere)}}
+        </div>
+        {% if offer.category.uniqueKey == 'house' or offer.category.uniqueKey == 'commercial' %}
+        <div class="form-group">
+                <label>Powierzchnia działki{% if required %}*{% else %} do{%endif %}</label>
+                <div class="input-group">
+                {% if required %}
+                    {{form_widget(form.properties.squerePlot,{'attr':{'data-validator':'required,float'}})}}
+                {% else %}
+                    {{form_widget(form.properties.squerePlot,{'attr':{'data-validator':'float'}})}}
+                {%endif %}
+                <div class="input-group-addon">m&sup2;</div>
+                </div>
+                {{form_errors(form.properties.squerePlot)}}
+        </div>
+        {% endif %}
+        <div class="form-group">
+            <label>Cena{% if required %}*{% else %} do{%endif %}</label>
+            <div class="input-group">
+            {% if required %}
+                {{form_widget(form.properties.price,{'attr':{'data-validator':'required,float'}})}}
+            {% else %}
+                {{form_widget(form.properties.price,{'attr':{'data-validator':'float'}})}}
+            {%endif %}
+            <span class="input-group-btn">
+            {{form_widget(form.properties.currency)}}
+            </span>
+            </div>
+            {{form_errors(form.properties.price)}}
+        </div>
+        <div class="form-group">
+            <label>Cena 1m&sup2;{% if required %}*{% else %} do{%endif %}</label>
+            <div class="input-group">
+            {% if required %}
+                {{form_widget(form.properties.pricem2,{'attr':{'data-validator':'required,float'}})}}
+            {% else %}
+                {{form_widget(form.properties.pricem2,{'attr':{'data-validator':'float'}})}}
+            {%endif %}
+            <span class="input-group-btn"></span>
+            </div>
+            {{form_errors(form.properties.pricem2)}}
+        </div>
+    </div>
+    {%if offer.country is not null and offer.country.isoCode =='pl' %}
+        {% set isPoland = true %}
+    {% else %}
+        {% set isPoland = false %}
+    {% endif %}
+    <div class="col-md-8">
+        <div class="col-md-6 no-padding-left {%if isPoland %}hidden{% endif %}" id="form-part-region">
+            <div class="form-group">
+                <label>Region*</label>
+                {%if not isPoland %}
+                    {{form_widget(form.region,{'attr':{'data-validator':'required','autocomplete':'off'}})}}
+                    {{form_errors(form.region)}}
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-4 no-padding-left {%if not isPoland %}hidden{% endif %}" id="form-part-province">
+            <div class="form-group">
+                <label>Województwo*</label>
+                {%if isPoland %}
+                    {{form_widget(form.region,{'attr':{'data-validator':'required','autocomplete':'off'}})}}
+                    {{form_errors(form.region)}}
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-md-4 no-padding-left  {%if not isPoland %}hidden{% endif %}" id="form-part-district">
+            <div class="form-group">
+                <label>Powiat</label>
+                {{form_widget(form.district,{'attr':{'autocomplete':'off'}})}}
+                {{form_errors(form.district)}}
+                <div id="r-suggestions"></div>
+            </div>
+        </div>
+        <div class=" {%if not isPoland %}col-md-6{% else %}col-md-4{% endif %} no-padding" id="form-part-city">
+            <div class="form-group">
+                <label>Miejscowość*</label>
+                {{form_widget(form.city,{'attr':{'data-validator':'required','autocomplete':'off'}})}}
+                {{form_errors(form.city)}}
+                <div id="c-suggestions" class="sgg"></div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div id="offer-on-map">
+
+            </div>
+        </div>
+    </div>
+</div>

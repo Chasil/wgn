@@ -1,0 +1,3 @@
+properties:
+    name:
+        - NotBlank: {groups: [default], message: "Pole jest wymagane"}

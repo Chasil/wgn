@@ -1,0 +1,27 @@
+{% extends "AppFrontPageBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <div class="col-md-12 no-padding">
+        <p>1. 1007x240px</p>
+        <p>W sekcji head strony należy umieścić </p>
+        <p>&lt;script type="text/javascript" src="{{domain}}/es/embed.min.js"&gt;&lt;/script&gt;</p>
+        <p>Następnie w miejscu gdzie ma się pojawić wyszukiwarka wklej poniższy tag html</p>
+        &lt;div id="wgn-search"&gt;&lt;/div&gt;
+        <script type="text/javascript" src="{{domain}}/es/embed.min.js"></script>
+        <div id="wgn-search"></div>
+        <p>2. 360x240px</p>
+        <p>&lt;iframe src="http://www.wgn.pl/embed" width="360" height="240" frameborder="0"&gt;&lt;/iframe&gt;</p>
+        <p><iframe src="../../embed" width="360" height="240" frameborder="0"></iframe></p>
+        <p>3. 280x298px</p>
+        <p>&lt;iframe src="http://www.wgn.pl/embed?s=m" width="280" height="298" frameborder="0"&gt;&lt;/iframe&gt;</p>
+        <p><iframe src="../../embed?s=m" width="280" height="298" frameborder="0"></iframe></p>
+        <p>4. 150x400px</p>
+        <p>&nbsp;&lt;iframe src="http://www.wgn.pl/embed?s=l" width="150" height="400" frameborder="0"&gt;&lt;/iframe&gt;</p>
+        <p><iframe src="../../embed?s=l" width="150" height="400" frameborder="0"></iframe></p>
+    </div>
+{% endblock %}
+{%block metaDescription %}Umieść wyszukiwarkę &#9989; Ponad 60 000 Ofert. &#9989; 27 Lat Doświadczenia na Rynku Polskim i Zagranicznym &#9989; Niemal 70 Biur Nieruchomości w Całej Polsce. Sprawdź Teraz i Zadzwoń »{% endblock %}
+{%block ogDescription %}Umieść wyszukiwarkę &#9989; Ponad 60 000 Ofert. &#9989; 27 Lat Doświadczenia na Rynku Polskim i Zagranicznym &#9989; Niemal 70 Biur Nieruchomości w Całej Polsce. Sprawdź Teraz i Zadzwoń »{% endblock %}
+{%block twitterDescription %}Umieść wyszukiwarkę &#9989; Ponad 60 000 Ofert. &#9989; 27 Lat Doświadczenia na Rynku Polskim i Zagranicznym &#9989; Niemal 70 Biur Nieruchomości w Całej Polsce. Sprawdź Teraz i Zadzwoń »{% endblock %}
+{%block pageTitle %}Umieść wyszukiwarkę . Mieszkania na Sprzedaż - Ogłoszenia Nieruchomości WGN{%endblock%}
+{%block ogTitle %}Umieść wyszukiwarkę. Mieszkania na Sprzedaż - Ogłoszenia Nieruchomości WGN{% endblock %}
+{%block twitterTitle %}Umieść wyszukiwarkę. Mieszkania na Sprzedaż - Ogłoszenia Nieruchomości WGN{% endblock %}

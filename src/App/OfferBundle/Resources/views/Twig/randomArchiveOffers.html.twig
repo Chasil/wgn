@@ -1,0 +1,12 @@
+{% set nopadding = '' %}
+{% if app.request.get('_route') == 'frontend_offer_archive_subdomain' %}
+    {% set nopadding = 'no-padding' %}
+{% endif %}
+<div class="col-md-12 search-list {{ nopadding }}">
+    <h3>Sprawdź też inne oferty archiwalne w serwisie</h3>
+        <div class="row search-list-links" style="display:block;">
+            {% for offer in offers %}
+                <a href="{{offerUrl(offer)}}" title="{{offer.name}}">{{offer.name}}</a>
+            {% endfor %}
+        </div>
+</div>

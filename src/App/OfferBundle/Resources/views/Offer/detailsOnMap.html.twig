@@ -1,0 +1,14 @@
+
+<div class="main-photo">
+    {% if item.mainPhoto !='' %}
+        <a href="{{path('frontend_offer_show',{id:item.id,offerName:item.name | prepareUrl})}}" title="{{item.name}}"><img src="{{('/uploads/offers/'~item.id~'/'~item.mainPhoto) |imagine_filter('offer_map_thumbnail') }}" alt="{{item.name}}"/></a>
+    {% else %}
+        <div class="no-img"></div>
+    {% endif %}
+</div>
+<div class="data">
+    <h5>{{item.name | slice(0,25)}}...</h5>
+    <p>{{item.city}} {{item.street | slice(0,25)}}</p>
+    <p class="pull-left">{{item.squere}} m&sup2;</p>
+    <p class="pull-right">{{item.price | number_format(0, ',', ' ')}} {% if item.currency.symbol is defined  %}{{item.currency.symbol}}{% endif %}</p>
+</div>

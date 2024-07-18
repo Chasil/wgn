@@ -1,0 +1,86 @@
+{% extends "AppBackOfficeBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <section class="content-header">
+      <h1>
+        Newsletter
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#" title="Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Newsletter</li>
+      </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            {% include 'AppBackOfficeBundle:_Partials:flashMessage.html.twig' %}
+            <div class="col-md-12">
+            <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title pull-right">
+                    <a href="{{path('backoffice_newsletter_send')}}" class="btn btn-success btn-flat" title="Wyślij Wiadomość"><i class="fa fa-send"></i> Wyślij Wiadomość</a></h3>
+                <div class="col-md-12 filters no-padding">
+                    <form role="search" action="" method="GET" novalidate>
+                        <div class="form-group col-xs-2">
+                            <label>E-Mail</label>
+                            {{form_widget(form.email)}}
+                        </div>
+                        <div class="form-group col-xs-2 buttons">
+                            <button type="submit" class="btn btn-success">Szukaj</button>
+                            <a href="{{path(app.request.get('_route'))}}" class="btn btn-default" title="Wyczyść">Wyczyść</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body scroll">
+              <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th width="150" {% if pagination.isSorted('n.email') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Email', 'n.email') }}</th>
+                            <th width="100" {% if pagination.isSorted('n.createDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Data Dodania', 'n.createDate') }}</th>
+                            <th width="100" {% if pagination.isSorted('n.ip') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Adres Ip', 'n.ip') }}</th>
+                            <th width="250">Opcje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for email in pagination %}
+                        <tr class="odd gradeX">
+                            <td>{{email.email}}</td>
+                            <td>{{email.createDate | date('d.m.Y')}}</td>
+                            <td>{{ email.ip }}</td>
+                            <td>
+                            {% if email.isActive %}
+                                <a href="{{path('backoffice_newsletter_active',{'id':email.id,'active':0})}}" class="btn btn-success btn-flat"  data-toggle="tooltip" data-placement="top" title="zablokuj"> <i class="fa fa-plus"></i></a>
+                            {% else %}
+                                <a href="{{path('backoffice_newsletter_active',{'id':email.id,'active':1})}}" class="btn btn-danger btn-flat"  data-toggle="tooltip" data-placement="top" title="odblokuj"> <i class="fa fa-minus"></i></a>
+                            {% endif %}
+                            <a href="#" data-href="{{path('backoffice_newsletter_delete',{'id':email.id})}}"  data-toggle="tooltip" data-placement="top" title="Usuń" class="btn btn-danger btn-flat" data-show-modal="delete"> <i class="fa fa-trash-o"></i></a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+            {{ knp_pagination_render(pagination) }}
+            </div>
+          </div>
+            </div>
+                <!-- /.col-lg-12 -->
+        </div>
+    </section>
+{% include 'AppBackOfficeBundle:_Partials:modalDelete.html.twig' %}
+{% endblock body %}
+{% block javascripts %}
+    <script>
+
+    $('a[data-show-modal="delete"]').on('click',function(){
+        $('#confirm-delete').find('.danger').attr('href', $(this).data('href'));
+        $('#confirm-delete').modal();
+    });
+    $('select[name="idCategory"]').on('change',function(){
+        $(this).closest('form').submit();
+    });
+    </script>
+{% endblock %}
+

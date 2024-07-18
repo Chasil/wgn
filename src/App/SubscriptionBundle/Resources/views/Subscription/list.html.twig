@@ -1,0 +1,101 @@
+{% extends "AppBackOfficeBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <section class="content-header">
+      <h1>
+        Lista Abonamentów
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#" title="Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Lista Abonamentów</li>
+      </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            {% include 'AppBackOfficeBundle:_Partials:flashMessage.html.twig' %}
+            <div class="col-md-12">
+            <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title pull-right"><a href="{{path('backoffice_subscription_add')}}" class="btn btn-success btn-flat" title="Dodaj Abonament"><i class="fa fa-plus"></i> Dodaj Abonament</a></h3>
+                <div class="col-md-12 filters no-padding-left">
+                    <form role="search" action="" method="GET" novalidate>
+                        <div class="form-group col-xs-2">
+                            <label>Status</label>
+                            {{form_widget(form.state)}}
+                        </div>
+                        <div class="form-group col-xs-2">
+                            <label>Login Użytkownika</label>
+                            {{form_widget(form.username)}}
+                        </div>
+                        <div class="form-group col-xs-2">
+                            <label>Data od</label>
+                            {{form_widget(form.dateFrom)}}
+                        </div>
+                        <div class="form-group col-xs-2">
+                            <label>Data do</label>
+                            {{form_widget(form.dateTo)}}
+                        </div>
+                        <div class="form-group col-xs-2 buttons">
+                            <button type="submit" class="btn btn-success">Szukaj</button>
+                            <a href="{{path(app.request.get('_route'))}}" class="btn btn-default" title="Wyczyść">Wyczyść</a>
+                        </div>
+                        {% include 'AppSubscriptionBundle:_Partials:downloadButtons.html.twig' %}
+                    </form>
+                </div>
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body scroll">
+              <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th width="50" {% if pagination.isSorted('s.id') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Id', 's.id') }}</th>
+                            <th width="150" {% if pagination.isSorted('s.user.username') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Użytkownik', 's.user.username') }}</th>
+                            <th width="250" {% if pagination.isSorted('s.numberOfAvailable') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Ilość dostępnych', 's.numberOfAvailable') }}</th>
+                            <th width="250" {% if pagination.isSorted('s.numberOfUsed') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Ilość użytych', 's.numberOfUsed') }}</th>
+                            <th width="200" {% if pagination.isSorted('s.createDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Data Dodania', 's.createDate') }}</th>
+                            <th width="150" {% if pagination.isSorted('s.expireDate') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Data Ważności', 's.expireDate') }}</th>
+                            <th width="250" {% if pagination.isSorted('s.netPrice') %} class="sorted"{% endif %}>{{ knp_pagination_sortable(pagination, 'Cena', 's.netPrice') }}</th>
+                            <th>Opcje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for subscription in pagination %}
+                        <tr class="odd gradeX">
+                            <td>{{subscription.id}}</td>
+                            <td>{{subscription.user.username}}</td>
+                            <td>{% if subscription.numberOfAvailable > 0 %}{{subscription.numberOfAvailable}}{% else %}bez limitu{% endif %}</td>
+                            <td>{{subscription.numberOfUsed}}</td>
+                            <td>{{subscription.createDate | date('d.m.Y')}}</td>
+                            <td>{{subscription.expireDate | date('d.m.Y')}}</td>
+                            <td>{{subscription.netPrice}} zł netto ({{subscription.netPrice*(1+ (subscription.tax/100))}} zł brutto)</td>
+                            <td><a href="#" data-href="{{path('backoffice_subscription_delete',{'id':subscription.id})}}"  data-toggle="tooltip" data-placement="top" title="Usuń" class="btn btn-danger btn-flat" data-show-modal="delete"> <i class="fa fa-trash-o"></i></a>
+</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+            {{ knp_pagination_render(pagination) }}
+            </div>
+          </div>
+            </div>
+                <!-- /.col-lg-12 -->
+        </div>
+    </section>
+{% include 'AppBackOfficeBundle:_Partials:modalDelete.html.twig' %}
+{% endblock body %}
+{% block javascripts %}
+    <script src="{{asset('admin-layout/plugins/datepicker/bootstrap-datepicker.js')}}"></script>
+    <script src="{{asset('admin-layout/plugins/datepicker/locales/pl.min.js')}}"></script>
+    <script>
+     $('#search_dateFrom').datepicker({format: 'yyyy-mm-dd',language:'pl'});
+     $('#search_dateTo').datepicker({format: 'yyyy-mm-dd',language:'pl'});
+    $('a[data-show-modal="delete"]').on('click',function(){
+        $('#confirm-delete').find('.danger').attr('href', $(this).data('href'));
+        $('#confirm-delete').modal();
+    });
+
+    </script>
+{% endblock %}
+

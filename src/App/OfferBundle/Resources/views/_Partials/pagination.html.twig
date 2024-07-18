@@ -1,0 +1,67 @@
+{% if paginator.pageCount > 1 %}
+    <ul class="pagination">
+    {% if paginator.previous is defined %}
+        <li>
+            <a href="{{ path(app.request.attributes.get('_route'),
+                             query|merge({'page': paginator.previous})|merge(app.request.get('_route_params'))) }}" title="Poprzednia" rel="prev">&laquo;&nbsp;Poprzednia</a>
+        </li>
+    {% endif %}
+
+    {% if paginator.startPage > 1 %}
+        <li>
+            <a href="{{ path(app.request.attributes.get('_route'),
+                             query|merge({'page': 1})|merge(app.request.get('_route_params'))) }}" title="1">1</a>
+        </li>
+        {% if paginator.startPage == 3 %}
+            <li>
+                <a href="{{ path(app.request.attributes.get('_route'),
+                             query|merge({'page': 2})|merge(app.request.get('_route_params'))) }}" title="2">2</a>
+            </li>
+        {% elseif paginator.startPage != 2 %}
+        <li class="disabled">
+            <span>&hellip;</span>
+        </li>
+        {% endif %}
+    {% endif %}
+
+    {% for page in paginator.pagesInRange %}
+        {% if page != paginator.current %}
+            <li>
+                <a href="{{ path(app.request.attributes.get('_route'),
+                             query|merge({'page': page})|merge(app.request.get('_route_params'))) }}" title="{{ page }}">{{ page }}</a>
+            </li>
+        {% else %}
+            <li class="active">
+                <span>{{ page }}</span>
+            </li>
+        {% endif %}
+
+    {% endfor %}
+
+    {% if paginator.pageCount > paginator.endPage %}
+        {% if paginator.pageCount > (paginator.endPage + 1) %}
+            {% if paginator.pageCount > (paginator.endPage + 2) %}
+                <li class="disabled">
+                    <span>&hellip;</span>
+                </li>
+            {% else %}
+                <li>
+                    <a href="{{ path(app.request.attributes.get('_route'),
+                             query|merge({'page': paginator.pageCount -1})|merge(app.request.get('_route_params'))) }}" title="{{ paginator.pageCount -1 }}">{{ paginator.pageCount -1 }}</a>
+                </li>
+            {% endif %}
+        {% endif %}
+        <li>
+            <a href="{{ path(app.request.attributes.get('_route'),
+                             query|merge({'page': paginator.pageCount})|merge(app.request.get('_route_params'))) }}" title="{{ paginator.pageCount }}">{{ paginator.pageCount }}</a>
+        </li>
+    {% endif %}
+
+    {% if paginator.next is defined %}
+        <li>
+            <a href="{{ path(app.request.attributes.get('_route'),
+                             query|merge({'page': paginator.next})|merge(app.request.get('_route_params'))) }}" title="Następna" rel="next">Następna&nbsp;&raquo;</a>
+        </li>
+    {% endif %}
+    </ul>
+{% endif %}

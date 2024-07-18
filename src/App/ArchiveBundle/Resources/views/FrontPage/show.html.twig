@@ -1,0 +1,45 @@
+{% extends "AppFrontPageBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    {% include 'AppArchiveBundle:_Partials:promoOffers.html.twig' %}
+        {% include 'AppFrontPageBundle:_Partials:leftColumn.html.twig' %}
+        <div class="col-md-8 right-column front-page">
+            {{ contentBloks('archive_right') }}
+        </div>
+        <div class="col-md-12 search-list">
+        {{searchLinksBox()}}
+        </div>
+        <div class="mobile-corp-finder hidden-md hidden-lg hidden-print">
+            <h5 class="text-center">Nasze biura WGN</h5>
+            <div id="office-search-results" style="display: none;">
+                {%  for office in offices %}
+                    <a href="{{ host_scheme }}://{{ office.subdomain }}.{{ domain_without_scheme }}" class="search-office-result-row">{{ office.name }} - {{ office.addresses[0].street }}</a>
+                {%  endfor %}
+            </div>
+        </div>
+        <div class="banner-bottom hidden-sm hidden-xs">{{contentBloks('archive_bottom')}}</div>
+        <div class="col-md-12 search-list">
+        </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{asset('front-layout/lib/slider/slider.js')}}"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('.b-slider').slider();
+        });
+        $('.search-list a[data-action]').on('click',function(e){
+            e.preventDefault();
+            var target = $(this).attr('data-target');
+            $('.search-list a.active').removeClass('active');
+            $(this).addClass('active');
+            $('.search-list-links[data-target="'+target+'"]').slideDown();
+            $('.search-list-links[data-target!="'+target+'"]').slideUp();
+        });
+    </script>
+{% endblock %}
+{%block metaDescription %}Archiwalne Oferty WGN ✅Mieszkania ✅Domy ✅Działki. Sprzedaż i Wynajem. ✅Ponad 60 000 Ofert. ✅ WGN Działa na Rynku Od 1991 Roku. Sprawdź Teraz i Zadzwoń »{% endblock %}
+{%block ogDescription %}Archiwalne Oferty WGN &#9989;Mieszkania &#9989;Domy &#9989;Działki. Sprzedaż i Wynajem. &#9989;Ponad 60 000 Ofert. &#9989; WGN Działa na Rynku Od 1991 Roku. Sprawdź Teraz i Zadzwoń »{% endblock %}
+{%block twitterDescription %}Archiwalne Oferty WGN &#9989;Mieszkania &#9989;Domy &#9989;Działki. Sprzedaż i Wynajem. &#9989;Ponad 60 000 Ofert. &#9989; WGN Działa na Rynku Od 1991 Roku. Sprawdź Teraz i Zadzwoń »{% endblock %}
+{%block pageTitle %}Archiwalne Oferty Mieszkań Na Sprzedaż |+60 000 Ofert w WGN!{%endblock%}
+{%block ogTitle %}Archiwalne Oferty Mieszkań Na Sprzedaż |+60 000 Ofert w WGN!{% endblock %}
+{%block twitterTitle %}Archiwalne Oferty Mieszkań Na Sprzedaż |+60 000 Ofert w WGN!{% endblock %}

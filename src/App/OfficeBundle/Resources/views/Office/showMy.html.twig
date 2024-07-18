@@ -1,0 +1,74 @@
+{% extends "AppBackOfficeBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <section class="content-header">
+      <h1>
+        Moje Biuro
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#" title="Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="active">Biura WGN</li>
+      </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            {% include 'AppBackOfficeBundle:_Partials:flashMessage.html.twig' %}
+            <div class="col-md-12">
+            <div class="box">
+            <div class="box-header with-border">
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body">
+              <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th width="350">Nazwa</th>
+                            <th width="100">Adress</th>
+                            <th width="250">E-mail</th>
+                            <th width="150">Telefon</th>
+                            <th width="100">Gsm</th>
+                            <th width="100">Fax</th>
+                            <th width="100">www</th>
+                            <th>Opcje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="odd gradeX">
+                            <td>{{office.name}}</td>
+                            <td>{{office.defaultAddress.city}}, {{office.defaultAddress.street}}</td>
+                            <td>{{office.email}}</td>
+                            <td>{{office.phone}}</td>
+                            <td>{{office.mobile}}</td>
+                            <td>{{office.fax}}</td>
+                            <td>{{office.www}}</td>
+                            <td>
+                                <a href="{{path('backoffice_office_edit',{'id':office.id})}}" class="btn btn-primary btn-flat"  data-toggle="tooltip" data-placement="top" title="edycja"> <i class="fa fa-edit"></i></a>
+                                <a href="{{path('backoffice_agent_list',{'idOffice':office.id})}}" class="btn btn-primary btn-flat"  data-toggle="tooltip" data-placement="top" title="agenci"> <i class="fa fa-users"></i></a>
+                                <a href="{{path('backoffice_ads_list',{'idOffice':office.id})}}" class="btn btn-primary btn-flat"  data-toggle="tooltip" data-placement="top" title="reklamy"> <i class="fa fa-star"></i></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.box-body -->
+            <div class="box-footer clearfix">
+            </div>
+          </div>
+            </div>
+                <!-- /.col-lg-12 -->
+        </div>
+    </section>
+{% endblock body %}
+{% block javascripts %}
+    <script>
+
+    $('a[data-show-modal="delete"]').on('click',function(){
+        $('#confirm-delete').find('.danger').attr('href', $(this).data('href'));
+        $('#confirm-delete').modal();
+    });
+    $('select[name="idCategory"]').on('change',function(){
+        $(this).closest('form').submit();
+    });
+    </script>
+{% endblock %}
+
+

@@ -1,0 +1,68 @@
+{% extends "AppBackOfficeBundle:_Partials:layout.html.twig" %}
+{% block body %}
+    <section class="content-header">
+      <h1>
+        Slider
+      </h1>
+      <ol class="breadcrumb">
+        <li><a href="#" title="Dashboard"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li><a href="#" title="Cms">Wygląd</a></li>
+        <li class="active">Slider</li>
+      </ol>
+    </section>
+    <section class="content">
+        <div class="row">
+            {% include 'AppBackOfficeBundle:_Partials:flashMessage.html.twig' %}
+            <div class="col-md-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title pull-right">
+                        <a href="{{path('app_settings_add_my_image')}}" class="btn btn-success btn-flat" title="Dodaj Zdjęcie"><i class="fa fa-plus"></i> Dodaj Zdjęcie</a>
+                    </h3>
+                </div>
+                <!-- /.box-header -->
+            <div class="box-body scroll">
+              <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>ID</th>
+                                            <th width="250">Opcje</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for item in images %}
+                                        <tr class="odd gradeX">
+                                            <td>{{item.id}}</td>
+                                            <td>
+                                                {% if item.isEnabled %}
+                                                    <a href="{{path('app_settings_change_enabled_my_image',{'id':item.id,'publish':0})}}" class="btn btn-success btn-flat"  data-toggle="tooltip" data-placement="top" title="ukryj"> <i class="fa fa-plus"></i></a>
+                                                {% else %}
+                                                    <a href="{{path('app_settings_change_enabled_my_image',{'id':item.id,'publish':1})}}" class="btn btn-danger btn-flat"  data-toggle="tooltip" data-placement="top" title="pokaż"> <i class="fa fa-minus"></i></a>
+                                                {% endif %}
+                                                    <a href="{{path('app_settings_edit_my_image',{'id':item.id})}}" class="btn btn-primary btn-flat" title="Edycja"> <i class="fa fa-edit"></i></a>
+                                                    <a href="{{path('app_settings_delete_my_image',{'id':item.id})}}" class="btn btn-primary btn-flat" title="Usuń"> <i class="fa fa-trash-o"></i></a>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                </table>
+            </div>
+          </div>
+            </div>
+                <!-- /.col-lg-12 -->
+        </div>
+    </section>
+{% include 'AppBackOfficeBundle:_Partials:modalDelete.html.twig' %}
+{% endblock body %}
+{% block javascripts %}
+    <script>
+
+    $('a[data-show-modal="delete"]').on('click',function(){
+        $('#confirm-delete').find('.danger').attr('href', $(this).data('href'));
+        $('#confirm-delete').modal();
+    });
+    $('select[name="idCategory"]').on('change',function(){
+        $(this).closest('form').submit();
+    });
+    </script>
+{% endblock %}
