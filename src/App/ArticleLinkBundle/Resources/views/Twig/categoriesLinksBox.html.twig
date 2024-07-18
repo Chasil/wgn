@@ -1,8 +1,0 @@
-<div class="col-md-12 search-list">
-    <h3>Kategorie artykułów</h3>
-    <div class="row search-list-links categories-list-links">
-    {% for category in categories  %}
-        <a href="{{ path('frontend_article_category_show', {"idCategory": category.id, "categoryName": category.name | prepareUrl}) }}" title="{{category.name|capitalize}}">{{category.name|capitalize}}</a>
-    {% endfor %}
-    </div>
-</div>

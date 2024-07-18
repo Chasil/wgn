@@ -1,4 +1,0 @@
-Allow From All
-<FilesMatch "\.php$">
-Deny From All
-</FilesMatch>

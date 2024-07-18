@@ -1,4 +1,0 @@
-services:
-    newsletter.manager:
-        class: App\NewsletterBundle\Services\NewsletterManager
-        arguments: [@service_container]

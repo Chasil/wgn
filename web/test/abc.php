@@ -1,1 +1,0 @@
-WGN.pl - serwer

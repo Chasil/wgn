@@ -1,6 +1,0 @@
-<div class="col-md-12" id="company-data" {% if element.customStyle !=''%}style="{{element.customStyle}}"{%endif %}>
-    <h2><img src="{{asset('front-layout/gfx/logo-sm.png')}}" class="img-responsive" alt="{{config.blockTitle}}" /> {{config.blockTitle}}</h2>
-    <p>{{getSettings('companyCountry')}}, {{getSettings('companyZipCode')}} {{getSettings('companyCity')}}, ul. {{getSettings('companyStreet')}} </p>
-    <p>tel./fax {{getSettings('companyPhone')}}</p>
-    <p>e-mail: <a href="mailto:{{getSettings('companyEmail')}}" title="{{getSettings('companyEmail')}}">{{getSettings('companyEmail')}}</a></p>
-</div>

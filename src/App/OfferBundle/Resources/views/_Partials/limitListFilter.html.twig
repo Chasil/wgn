@@ -1,5 +1,0 @@
-<div class="limit pull-right">
-    <p>Pokaż po <a href="{{ path(app.request.attributes.get('_route'),
-                            app.request.query.all|merge({'limit': '20'})|merge(app.request.get('_route_params'))) }}" {% if app.request.get('limit',20) == 20 %} class="selected"{% endif %} title="Pokaż 20 ofert">20</a>, <a href="{{ path(app.request.attributes.get('_route'),
-                            app.request.query.all|merge({'limit': '100'})|merge(app.request.get('_route_params'))) }}" {% if app.request.get('limit') == 100 %} class="selected"{% endif %} title="Pokaż 100 ofert">100</a> ofert
-</div>

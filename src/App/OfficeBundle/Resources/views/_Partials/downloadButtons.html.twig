@@ -1,4 +1,0 @@
-<div class="form-group col-xs-2 buttons no-padding-right">
-    <a href="{{path(app.request.get('_route'),app.request.query.all | merge({'export': 'csv'}))}}" class="btn btn-primary pull-right" title="CSV"><i class="fa fa-download"></i> CSV</a>
-    <a href="{{path(app.request.get('_route'),app.request.query.all | merge({'export': 'pdf'}))}}" target="_blank" class="btn btn-primary pull-right" title="PDF"><i class="fa fa-file-pdf-o"></i> PDF</a>
-</div>

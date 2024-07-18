@@ -1,6 +1,0 @@
-twig:
-  globals:
-    app_session_autologout: 20
-    domain: %main_host%
-    domain_without_scheme: %domain%
-    host_scheme: %scheme%

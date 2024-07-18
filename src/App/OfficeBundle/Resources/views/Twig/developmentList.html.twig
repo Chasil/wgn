@@ -1,7 +1,0 @@
-{% if offices | length > 0 %}
-    <ul>
-    {% for office in offices %}
-        <li><a href="{{office.developmentOfferUrl}}" title="{{office.name}}, {{office.addresses[0].street}}"><strong>{{office.name}}</strong>, {{office.addresses[0].street}}</a></li>
-    {% endfor %}
-     </ul>
-{% endif %}
