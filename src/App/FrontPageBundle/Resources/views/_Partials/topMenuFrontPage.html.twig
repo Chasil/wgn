@@ -17,8 +17,11 @@
             {% endif %}
             {{menu('top_menu',{'class':'nav navbar-nav'})}}
             <ul class="nav navbar-nav navbar-right" id="zgloskupno009">
-                <li><a href="{{domain}}{{path('frontend_offer_looking_for')}}" id="add-offer" class="" title="ZGŁOŚ KUPNO - SPRZEDAŻ1">ZGŁOŚ KUPNO - SPRZEDAŻ</a></li>
+                <li><a href="#" id="add-offer" class="" title="ZGŁOŚ KUPNO - SPRZEDAŻ1">ZGŁOŚ KUPNO - SPRZEDAŻ</a></li>
             </ul>
         </div><!--/.nav-collapse -->
     </nav>
-</div> 
+</div>
+
+{# Include the popup template #}
+{% include 'AppFrontPageBundle:_Partials:popup.html.twig' %}

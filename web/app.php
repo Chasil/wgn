@@ -36,7 +36,5 @@ $response = $kernel->handle($request);
 //$response = $kernel->getContainer()->get('app.app_bundle.controller.default_controller')->sendTestEmailAction();
 
 // Manually dispatch the controller action
-
-var_dump(123881);
 $response->send();
 $kernel->terminate($request, $response);
