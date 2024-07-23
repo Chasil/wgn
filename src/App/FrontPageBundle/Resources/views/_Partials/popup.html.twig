@@ -1,6 +1,8 @@
 <div id="popup-modal" class="modal" style="display:none;">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <p>Your content here...</p>
+        {% render(controller(
+            'App\\OfferBundle\\Controller\\OfferController::lookingForAction'
+        )) %}
     </div>
 </div>
